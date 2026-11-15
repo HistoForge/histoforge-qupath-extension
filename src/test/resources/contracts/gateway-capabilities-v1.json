@@ -1,0 +1,556 @@
+{
+  "schemaVersion": 1,
+  "healthCases": [
+    {
+      "name": "healthy-v1",
+      "value": {
+        "api_major": 1,
+        "status": "ok"
+      },
+      "canonical": "{\"api_major\":1,\"status\":\"ok\"}",
+      "sha256": "b4714f50014c6f913eb0a10503f64158a5d8c438da7e45974ddc98a04cad034c"
+    }
+  ],
+  "capabilityCases": [
+    {
+      "name": "typical-deployment",
+      "value": {
+        "api_major": 1,
+        "module_schema_version": 3,
+        "source_artifact_schema_version": 2,
+        "finite_inference_schema_version": 2,
+        "durable_model_run_schema_version": 4,
+        "deployment_id": "deployment-2026-08-12-a",
+        "auth_revision": 7,
+        "gateway_build": {
+          "version": "0.1.0+abc123",
+          "artifact_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "manifest_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        },
+        "runner_registry_digest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "inference_gpus": [
+          "A10G",
+          "L40S",
+          "A100"
+        ],
+        "source_artifact_limits": {
+          "max_start_canonical_bytes": 131072,
+          "max_artifact_bytes": 34359738368,
+          "max_chunks": 4096,
+          "max_chunk_bytes": 8388608,
+          "max_image_series": 16,
+          "max_pyramid_levels_per_series": 16,
+          "max_level_width_px": 500000,
+          "max_level_height_px": 500000,
+          "max_complete_decode_pixels": 32000000,
+          "upload_idle_timeout_seconds": 3600,
+          "absolute_lifetime_seconds": 172800
+        },
+        "limits": {
+          "max_json_request_bytes": 1048576,
+          "max_catalog_page_size": 100,
+          "max_catalog_encoded_bytes": 8388608,
+          "max_admin_request_bytes": 262144,
+          "max_module_bytes": 5368709120,
+          "max_installed_bytes": 536870912000,
+          "max_active_admin_jobs": 4,
+          "max_active_source_artifacts": 1024,
+          "max_active_model_runs": 4
+        },
+        "training_api_schema_version": 1,
+        "training_api_limits": {
+          "dataset": {
+            "max_rois": 2000,
+            "max_objects_per_roi": 10000,
+            "max_total_objects": 500000,
+            "max_vertices_per_geometry": 100000,
+            "max_total_vertices": 6500000,
+            "max_json_member_bytes": 8388608,
+            "max_archive_bytes": 9672065024,
+            "max_extracted_bytes": 9663676416
+          },
+          "transfer": {
+            "max_chunk_bytes": 8388608,
+            "max_chunks_per_upload": 1153
+          },
+          "report": {
+            "max_metric_series": 100,
+            "max_epochs": 1000,
+            "max_messages": 1000,
+            "max_text_bytes": 4096,
+            "max_component_parameters_bytes": 65536,
+            "max_component_parameter_depth": 16,
+            "max_component_collection_entries": 1024,
+            "max_report_bytes": 8388608
+          },
+          "max_page_size": 100,
+          "max_page_encoded_bytes": 1048576
+        }
+      },
+      "canonical": "{\"api_major\":1,\"auth_revision\":7,\"deployment_id\":\"deployment-2026-08-12-a\",\"durable_model_run_schema_version\":4,\"finite_inference_schema_version\":2,\"gateway_build\":{\"artifact_digest\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"manifest_digest\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"version\":\"0.1.0+abc123\"},\"inference_gpus\":[\"A10G\",\"L40S\",\"A100\"],\"limits\":{\"max_active_admin_jobs\":4,\"max_active_model_runs\":4,\"max_active_source_artifacts\":1024,\"max_admin_request_bytes\":262144,\"max_catalog_encoded_bytes\":8388608,\"max_catalog_page_size\":100,\"max_installed_bytes\":536870912000,\"max_json_request_bytes\":1048576,\"max_module_bytes\":5368709120},\"module_schema_version\":3,\"runner_registry_digest\":\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\",\"source_artifact_limits\":{\"absolute_lifetime_seconds\":172800,\"max_artifact_bytes\":34359738368,\"max_chunk_bytes\":8388608,\"max_chunks\":4096,\"max_complete_decode_pixels\":32000000,\"max_image_series\":16,\"max_level_height_px\":500000,\"max_level_width_px\":500000,\"max_pyramid_levels_per_series\":16,\"max_start_canonical_bytes\":131072,\"upload_idle_timeout_seconds\":3600},\"source_artifact_schema_version\":2,\"training_api_limits\":{\"dataset\":{\"max_archive_bytes\":9672065024,\"max_extracted_bytes\":9663676416,\"max_json_member_bytes\":8388608,\"max_objects_per_roi\":10000,\"max_rois\":2000,\"max_total_objects\":500000,\"max_total_vertices\":6500000,\"max_vertices_per_geometry\":100000},\"max_page_encoded_bytes\":1048576,\"max_page_size\":100,\"report\":{\"max_component_collection_entries\":1024,\"max_component_parameter_depth\":16,\"max_component_parameters_bytes\":65536,\"max_epochs\":1000,\"max_messages\":1000,\"max_metric_series\":100,\"max_report_bytes\":8388608,\"max_text_bytes\":4096},\"transfer\":{\"max_chunk_bytes\":8388608,\"max_chunks_per_upload\":1153}},\"training_api_schema_version\":1}",
+      "sha256": "ef290d1e891c54e5b9a3240c3b4cdeb0442210fe5cbd1a016ab24f3b805f7886"
+    },
+    {
+      "name": "safe-integer-boundaries",
+      "value": {
+        "api_major": 2147483647,
+        "module_schema_version": 2147483647,
+        "source_artifact_schema_version": 2147483647,
+        "finite_inference_schema_version": 2147483647,
+        "durable_model_run_schema_version": 2147483647,
+        "deployment_id": "boundary-deployment",
+        "auth_revision": 9007199254740991,
+        "gateway_build": {
+          "version": "boundary",
+          "artifact_digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "manifest_digest": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        },
+        "runner_registry_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "inference_gpus": [
+          "Fixture GPU A",
+          "Fixture GPU B"
+        ],
+        "source_artifact_limits": {
+          "max_start_canonical_bytes": 9007199254740991,
+          "max_artifact_bytes": 9007199254740991,
+          "max_chunks": 2147483647,
+          "max_chunk_bytes": 9007199254740991,
+          "max_image_series": 2147483647,
+          "max_pyramid_levels_per_series": 2147483647,
+          "max_level_width_px": 2147483647,
+          "max_level_height_px": 2147483647,
+          "max_complete_decode_pixels": 9007199254740991,
+          "upload_idle_timeout_seconds": 2147483647,
+          "absolute_lifetime_seconds": 2147483647
+        },
+        "limits": {
+          "max_json_request_bytes": 9007199254740991,
+          "max_catalog_page_size": 2147483647,
+          "max_catalog_encoded_bytes": 9007199254740991,
+          "max_admin_request_bytes": 9007199254740991,
+          "max_module_bytes": 9007199254740991,
+          "max_installed_bytes": 9007199254740991,
+          "max_active_admin_jobs": 2147483647,
+          "max_active_source_artifacts": 2147483647,
+          "max_active_model_runs": 2147483647
+        },
+        "training_api_schema_version": 2147483647,
+        "training_api_limits": {
+          "dataset": {
+            "max_rois": 9007199254740991,
+            "max_objects_per_roi": 9007199254740991,
+            "max_total_objects": 9007199254740991,
+            "max_vertices_per_geometry": 9007199254740991,
+            "max_total_vertices": 9007199254740991,
+            "max_json_member_bytes": 9007199254740991,
+            "max_archive_bytes": 9007199254740991,
+            "max_extracted_bytes": 9007199254740991
+          },
+          "transfer": {
+            "max_chunk_bytes": 9007199254740991,
+            "max_chunks_per_upload": 2147483647
+          },
+          "report": {
+            "max_metric_series": 9007199254740991,
+            "max_epochs": 9007199254740991,
+            "max_messages": 9007199254740991,
+            "max_text_bytes": 9007199254740991,
+            "max_component_parameters_bytes": 9007199254740991,
+            "max_component_parameter_depth": 9007199254740991,
+            "max_component_collection_entries": 9007199254740991,
+            "max_report_bytes": 9007199254740991
+          },
+          "max_page_size": 2147483647,
+          "max_page_encoded_bytes": 9007199254740991
+        }
+      },
+      "canonical": "{\"api_major\":2147483647,\"auth_revision\":9007199254740991,\"deployment_id\":\"boundary-deployment\",\"durable_model_run_schema_version\":2147483647,\"finite_inference_schema_version\":2147483647,\"gateway_build\":{\"artifact_digest\":\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\",\"manifest_digest\":\"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\",\"version\":\"boundary\"},\"inference_gpus\":[\"Fixture GPU A\",\"Fixture GPU B\"],\"limits\":{\"max_active_admin_jobs\":2147483647,\"max_active_model_runs\":2147483647,\"max_active_source_artifacts\":2147483647,\"max_admin_request_bytes\":9007199254740991,\"max_catalog_encoded_bytes\":9007199254740991,\"max_catalog_page_size\":2147483647,\"max_installed_bytes\":9007199254740991,\"max_json_request_bytes\":9007199254740991,\"max_module_bytes\":9007199254740991},\"module_schema_version\":2147483647,\"runner_registry_digest\":\"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\",\"source_artifact_limits\":{\"absolute_lifetime_seconds\":2147483647,\"max_artifact_bytes\":9007199254740991,\"max_chunk_bytes\":9007199254740991,\"max_chunks\":2147483647,\"max_complete_decode_pixels\":9007199254740991,\"max_image_series\":2147483647,\"max_level_height_px\":2147483647,\"max_level_width_px\":2147483647,\"max_pyramid_levels_per_series\":2147483647,\"max_start_canonical_bytes\":9007199254740991,\"upload_idle_timeout_seconds\":2147483647},\"source_artifact_schema_version\":2147483647,\"training_api_limits\":{\"dataset\":{\"max_archive_bytes\":9007199254740991,\"max_extracted_bytes\":9007199254740991,\"max_json_member_bytes\":9007199254740991,\"max_objects_per_roi\":9007199254740991,\"max_rois\":9007199254740991,\"max_total_objects\":9007199254740991,\"max_total_vertices\":9007199254740991,\"max_vertices_per_geometry\":9007199254740991},\"max_page_encoded_bytes\":9007199254740991,\"max_page_size\":2147483647,\"report\":{\"max_component_collection_entries\":9007199254740991,\"max_component_parameter_depth\":9007199254740991,\"max_component_parameters_bytes\":9007199254740991,\"max_epochs\":9007199254740991,\"max_messages\":9007199254740991,\"max_metric_series\":9007199254740991,\"max_report_bytes\":9007199254740991,\"max_text_bytes\":9007199254740991},\"transfer\":{\"max_chunk_bytes\":9007199254740991,\"max_chunks_per_upload\":2147483647}},\"training_api_schema_version\":2147483647}",
+      "sha256": "377e5d69e6ab31358af87d38028e8e5794deceb4028a6110f2c4e42526683933"
+    }
+  ],
+  "fieldBindingCase": {
+    "name": "synthetic-field-binding-only",
+    "mutations": [
+      {
+        "path": [
+          "api_major"
+        ],
+        "value": 6
+      },
+      {
+        "path": [
+          "module_schema_version"
+        ],
+        "value": 2
+      },
+      {
+        "path": [
+          "source_artifact_schema_version"
+        ],
+        "value": 3
+      },
+      {
+        "path": [
+          "finite_inference_schema_version"
+        ],
+        "value": 4
+      },
+      {
+        "path": [
+          "durable_model_run_schema_version"
+        ],
+        "value": 5
+      },
+      {
+        "path": [
+          "training_api_schema_version"
+        ],
+        "value": 8
+      },
+      {
+        "path": [
+          "source_artifact_limits",
+          "max_image_series"
+        ],
+        "value": 17
+      },
+      {
+        "path": [
+          "source_artifact_limits",
+          "max_pyramid_levels_per_series"
+        ],
+        "value": 19
+      },
+      {
+        "path": [
+          "source_artifact_limits",
+          "max_level_width_px"
+        ],
+        "value": 230001
+      },
+      {
+        "path": [
+          "source_artifact_limits",
+          "max_level_height_px"
+        ],
+        "value": 230002
+      },
+      {
+        "path": [
+          "limits",
+          "max_active_admin_jobs"
+        ],
+        "value": 5
+      },
+      {
+        "path": [
+          "limits",
+          "max_active_model_runs"
+        ],
+        "value": 7
+      },
+      {
+        "path": [
+          "training_api_limits",
+          "dataset",
+          "max_rois"
+        ],
+        "value": 2001
+      },
+      {
+        "path": [
+          "training_api_limits",
+          "transfer",
+          "max_chunks_per_upload"
+        ],
+        "value": 1154
+      }
+    ]
+  },
+  "invalidMutations": [
+    {
+      "name": "health-missing-status",
+      "target": "health",
+      "operation": "remove",
+      "path": [
+        "status"
+      ]
+    },
+    {
+      "name": "health-unknown-field",
+      "target": "health",
+      "operation": "set",
+      "path": [
+        "extra"
+      ],
+      "value": true
+    },
+    {
+      "name": "health-zero-api",
+      "target": "health",
+      "operation": "set",
+      "path": [
+        "api_major"
+      ],
+      "value": 0
+    },
+    {
+      "name": "health-wrong-status",
+      "target": "health",
+      "operation": "set",
+      "path": [
+        "status"
+      ],
+      "value": "starting"
+    },
+    {
+      "name": "capabilities-missing-deployment",
+      "target": "capabilities",
+      "operation": "remove",
+      "path": [
+        "deployment_id"
+      ]
+    },
+    {
+      "name": "capabilities-unknown-field",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "extra"
+      ],
+      "value": true
+    },
+    {
+      "name": "capabilities-zero-schema",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "finite_inference_schema_version"
+      ],
+      "value": 0
+    },
+    {
+      "name": "capabilities-blank-deployment",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "deployment_id"
+      ],
+      "value": " "
+    },
+    {
+      "name": "capabilities-negative-auth-revision",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "auth_revision"
+      ],
+      "value": -1
+    },
+    {
+      "name": "capabilities-boolean-auth-revision",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "auth_revision"
+      ],
+      "value": true
+    },
+    {
+      "name": "capabilities-unsafe-auth-revision",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "auth_revision"
+      ],
+      "value": 9007199254740992
+    },
+    {
+      "name": "capabilities-bad-build-digest",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "gateway_build",
+        "artifact_digest"
+      ],
+      "value": "ABC"
+    },
+    {
+      "name": "capabilities-bad-registry-digest",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "runner_registry_digest"
+      ],
+      "value": "ABC"
+    },
+    {
+      "name": "source-limits-missing-field",
+      "target": "capabilities",
+      "operation": "remove",
+      "path": [
+        "source_artifact_limits",
+        "max_chunks"
+      ]
+    },
+    {
+      "name": "source-limits-unknown-field",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "source_artifact_limits",
+        "extra"
+      ],
+      "value": 1
+    },
+    {
+      "name": "source-limits-zero",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "source_artifact_limits",
+        "max_chunks"
+      ],
+      "value": 0
+    },
+    {
+      "name": "source-limits-decimal-int",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "source_artifact_limits",
+        "max_chunks"
+      ],
+      "value": 1.0
+    },
+    {
+      "name": "source-limits-zero-long",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "source_artifact_limits",
+        "max_artifact_bytes"
+      ],
+      "value": 0
+    },
+    {
+      "name": "source-limits-negative-long",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "source_artifact_limits",
+        "max_artifact_bytes"
+      ],
+      "value": -1
+    },
+    {
+      "name": "source-limits-unsafe-long",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "source_artifact_limits",
+        "max_artifact_bytes"
+      ],
+      "value": 9007199254740992
+    },
+    {
+      "name": "source-limits-obsolete-tombstone",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "source_artifact_limits",
+        "expired_id_tombstone_seconds"
+      ],
+      "value": 604800
+    },
+    {
+      "name": "gateway-limits-missing-field",
+      "target": "capabilities",
+      "operation": "remove",
+      "path": [
+        "limits",
+        "max_active_model_runs"
+      ]
+    },
+    {
+      "name": "gateway-limits-unknown-field",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "limits",
+        "extra"
+      ],
+      "value": 1
+    },
+    {
+      "name": "gateway-limits-zero",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "limits",
+        "max_active_admin_jobs"
+      ],
+      "value": 0
+    },
+    {
+      "name": "gateway-limits-decimal-long",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "limits",
+        "max_installed_bytes"
+      ],
+      "value": 1.0
+    },
+    {
+      "name": "gateway-limits-unsafe-long",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "limits",
+        "max_installed_bytes"
+      ],
+      "value": 9007199254740992
+    },
+    {
+      "name": "training-limits-missing-field",
+      "target": "capabilities",
+      "operation": "remove",
+      "path": [
+        "training_api_limits",
+        "dataset",
+        "max_rois"
+      ]
+    },
+    {
+      "name": "training-limits-zero",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "training_api_limits",
+        "transfer",
+        "max_chunk_bytes"
+      ],
+      "value": 0
+    },
+    {
+      "name": "training-zero-schema",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "training_api_schema_version"
+      ],
+      "value": 0
+    },
+    {
+      "name": "gateway-limits-obsolete-volume-quota",
+      "target": "capabilities",
+      "operation": "set",
+      "path": [
+        "limits",
+        "max_artifact_stored_bytes"
+      ],
+      "value": 1099511627776
+    }
+  ]
+}

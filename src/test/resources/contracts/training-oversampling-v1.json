@@ -1,0 +1,396 @@
+{
+  "cases": [
+    {
+      "settings": {
+        "training_gpu_id": "l4",
+        "training_batch_size": 1,
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "warmup_mode": "auto",
+        "warmup_epochs": 10,
+        "flow_loss_weighting": "pixel",
+        "oversample": false
+      },
+      "sha256": "56bb3cf6cee02a99a528c750a168b88aac5b0a201c71521145c1a1094fddaade",
+      "sampler": {
+        "profile_id": "managed-full-roi-coverage-v1",
+        "parameters": {
+          "seed_derivation": "sha256-canonical-json-pcg64-epoch-v1"
+        }
+      }
+    },
+    {
+      "settings": {
+        "training_gpu_id": "l4",
+        "training_batch_size": 1,
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "warmup_mode": "auto",
+        "warmup_epochs": 10,
+        "flow_loss_weighting": "pixel",
+        "oversample": true
+      },
+      "sha256": "995e267b01446de6c534f303034c91bfe692f03c12c83c66e7f12d1b2dd635c8",
+      "sampler": {
+        "profile_id": "managed-instance-class-field-sampling-v1",
+        "parameters": {
+          "seed_derivation": "sha256-canonical-json-pcg64-instance-field-epoch-v1",
+          "score_floor": 1e-10
+        }
+      }
+    }
+  ],
+  "invalid_values": [
+    null,
+    0,
+    1,
+    "true",
+    [],
+    {}
+  ],
+  "report": {
+    "value": {
+      "augmentation": {
+        "enabled_operator_ids": [
+          "rotate90-v1",
+          "flip-v1"
+        ],
+        "profile_id": "he-v1"
+      },
+      "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+      "dataset_image_count": 2,
+      "epochs": [],
+      "field_profile": {
+        "aggregation": "mean-logits-v1",
+        "alignment_model_px": 16,
+        "planner": "fixed-field-v1",
+        "preprocessing": "normalize99-real-image-v1",
+        "side_model_px": 384,
+        "small_roi_context": true,
+        "tile_overlap": 0.25
+      },
+      "messages": [],
+      "metric_policy": {
+        "primary_selection_direction": "maximize",
+        "primary_validation_series_id": "validation-instance-msa.v1",
+        "series": [
+          {
+            "definition": "Equal-field mean training objective.",
+            "display_name": "Training loss",
+            "partition": "training",
+            "series_id": "training-loss.v1",
+            "value_domain": "real"
+          },
+          {
+            "definition": "Mean segmentation accuracy over IoU thresholds.",
+            "display_name": "Validation mSA",
+            "partition": "validation",
+            "series_id": "validation-instance-msa.v1",
+            "value_domain": "unit_interval"
+          }
+        ]
+      },
+      "min_instance_pixels": 15,
+      "result_display_name": "Fine-tuned Leydig workflow",
+      "result_form": "complete_source_workflow",
+      "result_inference_gpu": "A100",
+      "run_id": "44444444-4444-4444-8444-444444444444",
+      "schema_version": 1,
+      "selected_model_id": "leydig_nuclear",
+      "source_module": {
+        "content_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+        "module_ref": "histoforge/leydig",
+        "recipe_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+        "resolved_commit_sha": "1111111111111111111111111111111111111111"
+      },
+      "split_plan": {
+        "assignment_source": "generated",
+        "requested_validation_percent": 20,
+        "type": "split",
+        "unit": "image",
+        "units": [
+          {
+            "partition": "training",
+            "unit_index": 0
+          },
+          {
+            "partition": "validation",
+            "unit_index": 1
+          }
+        ]
+      },
+      "starting_weight_digest": "c2135702ceec0ba5213bc243183dc48f4b0b4e7f646b9bd9cac0095ab243abfa",
+      "state": "QUEUED",
+      "task": {
+        "capability_id": "cellpose-sam-cls-fixed-v1",
+        "input_kind": "field",
+        "model_microns_per_pixel": 0.5,
+        "model_output": {
+          "classChannels": [
+            {
+              "channel": 0,
+              "role": "background"
+            },
+            {
+              "channel": 1,
+              "pathClass": "Leydig cell",
+              "role": "emitted"
+            },
+            {
+              "channel": 2,
+              "pathClass": "Other",
+              "role": "training_only"
+            }
+          ],
+          "type": "instance_segmentation_and_classification"
+        },
+        "supports_negative_rois": true,
+        "annotation_class_map": {
+          "Leydig cell": "Leydig cell",
+          "Other": "Other"
+        }
+      },
+      "total_epochs": 3,
+      "trainer_build": {
+        "artifact_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "manifest_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "version": "phase8-test"
+      },
+      "trainer_configuration": {
+        "augmentation": {
+          "parameters": {
+            "appearance_numeric_policy": {
+              "artificial_pixels": "preserve-input-values-v1",
+              "clipping": "after-each-appearance-operator-v1",
+              "output_dtype": "float32",
+              "real_pixel_range": [
+                0,
+                255
+              ]
+            },
+            "base_profile_display_name": "H&E",
+            "base_profile_id": "he-v1",
+            "default_enabled_operator_ids": [
+              "rotate90-v1",
+              "flip-v1"
+            ],
+            "enabled_operators": [
+              {
+                "display_name": "Right-angle rotations",
+                "operator_id": "rotate90-v1"
+              },
+              {
+                "display_name": "Flips",
+                "operator_id": "flip-v1"
+              }
+            ],
+            "input_numeric_domain": "raw-srgb-hwc-finite-0-255-v1",
+            "operator_parameters": {
+              "flip-v1": {
+                "horizontal_probability": 0.5,
+                "implementation": "axis-flips-v1",
+                "vertical_probability": 0.5
+              },
+              "rotate90-v1": {
+                "implementation": "quarter-turn-v1",
+                "quarter_turn_probabilities": [
+                  0.25,
+                  0.25,
+                  0.25,
+                  0.25
+                ]
+              }
+            },
+            "seed_derivation": "sha256-canonical-json-pcg64-sample-operator-v1"
+          },
+          "profile_id": "managed-field-augmentation-v1"
+        },
+        "objective": {
+          "parameters": {
+            "class_count": 3,
+            "class_weighting": {
+              "channel_identity": "explicit-model-output-channel",
+              "channels": [
+                {
+                  "channel": 0,
+                  "raw_count": 10,
+                  "role": "background",
+                  "weight": 1
+                },
+                {
+                  "channel": 1,
+                  "path_class": "Leydig cell",
+                  "raw_count": 10,
+                  "role": "emitted",
+                  "weight": 1
+                },
+                {
+                  "channel": 2,
+                  "path_class": "Other",
+                  "raw_count": 10,
+                  "role": "training_only",
+                  "weight": 1
+                }
+              ],
+              "count_floor": 1,
+              "dtype": "float32",
+              "formula": "sqrt(median(max(raw_count,1))/max(raw_count,1))",
+              "overlapping_rois": "count-independently-without-deduplication",
+              "policy": "sqrt-median-frequency-class-v1",
+              "population": "each-supervised-real-pixel-once-per-training-roi"
+            },
+            "classification_loss_weight": 1,
+            "classification_objective": "cross_entropy+tversky",
+            "cross_entropy_reduction": "sum-weighted-ce-over-sum-target-weights",
+            "effective_support": "supervision-mask-and-real-pixel-mask",
+            "field_reduction": "loss-specific-supported-reduction-then-equal-field-mean",
+            "flow_loss_weighting": "pixel",
+            "gradient_clip_parameters": "model-only",
+            "gradient_norm_type": 2,
+            "head_type": "flow",
+            "initial_log_variance": 0,
+            "max_gradient_norm": 1,
+            "precision": "float32-no-autocast",
+            "task_combination": "sum-exp-negative-log-variance-loss-plus-log-variance",
+            "tversky_alpha": 0.3,
+            "tversky_gamma": 1.33,
+            "tversky_reduction": "mean-over-all-class-channels-including-background",
+            "use_uncertainty_weighting": true,
+            "weight_tversky_by_class": true
+          },
+          "profile_id": "managed-segmentation-objective-v2"
+        },
+        "optimizer": {
+          "parameters": {
+            "adapter_learning_rate": 0.001,
+            "amsgrad": false,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "capturable": false,
+            "decoupled_weight_decay": true,
+            "differentiable": false,
+            "eps": 1e-08,
+            "foreach": null,
+            "fused": null,
+            "head_learning_rate": 0.001,
+            "learning_rate": 5e-05,
+            "llrd_factor": 0.8,
+            "maximize": false,
+            "neck_learning_rate": 0.001,
+            "no_decay_rule": "ndim-lt2-or-name-contains-cls-token-or-reg-token",
+            "parameter_group_rule": "dinov3-source-build-param-groups-v1",
+            "patch_embed_learning_rate": 0.0003,
+            "task_learning_rate": 5e-06,
+            "task_weight_decay": 0.1,
+            "trainable_parameters_only": true,
+            "weight_decay": 0.1
+          },
+          "profile_id": "managed-adamw-llrd-v1"
+        },
+        "preprocessing": {
+          "parameters": {
+            "artificial_pixel_value": 0,
+            "channels": "RGB",
+            "clip": false,
+            "dtype": "float32",
+            "minimum_percentile_range": 0.001,
+            "operation_order": [
+              "read-field-and-apply-fixed-planner-padding",
+              "augment",
+              "normalize-real-pixels",
+              "apply-model-minimum-alignment-padding",
+              "bottom-right-batch-padding"
+            ],
+            "percentile_method": "linear",
+            "percentiles": [
+              1,
+              99
+            ],
+            "population": "real-pixels-per-image-including-context",
+            "small_range_output": 0
+          },
+          "profile_id": "normalize99-real-image-v1"
+        },
+        "sampler": {
+          "parameters": {
+            "score_floor": 1e-10,
+            "seed_derivation": "sha256-canonical-json-pcg64-instance-field-epoch-v1"
+          },
+          "profile_id": "managed-instance-class-field-sampling-v1"
+        },
+        "scheduler": {
+          "parameters": {
+            "cosine_denominator": 2,
+            "cosine_epochs": 2,
+            "epoch_indexing": "zero-based-before-epoch",
+            "group_scale_rule": "multiply-initial-learning-rate",
+            "total_epochs": 3,
+            "warmup_end_scale": 1,
+            "warmup_endpoint": true,
+            "warmup_epochs": 1,
+            "warmup_start_scale": 0,
+            "zero_rate_behavior": "adamw-step-updates-moments"
+          },
+          "profile_id": "managed-warmup-cosine-v2"
+        }
+      },
+      "trainer_settings": {
+        "data_loading_workers": 2,
+        "flow_loss_weighting": "pixel",
+        "gradient_accumulation_steps": 1,
+        "oversample": true,
+        "total_epochs": 3,
+        "training_batch_size": 1,
+        "training_gpu_id": "l4",
+        "warmup_epochs": 1,
+        "warmup_mode": "custom"
+      },
+      "training_counts": {
+        "image_count": 1,
+        "negative_roi_count": 0,
+        "roi_count": 1,
+        "target_object_counts": {
+          "Leydig cell": 50,
+          "Other": 50
+        }
+      },
+      "training_seed": 1234,
+      "unavailable_metrics": [],
+      "validation_counts": {
+        "image_count": 1,
+        "negative_roi_count": 0,
+        "roi_count": 1,
+        "target_object_counts": {
+          "Leydig cell": 20,
+          "Other": 20
+        }
+      },
+      "class_initialization": "use",
+      "source_model_output": {
+        "classChannels": [
+          {
+            "channel": 0,
+            "role": "background"
+          },
+          {
+            "channel": 1,
+            "pathClass": "Leydig cell",
+            "role": "emitted"
+          },
+          {
+            "channel": 2,
+            "pathClass": "Other",
+            "role": "training_only"
+          }
+        ],
+        "type": "instance_segmentation_and_classification"
+      },
+      "source_model_microns_per_pixel": 0.5
+    },
+    "sha256": "6106c017662cb9b134eb4b05f1b9e12d50a4860eb31801a75b1298fefbb09232"
+  }
+}

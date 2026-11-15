@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="qupath.ext.histoforge.ui.project.ProjectTabController"
+      spacing="0">
+
+    <fx:define>
+        <ComboBox fx:id="regionModeComboBox" prefWidth="180">
+            <tooltip><Tooltip wrapText="true" maxWidth="420" text="Choose HistoForge ROIs, annotations with the selected exact class, or the whole slide. Each matching annotation is analysed separately."/></tooltip>
+        </ComboBox>
+        <ComboBox fx:id="annotationClassComboBox" prefWidth="160" promptText="Annotation class" visible="false" managed="false">
+            <tooltip><Tooltip wrapText="true" maxWidth="420" text="Choose the full QuPath class name; subclasses are separate choices. Fill and Redo lock and save the outlines before analysis, then clip predictions to them. To change an outline, use QuPath Unlock, edit it, then Redo. Metrics and Export do not change locks."/></tooltip>
+        </ComboBox>
+        <MenuButton fx:id="stepsPickerButton" text="All models" prefWidth="140" minWidth="0" maxWidth="140">
+            <tooltip><Tooltip wrapText="true" maxWidth="420" text="Choose the models to include in Fill or Redo. All models includes the complete model sequence. Processing scripts still follow the module's workflow."/></tooltip>
+        </MenuButton>
+    </fx:define>
+
+    <!-- Project setup stays separate from scope selection and analysis actions. -->
+    <FlowPane fx:id="projectActions" hgap="6" vgap="6" prefWrapLength="700"
+              alignment="CENTER_LEFT" styleClass="histoforge-project-controls">
+        <Button fx:id="setModuleButton" text="Set Module" onAction="#handleSetModule"/>
+        <Button fx:id="inferenceSettingsButton" text="Inference settings…" onAction="#handleInferenceSettings"/>
+        <Button fx:id="assignGroupButton" text="Assign Group" onAction="#handleAssignGroup"/>
+        <Button fx:id="exportButton" text="Export" onAction="#handleExport"/>
+        <HBox spacing="6" alignment="CENTER_LEFT">
+            <Button fx:id="saveAndRefreshButton" text="Save Project &amp; Refresh" onAction="#handleSaveAndRefresh">
+                <tooltip><Tooltip wrapText="true" maxWidth="420" text="Save annotations and other image data from the current viewer, save project changes, then refresh the table."/></tooltip>
+            </Button>
+            <ProgressIndicator fx:id="loadingIndicator" prefWidth="20" prefHeight="20"
+                               visible="false" managed="false"/>
+        </HBox>
+    </FlowPane>
+
+    <FlowPane fx:id="analysisControls" hgap="12" vgap="8" prefWrapLength="700"
+              rowValignment="BOTTOM" styleClass="histoforge-project-controls">
+        <VBox spacing="4">
+            <Label text="Scope" labelFor="$regionModeComboBox" styleClass="histoforge-muted"/>
+            <fx:reference source="regionModeComboBox"/>
+        </VBox>
+        <VBox fx:id="annotationClassField" spacing="4"
+              visible="${annotationClassComboBox.visible}" managed="${annotationClassComboBox.managed}">
+            <Label text="Annotation class" labelFor="$annotationClassComboBox" styleClass="histoforge-muted"/>
+            <fx:reference source="annotationClassComboBox"/>
+        </VBox>
+        <VBox spacing="4">
+            <Label text="Models" labelFor="$stepsPickerButton" styleClass="histoforge-muted"/>
+            <fx:reference source="stepsPickerButton"/>
+        </VBox>
+        <HBox fx:id="analysisActions" spacing="6" alignment="BOTTOM_LEFT">
+            <Button fx:id="runButton" text="Fill" onAction="#handleFill"/>
+            <Button fx:id="redoButton" text="Redo" onAction="#handleRedo">
+                <tooltip><Tooltip wrapText="true" maxWidth="420" text="Re-run the selected models. Each region's previous results are replaced only after the replacement work succeeds."/></tooltip>
+            </Button>
+            <Button fx:id="metricsButton" text="Metrics" onAction="#handleMetrics"/>
+        </HBox>
+    </FlowPane>
+
+    <!-- Draw-ROI default size (relocated from the old Image tab). The HistoForge ROI tool in the
+         QuPath toolbar reads these when click-placing a default-sized ROI; drag to draw any size. -->
+    <FlowPane hgap="6" vgap="6" prefWrapLength="700" alignment="CENTER_LEFT"
+              styleClass="histoforge-strip">
+        <Label text="Draw ROI"/>
+        <HBox spacing="6" alignment="CENTER_LEFT">
+            <Label text="W:"/>
+            <Spinner fx:id="defaultWidthSpinner" prefWidth="80" editable="true"/>
+        </HBox>
+        <HBox spacing="6" alignment="CENTER_LEFT">
+            <Label text="H:"/>
+            <Spinner fx:id="defaultHeightSpinner" prefWidth="80" editable="true"/>
+        </HBox>
+        <ComboBox fx:id="roiUnitComboBox" prefWidth="64"/>
+        <Label fx:id="roiUnitWarningLabel" styleClass="histoforge-warning"
+               style="-fx-font-size: 11;"
+               visible="false" managed="false"/>
+    </FlowPane>
+
+    <VBox fx:id="emptyStateBox" spacing="10" alignment="CENTER"
+          visible="false" managed="false" VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets topRightBottomLeft="40"/>
+        </padding>
+        <Label fx:id="emptyStateLabel"
+               text="No project open."
+               wrapText="true" maxWidth="400"
+               textAlignment="CENTER" alignment="CENTER"
+               styleClass="histoforge-muted" style="-fx-font-size: 14;"/>
+    </VBox>
+
+    <!-- Users can adjust the space shared by image rows and current metrics. -->
+    <SplitPane fx:id="mainSplitPane" orientation="VERTICAL"
+               VBox.vgrow="ALWAYS" dividerPositions="0.6">
+
+        <VBox spacing="0">
+            <TableView fx:id="imageTable" VBox.vgrow="ALWAYS">
+                <!-- ImageTableColumns supplies the cells and their interactions. -->
+            </TableView>
+
+            <VBox fx:id="progressBox" spacing="4" visible="false" managed="false">
+                <padding>
+                    <Insets top="6" right="8" bottom="6" left="8"/>
+                </padding>
+                <Label fx:id="progressLabel" styleClass="histoforge-muted"/>
+                <ProgressBar fx:id="progressBar" maxWidth="Infinity" minHeight="12" prefHeight="12"/>
+            </VBox>
+        </VBox>
+
+        <VBox fx:id="groupMetricsBox">
+            <!-- ProjectMetricsTableBuilder renders the accepted metric snapshot. -->
+        </VBox>
+    </SplitPane>
+
+    <HBox alignment="CENTER_LEFT" styleClass="histoforge-status-bar">
+        <padding>
+            <Insets top="4" right="8" bottom="4" left="8"/>
+        </padding>
+        <Label fx:id="statusLabel" styleClass="histoforge-muted" style="-fx-font-size: 11;"/>
+    </HBox>
+</VBox>

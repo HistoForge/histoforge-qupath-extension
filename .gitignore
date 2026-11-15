@@ -1,0 +1,51 @@
+# Javadocs
+docs/
+
+# Maven
+deploy/
+target/
+log/
+
+# IntelliJ
+.idea/
+*.iml
+out/
+
+# Gradle
+# Use local properties (e.g. to set a specific JDK)
+gradle.properties
+build/
+!src/main/resources/qupath/ext/histoforge/build/
+!src/main/resources/qupath/ext/histoforge/build/client-execution-limits-v1.json
+.gradle/
+
+# Eclipse
+.settings/
+.project
+.classpath
+
+# VSCode
+.vscode/
+
+# Mac
+.DS_Store
+
+# Java
+hs_err*.log
+
+# Other
+*.tmp
+*.bak
+*.swp
+*~.nib
+*thumbs.db
+bin/
+
+# Personal working material belongs outside the code repository.
+# These prevent accidental re-addition; they are not a publication/security gate.
+/custom_docs/chat-imports/
+/custom_docs/review-findings/
+/custom_docs/archive/
+/custom_docs/*.pptx
+/custom_docs/*-deck-outline.md
+/private-notes/

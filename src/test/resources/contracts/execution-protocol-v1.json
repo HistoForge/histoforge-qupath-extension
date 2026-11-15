@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "moduleRef": "histoforge/protocol-fixture",
+  "source": {
+    "width": 1000,
+    "height": 800,
+    "mppX": 0.5,
+    "mppY": 1.0
+  },
+  "models": {
+    "field": {
+      "type": "field",
+      "stepId": "field",
+      "targetMpp": 1.0,
+      "finiteTargetRasterLimits": {
+        "max_width": 101,
+        "max_height": 101,
+        "max_pixels": 10201
+      }
+    },
+    "field-pixel": {
+      "type": "field",
+      "stepId": "field_pixel",
+      "targetMpp": 1.0,
+      "finiteTargetRasterLimits": {
+        "max_width": 101,
+        "max_height": 101,
+        "max_pixels": 10200
+      }
+    },
+    "parent": {
+      "type": "field",
+      "stepId": "parent",
+      "targetMpp": 1.0,
+      "finiteTargetRasterLimits": {
+        "max_width": 101,
+        "max_height": 101,
+        "max_pixels": 10201
+      }
+    },
+    "child-current": {
+      "type": "crop",
+      "stepId": "child_current",
+      "targetMpp": 1.0,
+      "finiteTargetRasterLimits": {
+        "max_width": 20,
+        "max_height": 30,
+        "max_pixels": 600
+      },
+      "paddingModelPx": 4,
+      "parentStepId": "parent",
+      "parentClasses": ["Tubule"],
+      "scriptVisibleClasses": ["Tubule (Not Intact)"]
+    },
+    "child-loose": {
+      "type": "crop",
+      "stepId": "child_loose",
+      "targetMpp": 1.0,
+      "finiteTargetRasterLimits": {
+        "max_width": 100,
+        "max_height": 100,
+        "max_pixels": 10000
+      },
+      "paddingModelPx": 4,
+      "parentStepId": "parent",
+      "parentClasses": ["Tubule"],
+      "scriptVisibleClasses": ["Tubule (Not Intact)"]
+    },
+    "child-upstream": {
+      "type": "crop",
+      "stepId": "child_upstream",
+      "targetMpp": 0.5,
+      "finiteTargetRasterLimits": {
+        "max_width": 209,
+        "max_height": 1000,
+        "max_pixels": 209000
+      },
+      "paddingModelPx": 4,
+      "parentStepId": "parent",
+      "parentClasses": ["Tubule"],
+      "scriptVisibleClasses": ["Tubule (Not Intact)"]
+    }
+  },
+  "cases": [
+    {
+      "name": "slide-always-recoverable",
+      "region": {"type": "slide"},
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [1000, 0], [1000, 800], [0, 800], [0, 0]]]
+      },
+      "selectedModels": ["field"],
+      "cropWork": {},
+      "expectedProtocol": "recoverable"
+    },
+    {
+      "name": "finite-roi-at-exact-spatial-limits",
+      "region": {
+        "type": "roi",
+        "roi_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[100.25, 50.5], [302.25, 50.5], [302.25, 151.5], [100.25, 151.5], [100.25, 50.5]]]
+      },
+      "selectedModels": ["field"],
+      "cropWork": {},
+      "expectedProtocol": "finite"
+    },
+    {
+      "name": "roi-field-width-overflow",
+      "region": {
+        "type": "roi",
+        "roi_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[100.25, 50.5], [302.27, 50.5], [302.27, 151.5], [100.25, 151.5], [100.25, 50.5]]]
+      },
+      "selectedModels": ["field"],
+      "cropWork": {},
+      "expectedProtocol": "recoverable"
+    },
+    {
+      "name": "roi-field-height-overflow",
+      "region": {
+        "type": "roi",
+        "roi_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[100.25, 50.5], [302.25, 50.5], [302.25, 151.51], [100.25, 151.51], [100.25, 50.5]]]
+      },
+      "selectedModels": ["field"],
+      "cropWork": {},
+      "expectedProtocol": "recoverable"
+    },
+    {
+      "name": "roi-field-pixel-count-overflow",
+      "region": {
+        "type": "roi",
+        "roi_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[100.25, 50.5], [302.25, 50.5], [302.25, 151.5], [100.25, 151.5], [100.25, 50.5]]]
+      },
+      "selectedModels": ["field-pixel"],
+      "cropWork": {},
+      "expectedProtocol": "recoverable"
+    },
+    {
+      "name": "small-current-parents-and-excluded-large-objects-stay-finite",
+      "region": {
+        "type": "roi",
+        "roi_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[100, 50], [300, 50], [300, 150], [100, 150], [100, 50]]]
+      },
+      "selectedModels": ["child-current"],
+      "cropWork": {
+        "child-current": {
+          "discoverParentsAcrossRegion": true,
+          "currentParents": [{
+          "pathClass": "Edited Parent",
+          "producerStepId": "parent",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[120, 70], [140, 70], [140, 90], [120, 90], [120, 70]]]
+          }
+        },
+        {
+          "pathClass": "Tubule",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[160, 70], [180, 70], [180, 90], [160, 90], [160, 70]]]
+          }
+        },
+        {
+          "pathClass": "Tubule (Not Intact)",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[200, 70], [220, 70], [220, 90], [200, 90], [200, 70]]]
+          }
+        },
+        {
+          "pathClass": "Tubule",
+          "producerStepId": "foreign",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[105, 55], [295, 55], [295, 145], [105, 145], [105, 55]]]
+          }
+        },
+        {
+          "pathClass": "Other",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[105, 55], [295, 55], [295, 145], [105, 145], [105, 55]]]
+          }
+        }]
+        }
+      },
+      "expectedProtocol": "finite"
+    },
+    {
+      "name": "per-step-parent-targets-do-not-cross-product",
+      "region": {
+        "type": "roi",
+        "roi_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[100, 50], [300, 50], [300, 150], [100, 150], [100, 50]]]
+      },
+      "selectedModels": ["child-current", "child-loose"],
+      "cropWork": {
+        "child-current": {
+          "discoverParentsAcrossRegion": false,
+          "currentParents": [{
+          "pathClass": "Tubule",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[120, 70], [140, 70], [140, 90], [120, 90], [120, 70]]]
+          }
+        }]
+        },
+        "child-loose": {
+          "discoverParentsAcrossRegion": false,
+          "currentParents": [{
+          "pathClass": "Tubule",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[110, 60], [190, 60], [190, 140], [110, 140], [110, 60]]]
+          }
+        }]
+        }
+      },
+      "expectedProtocol": "finite"
+    },
+    {
+      "name": "model-attributed-unclassified-parent-is-conservative",
+      "region": {
+        "type": "roi",
+        "roi_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[100, 50], [300, 50], [300, 150], [100, 150], [100, 50]]]
+      },
+      "selectedModels": ["child-current"],
+      "cropWork": {
+        "child-current": {
+          "discoverParentsAcrossRegion": true,
+          "currentParents": [{
+          "producerStepId": "parent",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[110, 60], [190, 60], [190, 140], [110, 140], [110, 60]]]
+          }
+        }]
+        }
+      },
+      "expectedProtocol": "recoverable"
+    },
+    {
+      "name": "unattributed-eligible-parent-is-conservative",
+      "region": {
+        "type": "roi",
+        "roi_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[100, 50], [300, 50], [300, 150], [100, 150], [100, 50]]]
+      },
+      "selectedModels": ["child-current"],
+      "cropWork": {
+        "child-current": {
+          "discoverParentsAcrossRegion": true,
+          "currentParents": [{
+          "pathClass": "Tubule",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[110, 60], [190, 60], [190, 140], [110, 140], [110, 60]]]
+          }
+        }]
+        }
+      },
+      "expectedProtocol": "recoverable"
+    },
+    {
+      "name": "unattributed-script-visible-parent-is-conservative",
+      "region": {
+        "type": "roi",
+        "roi_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[100, 50], [300, 50], [300, 150], [100, 150], [100, 50]]]
+      },
+      "selectedModels": ["child-current"],
+      "cropWork": {
+        "child-current": {
+          "discoverParentsAcrossRegion": true,
+          "currentParents": [{
+          "pathClass": "Tubule (Not Intact)",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[110, 60], [190, 60], [190, 140], [110, 140], [110, 60]]]
+          }
+        }]
+        }
+      },
+      "expectedProtocol": "recoverable"
+    },
+    {
+      "name": "possible-upstream-parent-crop-overflow",
+      "region": {
+        "type": "roi",
+        "roi_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[100.25, 50.5], [300.75, 50.5], [300.75, 150.75], [100.25, 150.75], [100.25, 50.5]]]
+      },
+      "selectedModels": ["parent", "child-upstream"],
+      "cropWork": {
+        "child-upstream": {
+          "discoverParentsAcrossRegion": true,
+          "currentParents": []
+        }
+      },
+      "expectedProtocol": "recoverable"
+    },
+    {
+      "name": "explicit-parent-target-does-not-adopt-new-upstream-parents",
+      "region": {
+        "type": "roi",
+        "roi_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[100.25, 50.5], [300.75, 50.5], [300.75, 150.75], [100.25, 150.75], [100.25, 50.5]]]
+      },
+      "selectedModels": ["parent", "child-upstream"],
+      "cropWork": {
+        "child-upstream": {
+          "discoverParentsAcrossRegion": false,
+          "currentParents": [{
+            "pathClass": "Tubule",
+            "producerStepId": "parent",
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [[[120, 70], [140, 70], [140, 90], [120, 90], [120, 70]]]
+            }
+          }]
+        }
+      },
+      "expectedProtocol": "finite"
+    },
+    {
+      "name": "unselected-upstream-parent-does-not-create-a-speculative-crop",
+      "region": {
+        "type": "roi",
+        "roi_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "targetGeometry": {
+        "type": "Polygon",
+        "coordinates": [[[100.25, 50.5], [300.75, 50.5], [300.75, 150.75], [100.25, 150.75], [100.25, 50.5]]]
+      },
+      "selectedModels": ["child-upstream"],
+      "cropWork": {
+        "child-upstream": {
+          "discoverParentsAcrossRegion": true,
+          "currentParents": []
+        }
+      },
+      "expectedProtocol": "finite"
+    }
+  ]
+}

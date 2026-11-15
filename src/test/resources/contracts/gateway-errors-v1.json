@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "httpMappings": [
+    {"httpStatus": 401, "codes": ["AUTHENTICATION_REQUIRED"]},
+    {"httpStatus": 402, "codes": ["PROVIDER_CREDIT_EXHAUSTED"]},
+    {
+      "httpStatus": 404,
+      "codes": [
+        "MODULE_NOT_FOUND",
+        "JOB_NOT_FOUND",
+        "ARTIFACT_NOT_FOUND",
+        "CALL_NOT_FOUND",
+        "MODEL_RUN_NOT_FOUND",
+        "TRAINING_DATASET_NOT_FOUND",
+        "TRAINING_UPLOAD_NOT_FOUND",
+        "TRAINING_RUN_NOT_FOUND"
+      ]
+    },
+    {
+      "httpStatus": 409,
+      "codes": [
+        "MODULE_BUSY",
+        "MODULE_VERSION_UNAVAILABLE",
+        "MODULE_IDENTITY_MISMATCH",
+        "IDEMPOTENCY_CONFLICT",
+        "CALL_CANCELLED",
+        "TRAINING_STATE_CONFLICT"
+      ]
+    },
+    {
+      "httpStatus": 410,
+      "codes": ["ARTIFACT_EXPIRED", "CALL_EXPIRED", "MODEL_RUN_EXPIRED"]
+    },
+    {"httpStatus": 412, "codes": ["ARTIFACT_PRECONDITION_FAILED"]},
+    {"httpStatus": 413, "codes": ["PAYLOAD_TOO_LARGE", "RESULT_LIMIT_EXCEEDED"]},
+    {"httpStatus": 416, "codes": ["RANGE_NOT_SATISFIABLE"]},
+    {
+      "httpStatus": 422,
+      "codes": [
+        "VALIDATION_ERROR",
+        "UNSUPPORTED_SCHEMA",
+        "UNSUPPORTED_CAPABILITY",
+        "INSUFFICIENT_CONTEXT"
+      ]
+    },
+    {"httpStatus": 429, "codes": ["RATE_LIMITED", "PROVIDER_LIMIT_REACHED"]},
+    {"httpStatus": 500, "codes": ["INTERNAL_ERROR"]},
+    {
+      "httpStatus": 502,
+      "codes": [
+        "RUNNER_FAILED",
+        "REGISTRY_AUTHENTICATION_FAILED",
+        "REGISTRY_REPOSITORY_NOT_FOUND",
+        "REGISTRY_REVISION_NOT_FOUND",
+        "REGISTRY_PUBLICATION_CONFLICT",
+        "REGISTRY_RATE_LIMITED"
+      ]
+    },
+    {"httpStatus": 503, "codes": ["SERVICE_UNAVAILABLE"]}
+  ],
+  "automaticRetryCodes": [
+    "RATE_LIMITED",
+    "REGISTRY_RATE_LIMITED",
+    "SERVICE_UNAVAILABLE"
+  ],
+  "validCases": [
+    {
+      "name": "resource-validation",
+      "value": {
+        "schema_version": 1,
+        "code": "VALIDATION_ERROR",
+        "message": "Target grid is invalid.",
+        "resource_id": "input:17"
+      },
+      "httpStatus": 422,
+      "canonical": "{\"code\":\"VALIDATION_ERROR\",\"message\":\"Target grid is invalid.\",\"resource_id\":\"input:17\",\"schema_version\":1}",
+      "sha256": "e762f90e7794f71e63ce423f946b673dffcd220b2121fb1ef5e524c4b26bd06a"
+    },
+    {
+      "name": "retry-deadline",
+      "value": {
+        "schema_version": 1,
+        "code": "RATE_LIMITED",
+        "message": "Try later 🧪",
+        "retry_not_before": "2026-08-12T21:04:05.006Z"
+      },
+      "httpStatus": 429,
+      "canonical": "{\"code\":\"RATE_LIMITED\",\"message\":\"Try later 🧪\",\"retry_not_before\":\"2026-08-12T21:04:05.006Z\",\"schema_version\":1}",
+      "sha256": "c92c2133118e8152693ef9ad44226d1fc40adcf4791d13a7a3aac4aa934df32a"
+    },
+    {
+      "name": "minimal-internal",
+      "value": {
+        "schema_version": 1,
+        "code": "INTERNAL_ERROR",
+        "message": "Unexpected gateway fault."
+      },
+      "httpStatus": 500,
+      "canonical": "{\"code\":\"INTERNAL_ERROR\",\"message\":\"Unexpected gateway fault.\",\"schema_version\":1}",
+      "sha256": "18a777828a1cadf90055031e4570f3ebd9d85e0413f515336b87ffc623660eed"
+    },
+    {
+      "name": "provider-credit-exhausted",
+      "value": {
+        "schema_version": 1,
+        "code": "PROVIDER_CREDIT_EXHAUSTED",
+        "message": "The Modal workspace does not have enough credit to start training. Add credit or switch to another workspace with available credit.",
+        "resource_id": "44444444-4444-4444-8444-444444444444"
+      },
+      "httpStatus": 402,
+      "canonical": "{\"code\":\"PROVIDER_CREDIT_EXHAUSTED\",\"message\":\"The Modal workspace does not have enough credit to start training. Add credit or switch to another workspace with available credit.\",\"resource_id\":\"44444444-4444-4444-8444-444444444444\",\"schema_version\":1}",
+      "sha256": "357bbcdc6c4bb95b97131d0aefc2651f2b628329e346cb27f261c58670250c06"
+    },
+    {
+      "name": "provider-limit-reached",
+      "value": {
+        "schema_version": 1,
+        "code": "PROVIDER_LIMIT_REACHED",
+        "message": "Modal could not start training because a workspace limit was reached. Check Modal Usage & Billing, spend limits, quotas, and rate limits.",
+        "resource_id": "44444444-4444-4444-8444-444444444444"
+      },
+      "httpStatus": 429,
+      "canonical": "{\"code\":\"PROVIDER_LIMIT_REACHED\",\"message\":\"Modal could not start training because a workspace limit was reached. Check Modal Usage & Billing, spend limits, quotas, and rate limits.\",\"resource_id\":\"44444444-4444-4444-8444-444444444444\",\"schema_version\":1}",
+      "sha256": "bcfe4dd353d70038c4e53c8cde1bdda8d22079c23467f82cac23e27d3bc6ca1f"
+    }
+  ],
+  "invalidCases": [
+    {"name": "not-an-object", "value": []},
+    {
+      "name": "missing-message",
+      "value": {"schema_version": 1, "code": "INTERNAL_ERROR"}
+    },
+    {
+      "name": "unknown-field",
+      "value": {
+        "schema_version": 1,
+        "code": "INTERNAL_ERROR",
+        "message": "fault",
+        "detail": "extra"
+      }
+    },
+    {
+      "name": "unsupported-schema",
+      "value": {"schema_version": 2, "code": "INTERNAL_ERROR", "message": "fault"}
+    },
+    {
+      "name": "boolean-schema",
+      "value": {"schema_version": true, "code": "INTERNAL_ERROR", "message": "fault"}
+    },
+    {
+      "name": "unknown-code",
+      "value": {"schema_version": 1, "code": "NOPE", "message": "fault"}
+    },
+    {
+      "name": "lowercase-code",
+      "value": {"schema_version": 1, "code": "internal_error", "message": "fault"}
+    },
+    {
+      "name": "null-resource-id",
+      "value": {
+        "schema_version": 1,
+        "code": "INTERNAL_ERROR",
+        "message": "fault",
+        "resource_id": null
+      }
+    },
+    {
+      "name": "null-retry-time",
+      "value": {
+        "schema_version": 1,
+        "code": "RATE_LIMITED",
+        "message": "later",
+        "retry_not_before": null
+      }
+    },
+    {
+      "name": "retry-time-on-nonretryable-code",
+      "value": {
+        "schema_version": 1,
+        "code": "VALIDATION_ERROR",
+        "message": "bad",
+        "retry_not_before": "2026-08-12T21:04:05.006Z"
+      }
+    },
+    {
+      "name": "offset-retry-time",
+      "value": {
+        "schema_version": 1,
+        "code": "RATE_LIMITED",
+        "message": "later",
+        "retry_not_before": "2026-08-12T16:04:05.006-05:00"
+      }
+    },
+    {
+      "name": "microsecond-retry-time",
+      "value": {
+        "schema_version": 1,
+        "code": "RATE_LIMITED",
+        "message": "later",
+        "retry_not_before": "2026-08-12T21:04:05.006001Z"
+      }
+    },
+    {
+      "name": "invalid-calendar-time",
+      "value": {
+        "schema_version": 1,
+        "code": "RATE_LIMITED",
+        "message": "later",
+        "retry_not_before": "2026-02-30T21:04:05.006Z"
+      }
+    },
+    {
+      "name": "year-zero-time",
+      "value": {
+        "schema_version": 1,
+        "code": "RATE_LIMITED",
+        "message": "later",
+        "retry_not_before": "0000-01-01T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "nonstring-message",
+      "value": {"schema_version": 1, "code": "INTERNAL_ERROR", "message": 7}
+    }
+  ]
+}

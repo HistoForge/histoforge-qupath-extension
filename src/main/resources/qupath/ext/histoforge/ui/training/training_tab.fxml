@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="qupath.ext.histoforge.ui.training.TrainingTabController">
+    <!-- Keep progress at its preferred height; only the form below should shrink. -->
+    <VBox fx:id="progressBox" spacing="5" minHeight="-Infinity" visible="false" managed="false">
+        <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <Label fx:id="progressLabel" minWidth="0" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="cancelButton" text="Cancel"/>
+        </HBox>
+        <ProgressBar fx:id="progressBar" maxWidth="Infinity"/>
+    </VBox>
+    <ScrollPane fx:id="trainingFormScrollPane" fitToWidth="true" hbarPolicy="NEVER"
+                VBox.vgrow="ALWAYS">
+<content><VBox spacing="10">
+    <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+
+    <Label text="Source" styleClass="histoforge-heading"/>
+    <GridPane hgap="8" vgap="8">
+        <columnConstraints>
+            <ColumnConstraints minWidth="160" prefWidth="160" maxWidth="160" halignment="LEFT"/>
+            <ColumnConstraints minWidth="260" hgrow="ALWAYS"/>
+        </columnConstraints>
+        <Label text="Module" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="moduleComboBox" maxWidth="Infinity"
+                  GridPane.rowIndex="0" GridPane.columnIndex="1">
+            <tooltip><Tooltip text="Installed module containing the model to fine-tune."/></tooltip>
+        </ComboBox>
+        <Label text="Model" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="modelComboBox" maxWidth="Infinity"
+                  GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <tooltip><Tooltip wrapText="true" maxWidth="420" text="Choose the model to train further on your annotations. Only models supported by your connected training service are listed."/></tooltip>
+        </ComboBox>
+    </GridPane>
+    <VBox fx:id="sourceDetailsBox"/>
+    <Label fx:id="availabilityLabel" wrapText="true" styleClass="histoforge-muted"/>
+    <VBox fx:id="resultBox"/>
+
+    <Separator/>
+    <HBox fx:id="assignmentHeadingBox" spacing="8" alignment="CENTER_LEFT">
+        <Label text="Train-Val Split" styleClass="histoforge-heading"/>
+        <Label fx:id="assignmentStateLabel" styleClass="histoforge-muted"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="refreshProjectButton" text="Refresh"
+                onAction="#handleRefreshProject">
+            <tooltip><Tooltip text="Reload training ROIs, labels, and groups from the current project."/></tooltip>
+        </Button>
+        <Button fx:id="generateSplitButton" text="Generate split"
+                onAction="#handleGenerateSplit">
+            <tooltip><Tooltip wrapText="true" maxWidth="420" text="Assign ROIs from the last project refresh to Training or Validation. This replaces manual assignments; refresh first if annotations or groups have changed."/></tooltip>
+        </Button>
+    </HBox>
+    <Label fx:id="projectLabel" text="No QuPath project is open." wrapText="true" styleClass="histoforge-muted"/>
+
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <Label text="Train–validation split"/>
+        <Spinner fx:id="validationPercentSpinner" prefWidth="75">
+            <tooltip><Tooltip wrapText="true" maxWidth="420" text="Percentage of ROIs, images or groups reserved for validation, according to Split by. These assess the model without training it. Set 0 to skip validation."/></tooltip>
+        </Spinner>
+        <Label text="\% validation"/>
+        <Region prefWidth="12"/>
+        <Label text="Split by"/>
+        <ComboBox fx:id="splitUnitComboBox" prefWidth="150">
+            <tooltip>
+                <Tooltip wrapText="true" maxWidth="420"
+                         text="Choose what must stay together. ROI may place areas from the same image in different sets. Image keeps all ROIs from one image together. Project group keeps all images with the same Project-tab Group together. Use Image or Project group when validation should use separate slides or groups."/>
+            </tooltip>
+        </ComboBox>
+    </HBox>
+    <HBox fx:id="splitGuidanceBox" spacing="6" alignment="CENTER_LEFT"
+          visible="false" managed="false">
+        <Label fx:id="splitGuidanceLabel" wrapText="true" styleClass="histoforge-warning"
+               HBox.hgrow="ALWAYS"/>
+        <Hyperlink fx:id="assignGroupsLink" text="Assign groups in Project"
+                   onAction="#handleAssignGroups" visible="false" managed="false"/>
+    </HBox>
+
+    <Label fx:id="trainingAssignmentLabel" text="Training"/>
+    <TableView fx:id="trainingAssignmentTable" prefHeight="190" minHeight="130"/>
+    <VBox fx:id="validationAssignmentBox" spacing="6">
+        <Label fx:id="validationAssignmentLabel" text="Validation"/>
+        <TableView fx:id="validationAssignmentTable" prefHeight="190" minHeight="130"/>
+    </VBox>
+    <Separator/>
+    <VBox fx:id="settingsBox"/>
+
+    <HBox spacing="8" alignment="CENTER_RIGHT">
+        <Button fx:id="manageDatasetsButton" text="Manage uploaded training data..."
+                onAction="#handleManageDatasets">
+            <tooltip><Tooltip text="View or delete training datasets stored in your cloud workspace."/></tooltip>
+        </Button>
+        <Button fx:id="exportDatasetButton" text="Export dataset..."
+                onAction="#handleExportDataset">
+            <tooltip><Tooltip text="Save the dataset and current split locally without starting training."/></tooltip>
+        </Button>
+        <Button fx:id="startTrainingButton" text="Start cloud training" disable="true"
+                onAction="#handleStartTraining">
+            <tooltip><Tooltip text="Verify the project, prepare and upload its dataset, then start training on the selected GPU."/></tooltip>
+        </Button>
+    </HBox>
+
+</VBox></content>
+    </ScrollPane>
+</VBox>

@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "page": {
+    "modules": [
+      {
+        "identity": {
+          "content_digest": "25a8b879040af6197f12640dc50b375174eb2d1aa1816635ce288541d75373fe",
+          "module_ref": "owner/catalog",
+          "recipe_digest": "bc24dcee6976e9c8657b11f8ada4f48d0c4bd80259f079c9c96b134d3ce3a8be",
+          "resolved_commit_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "installed_at": "2026-08-15T12:34:56.789Z",
+        "installed_module_file_bytes": 879,
+        "models": {
+          "cells": {
+            "artifact_digests": {
+              "weights": "4ed1304be2859a79a44bb78329942b3cd410a8faf918762070fbde9029d35ff1"
+            },
+            "model_config_digest": "505e13fa76c0bda8717c1d722e86e04dc0d36debe900cf851462cc0129f19a6c",
+            "runner_availability": {
+              "capabilities": {
+                "durable_run": {
+                  "run": {
+                    "max_aggregate_inclusion_mask_vertices": 100000,
+                    "max_aggregate_target_raster_pixels": 4194304,
+                    "max_execution_seconds": 21600,
+                    "max_inputs": 1,
+                    "max_recovery_state_bytes_per_run": 1,
+                    "max_recovery_state_bytes_per_unit": 1,
+                    "max_request_canonical_bytes": 1000000,
+                    "max_units": 1,
+                    "result": {
+                      "max_decoded_bytes": 3145728,
+                      "max_features": 100000,
+                      "max_record_bytes": 1000000,
+                      "max_transferred_bytes": 3145728,
+                      "max_vertices": 1000000
+                    },
+                    "target_raster_per_input": {
+                      "max_height": 2048,
+                      "max_pixels": 4194304,
+                      "max_width": 2048
+                    },
+                    "processing_raster": {
+                      "max_height": 2048,
+                      "max_pixels": 4194304,
+                      "max_width": 2048
+                    },
+                    "intermediate_result": {
+                      "max_decoded_bytes": 3145728,
+                      "max_features": 100000,
+                      "max_record_bytes": 1000000,
+                      "max_transferred_bytes": 3145728,
+                      "max_vertices": 1000000
+                    }
+                  },
+                  "terminal_retention_seconds": 3600
+                },
+                "finite": {
+                  "max_attempt_execution_seconds": 600,
+                  "max_inclusion_mask_vertices": 100000,
+                  "max_request_canonical_bytes": 1000000,
+                  "result": {
+                    "max_decoded_bytes": 3145728,
+                    "max_features": 100000,
+                    "max_record_bytes": 1000000,
+                    "max_transferred_bytes": 3145728,
+                    "max_vertices": 1000000
+                  },
+                  "target_raster": {
+                    "max_height": 2048,
+                    "max_pixels": 4194304,
+                    "max_width": 2048
+                  }
+                },
+                "modes": [
+                  "DURABLE_MODEL_RUN",
+                  "FINITE_CALL"
+                ],
+                "output_types": [
+                  "INSTANCE_SEGMENTATION",
+                  "INSTANCE_SEGMENTATION_AND_CLASSIFICATION"
+                ],
+                "preprocessing_contract_digest": "ae1a133b63c2dfda00b00510b89c0b7adfeac344c42b1c554a3b1717cc42883a",
+                "rasterizer": {
+                  "build": {
+                    "artifact_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+                    "manifest_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+                    "version": "fixture-1"
+                  },
+                  "rasterization_contract_digest": "10087398a72117fa8f9f3e9f4d8d03203c0623f52f7ec4003fd7955a05371690"
+                },
+                "runner_build": {
+                  "artifact_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+                  "manifest_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+                  "version": "fixture-1"
+                },
+                "source_containers": [
+                  "PNG",
+                  "TIFF_FAMILY"
+                ]
+              },
+              "type": "available"
+            },
+            "training_availability": {
+              "type": "available",
+              "options": [
+                {
+                  "capability": {
+                    "allowed_field_side_model_px": {
+                      "maximum": 384,
+                      "minimum": 384
+                    },
+                    "augmentation_profiles": [
+                      {
+                        "description": "Geometry and bounded H&E color variation.",
+                        "display_name": "H&E",
+                        "operators": [
+                          {
+                            "default_enabled": true,
+                            "description": "Rotate the field by multiples of 90 degrees.",
+                            "display_name": "Right-angle rotations",
+                            "operator_id": "rotate90-v1"
+                          },
+                          {
+                            "default_enabled": true,
+                            "description": "Reflect the field horizontally or vertically.",
+                            "display_name": "Flips",
+                            "operator_id": "flip-v1"
+                          }
+                        ],
+                        "profile_id": "he-v1"
+                      }
+                    ],
+                    "capability_id": "fixture-cells-fixed-v1",
+                    "crop_padding_model_px": 0,
+                    "data_loading_workers_range": {
+                      "maximum": 8,
+                      "minimum": 0
+                    },
+                    "default_augmentation_profile_id": "he-v1",
+                    "default_field_profile": {
+                      "aggregation": "mean-logits-v1",
+                      "alignment_model_px": 16,
+                      "planner": "fixed-field-v1",
+                      "preprocessing": "brightfield-rgb-v1",
+                      "side_model_px": 384,
+                      "small_roi_context": true,
+                      "tile_overlap": 0.25
+                    },
+                    "default_training_settings": {
+                      "data_loading_workers": 2,
+                      "gradient_accumulation_steps": 1,
+                      "total_epochs": 80,
+                      "training_batch_size": 1,
+                      "training_gpu_id": "l4",
+                      "warmup_epochs": 10,
+                      "warmup_mode": "auto"
+                    },
+                    "gradient_accumulation_steps_range": {
+                      "maximum": 16,
+                      "minimum": 1
+                    },
+                    "input_kind": "field",
+                    "output_type": "instance_segmentation",
+                    "small_roi_context_editable": false,
+                    "supports_negative_rois": true,
+                    "task_display_name": "Cell segmentation",
+                    "total_epochs_range": {
+                      "maximum": 1000,
+                      "minimum": 1
+                    },
+                    "automatic_warmup": {
+                      "divisor": 8,
+                      "maximum_epochs": 10
+                    },
+                    "training_batch_size_range": {
+                      "maximum": 8,
+                      "minimum": 1
+                    },
+                    "training_gpus": [
+                      {
+                        "display_name": "L4",
+                        "training_gpu_id": "l4"
+                      }
+                    ]
+                  },
+                  "class_initializations": [
+                    "use"
+                  ]
+                }
+              ]
+            },
+            "precision_overrides": {
+              "bf16": {
+                "runner_build": {
+                  "artifact_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+                  "manifest_digest": "4444444444444444444444444444444444444444444444444444444444444444",
+                  "version": "fixture-1"
+                },
+                "gpus": [
+                  "A10G",
+                  "L40S",
+                  "A100"
+                ]
+              }
+            }
+          },
+          "future": {
+            "artifact_digests": {
+              "weights": "e197c912bac4182c5152e2e19c08d30a0fc19c08293cca745909a77595e2dc45"
+            },
+            "model_config_digest": "a675d8e7a724d0eae32e63a1959469a67fdb2da0c3634ee3be68911c48af3cbf",
+            "runner_availability": {
+              "code": "UNKNOWN_ARCHITECTURE",
+              "message": "architecture 'future-segmenter' is not known to this gateway build",
+              "type": "unavailable"
+            },
+            "training_availability": {
+              "code": "unsupported_model_configuration",
+              "message": "This model configuration has no compatible trainer.",
+              "type": "unavailable"
+            },
+            "precision_overrides": {}
+          }
+        },
+        "recipe": {
+          "description": "Exact catalog fixture",
+          "models": {
+            "cells": {
+              "arch": "dinov3-adapter-cellpose",
+              "gpu": "A10G",
+              "input": {
+                "micronsPerPixel": 0.22,
+                "type": "field"
+              },
+              "output": {
+                "classes": [
+                  "Cell"
+                ],
+                "type": "instance_segmentation"
+              },
+              "params": {
+                "batch_size": 1,
+                "bsize": 384,
+                "min_instance_pixels": 15,
+                "num_classes": 0
+              },
+              "weights": {
+                "file": "cells.safetensors",
+                "type": "vendored"
+              }
+            },
+            "future": {
+              "arch": "future-segmenter",
+              "gpu": "A10G",
+              "input": {
+                "micronsPerPixel": 0.5,
+                "type": "field"
+              },
+              "output": {
+                "classes": [
+                  "Future Cell"
+                ],
+                "type": "instance_segmentation"
+              },
+              "params": {
+                "num_classes": 0
+              },
+              "weights": {
+                "file": "future.safetensors",
+                "type": "vendored"
+              }
+            }
+          },
+          "name": "Catalog Fixture",
+          "schemaVersion": 3,
+          "steps": [
+            {
+              "model": "cells"
+            },
+            {
+              "model": "future"
+            },
+            {
+              "script": "metrics.groovy"
+            }
+          ]
+        },
+        "script_set_digest": "d2da81ec7b03789eafb74532a99a241c4ee21ba7750d41190a15fe3e5a6b4b11",
+        "scripts": {
+          "metrics.groovy": "/* @histoforge-metrics [{\"name\":\"Count\",\"label\":\"Count\",\"type\":\"scalar\",\"decimals\":0,\"aggregation\":\"sum\"}] */\nreturn []\n"
+        }
+      }
+    ],
+    "next_cursor": "b3duZXIvY2F0YWxvZw"
+  },
+  "canonical": "{\"modules\":[{\"identity\":{\"content_digest\":\"25a8b879040af6197f12640dc50b375174eb2d1aa1816635ce288541d75373fe\",\"module_ref\":\"owner/catalog\",\"recipe_digest\":\"bc24dcee6976e9c8657b11f8ada4f48d0c4bd80259f079c9c96b134d3ce3a8be\",\"resolved_commit_sha\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"installed_at\":\"2026-08-15T12:34:56.789Z\",\"installed_module_file_bytes\":879,\"models\":{\"cells\":{\"artifact_digests\":{\"weights\":\"4ed1304be2859a79a44bb78329942b3cd410a8faf918762070fbde9029d35ff1\"},\"model_config_digest\":\"505e13fa76c0bda8717c1d722e86e04dc0d36debe900cf851462cc0129f19a6c\",\"precision_overrides\":{\"bf16\":{\"gpus\":[\"A10G\",\"L40S\",\"A100\"],\"runner_build\":{\"artifact_digest\":\"2222222222222222222222222222222222222222222222222222222222222222\",\"manifest_digest\":\"4444444444444444444444444444444444444444444444444444444444444444\",\"version\":\"fixture-1\"}}},\"runner_availability\":{\"capabilities\":{\"durable_run\":{\"run\":{\"intermediate_result\":{\"max_decoded_bytes\":3145728,\"max_features\":100000,\"max_record_bytes\":1000000,\"max_transferred_bytes\":3145728,\"max_vertices\":1000000},\"max_aggregate_inclusion_mask_vertices\":100000,\"max_aggregate_target_raster_pixels\":4194304,\"max_execution_seconds\":21600,\"max_inputs\":1,\"max_recovery_state_bytes_per_run\":1,\"max_recovery_state_bytes_per_unit\":1,\"max_request_canonical_bytes\":1000000,\"max_units\":1,\"processing_raster\":{\"max_height\":2048,\"max_pixels\":4194304,\"max_width\":2048},\"result\":{\"max_decoded_bytes\":3145728,\"max_features\":100000,\"max_record_bytes\":1000000,\"max_transferred_bytes\":3145728,\"max_vertices\":1000000},\"target_raster_per_input\":{\"max_height\":2048,\"max_pixels\":4194304,\"max_width\":2048}},\"terminal_retention_seconds\":3600},\"finite\":{\"max_attempt_execution_seconds\":600,\"max_inclusion_mask_vertices\":100000,\"max_request_canonical_bytes\":1000000,\"result\":{\"max_decoded_bytes\":3145728,\"max_features\":100000,\"max_record_bytes\":1000000,\"max_transferred_bytes\":3145728,\"max_vertices\":1000000},\"target_raster\":{\"max_height\":2048,\"max_pixels\":4194304,\"max_width\":2048}},\"modes\":[\"DURABLE_MODEL_RUN\",\"FINITE_CALL\"],\"output_types\":[\"INSTANCE_SEGMENTATION\",\"INSTANCE_SEGMENTATION_AND_CLASSIFICATION\"],\"preprocessing_contract_digest\":\"ae1a133b63c2dfda00b00510b89c0b7adfeac344c42b1c554a3b1717cc42883a\",\"rasterizer\":{\"build\":{\"artifact_digest\":\"1111111111111111111111111111111111111111111111111111111111111111\",\"manifest_digest\":\"3333333333333333333333333333333333333333333333333333333333333333\",\"version\":\"fixture-1\"},\"rasterization_contract_digest\":\"10087398a72117fa8f9f3e9f4d8d03203c0623f52f7ec4003fd7955a05371690\"},\"runner_build\":{\"artifact_digest\":\"2222222222222222222222222222222222222222222222222222222222222222\",\"manifest_digest\":\"3333333333333333333333333333333333333333333333333333333333333333\",\"version\":\"fixture-1\"},\"source_containers\":[\"PNG\",\"TIFF_FAMILY\"]},\"type\":\"available\"},\"training_availability\":{\"options\":[{\"capability\":{\"allowed_field_side_model_px\":{\"maximum\":384,\"minimum\":384},\"augmentation_profiles\":[{\"description\":\"Geometry and bounded H&E color variation.\",\"display_name\":\"H&E\",\"operators\":[{\"default_enabled\":true,\"description\":\"Rotate the field by multiples of 90 degrees.\",\"display_name\":\"Right-angle rotations\",\"operator_id\":\"rotate90-v1\"},{\"default_enabled\":true,\"description\":\"Reflect the field horizontally or vertically.\",\"display_name\":\"Flips\",\"operator_id\":\"flip-v1\"}],\"profile_id\":\"he-v1\"}],\"automatic_warmup\":{\"divisor\":8,\"maximum_epochs\":10},\"capability_id\":\"fixture-cells-fixed-v1\",\"crop_padding_model_px\":0,\"data_loading_workers_range\":{\"maximum\":8,\"minimum\":0},\"default_augmentation_profile_id\":\"he-v1\",\"default_field_profile\":{\"aggregation\":\"mean-logits-v1\",\"alignment_model_px\":16,\"planner\":\"fixed-field-v1\",\"preprocessing\":\"brightfield-rgb-v1\",\"side_model_px\":384,\"small_roi_context\":true,\"tile_overlap\":0.25},\"default_training_settings\":{\"data_loading_workers\":2,\"gradient_accumulation_steps\":1,\"total_epochs\":80,\"training_batch_size\":1,\"training_gpu_id\":\"l4\",\"warmup_epochs\":10,\"warmup_mode\":\"auto\"},\"gradient_accumulation_steps_range\":{\"maximum\":16,\"minimum\":1},\"input_kind\":\"field\",\"output_type\":\"instance_segmentation\",\"small_roi_context_editable\":false,\"supports_negative_rois\":true,\"task_display_name\":\"Cell segmentation\",\"total_epochs_range\":{\"maximum\":1000,\"minimum\":1},\"training_batch_size_range\":{\"maximum\":8,\"minimum\":1},\"training_gpus\":[{\"display_name\":\"L4\",\"training_gpu_id\":\"l4\"}]},\"class_initializations\":[\"use\"]}],\"type\":\"available\"}},\"future\":{\"artifact_digests\":{\"weights\":\"e197c912bac4182c5152e2e19c08d30a0fc19c08293cca745909a77595e2dc45\"},\"model_config_digest\":\"a675d8e7a724d0eae32e63a1959469a67fdb2da0c3634ee3be68911c48af3cbf\",\"precision_overrides\":{},\"runner_availability\":{\"code\":\"UNKNOWN_ARCHITECTURE\",\"message\":\"architecture 'future-segmenter' is not known to this gateway build\",\"type\":\"unavailable\"},\"training_availability\":{\"code\":\"unsupported_model_configuration\",\"message\":\"This model configuration has no compatible trainer.\",\"type\":\"unavailable\"}}},\"recipe\":{\"description\":\"Exact catalog fixture\",\"models\":{\"cells\":{\"arch\":\"dinov3-adapter-cellpose\",\"gpu\":\"A10G\",\"input\":{\"micronsPerPixel\":0.22,\"type\":\"field\"},\"output\":{\"classes\":[\"Cell\"],\"type\":\"instance_segmentation\"},\"params\":{\"batch_size\":1,\"bsize\":384,\"min_instance_pixels\":15,\"num_classes\":0},\"weights\":{\"file\":\"cells.safetensors\",\"type\":\"vendored\"}},\"future\":{\"arch\":\"future-segmenter\",\"gpu\":\"A10G\",\"input\":{\"micronsPerPixel\":0.5,\"type\":\"field\"},\"output\":{\"classes\":[\"Future Cell\"],\"type\":\"instance_segmentation\"},\"params\":{\"num_classes\":0},\"weights\":{\"file\":\"future.safetensors\",\"type\":\"vendored\"}}},\"name\":\"Catalog Fixture\",\"schemaVersion\":3,\"steps\":[{\"model\":\"cells\"},{\"model\":\"future\"},{\"script\":\"metrics.groovy\"}]},\"script_set_digest\":\"d2da81ec7b03789eafb74532a99a241c4ee21ba7750d41190a15fe3e5a6b4b11\",\"scripts\":{\"metrics.groovy\":\"/* @histoforge-metrics [{\\\"name\\\":\\\"Count\\\",\\\"label\\\":\\\"Count\\\",\\\"type\\\":\\\"scalar\\\",\\\"decimals\\\":0,\\\"aggregation\\\":\\\"sum\\\"}] */\\nreturn []\\n\"}}],\"next_cursor\":\"b3duZXIvY2F0YWxvZw\"}",
+  "sha256": "09711bf81e4af524e90822980ed0f469aaaca58ae85257acadbc98cd899c46d5"
+}

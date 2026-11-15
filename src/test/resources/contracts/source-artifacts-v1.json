@@ -1,0 +1,452 @@
+{
+  "schemaVersion": 1,
+  "sourceIdentityCases": [
+    {
+      "name": "derived-source-without-stable-version",
+      "value": {
+        "source_adapter_id": "qupath.bioformats.derived",
+        "credential_free_descriptor_digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "width": 12000,
+        "height": 8000,
+        "z_slices": 1,
+        "timepoints": 1,
+        "calibration": {
+          "mpp_x": 0.25,
+          "mpp_y": 0.25
+        }
+      },
+      "canonical": "{\"calibration\":{\"mpp_x\":0.25,\"mpp_y\":0.25},\"credential_free_descriptor_digest\":\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\",\"height\":8000,\"source_adapter_id\":\"qupath.bioformats.derived\",\"timepoints\":1,\"width\":12000,\"z_slices\":1}",
+      "sha256": "192a3e94b471679cd8020d2960ecb853c66e8b3ed73f02b42d4e0bfb2799880d"
+    }
+  ],
+  "startCases": [
+    {
+      "name": "original-local-multilevel-normalizes-order",
+      "value": {
+        "schema_version": 1,
+        "creation_action_id": "11111111-1111-4111-8111-111111111111",
+        "artifact_id": "22222222-2222-4222-8222-222222222222",
+        "container": "TIFF_FAMILY",
+        "total_bytes": 10485761,
+        "chunk_size_bytes": 4194304,
+        "origin": {
+          "type": "original-wsi",
+          "source": {
+            "source_adapter_id": "qupath.bioformats.local",
+            "credential_free_descriptor_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+            "width": 10000,
+            "height": 6000,
+            "z_slices": 1,
+            "timepoints": 1,
+            "calibration": {
+              "mpp_x": 0.2495,
+              "mpp_y": 0.2505
+            },
+            "content_version": {
+              "type": "local-file",
+              "size_bytes": 10485761,
+              "last_modified_epoch_millis": 1723466096789,
+              "file_key": "(dev=1000004,ino=12345)"
+            }
+          },
+          "pyramid_series_index": 2,
+          "level_zero_pixels_to_slide": {
+            "scale_x": 1,
+            "scale_y": 1,
+            "translate_x": -12.5,
+            "translate_y": 3.25
+          }
+        },
+        "required_levels": [
+          {
+            "series_index": 2,
+            "resolution_level": 2,
+            "width": 2500,
+            "height": 1500
+          },
+          {
+            "series_index": 2,
+            "resolution_level": 0,
+            "width": 10000,
+            "height": 6000
+          },
+          {
+            "series_index": 2,
+            "resolution_level": 1,
+            "width": 5000,
+            "height": 3000
+          }
+        ]
+      },
+      "canonical": "{\"artifact_id\":\"22222222-2222-4222-8222-222222222222\",\"chunk_size_bytes\":4194304,\"container\":\"TIFF_FAMILY\",\"creation_action_id\":\"11111111-1111-4111-8111-111111111111\",\"origin\":{\"level_zero_pixels_to_slide\":{\"scale_x\":1,\"scale_y\":1,\"translate_x\":-12.5,\"translate_y\":3.25},\"pyramid_series_index\":2,\"source\":{\"calibration\":{\"mpp_x\":0.2495,\"mpp_y\":0.2505},\"content_version\":{\"file_key\":\"(dev=1000004,ino=12345)\",\"last_modified_epoch_millis\":1723466096789,\"size_bytes\":10485761,\"type\":\"local-file\"},\"credential_free_descriptor_digest\":\"1111111111111111111111111111111111111111111111111111111111111111\",\"height\":6000,\"source_adapter_id\":\"qupath.bioformats.local\",\"timepoints\":1,\"width\":10000,\"z_slices\":1},\"type\":\"original-wsi\"},\"required_levels\":[{\"height\":6000,\"resolution_level\":0,\"series_index\":2,\"width\":10000},{\"height\":3000,\"resolution_level\":1,\"series_index\":2,\"width\":5000},{\"height\":1500,\"resolution_level\":2,\"series_index\":2,\"width\":2500}],\"schema_version\":1,\"total_bytes\":10485761}",
+      "sha256": "50bd1595af7f44cf1ae76816eaf7e197c0afa2da818a355d230e54a675a44f4a",
+      "chunk_count": 3,
+      "chunk_ranges": [
+        {
+          "chunk_id": 0,
+          "offset": 0,
+          "size": 4194304
+        },
+        {
+          "chunk_id": 1,
+          "offset": 4194304,
+          "size": 4194304
+        },
+        {
+          "chunk_id": 2,
+          "offset": 8388608,
+          "size": 2097153
+        }
+      ],
+      "accepted": {
+        "schema_version": 1,
+        "creation_action_id": "11111111-1111-4111-8111-111111111111",
+        "artifact_id": "22222222-2222-4222-8222-222222222222",
+        "start_request_digest": "50bd1595af7f44cf1ae76816eaf7e197c0afa2da818a355d230e54a675a44f4a",
+        "absolute_expires_at": "2026-08-13T12:34:56.789Z"
+      },
+      "accepted_canonical": "{\"absolute_expires_at\":\"2026-08-13T12:34:56.789Z\",\"artifact_id\":\"22222222-2222-4222-8222-222222222222\",\"creation_action_id\":\"11111111-1111-4111-8111-111111111111\",\"schema_version\":1,\"start_request_digest\":\"50bd1595af7f44cf1ae76816eaf7e197c0afa2da818a355d230e54a675a44f4a\"}",
+      "accepted_sha256": "fbe03a12d5c01132066d50e5f7684df254dc5aafe65ce3b7e41a7784cbb64da1"
+    },
+    {
+      "name": "original-s3-version-single-chunk",
+      "value": {
+        "schema_version": 1,
+        "creation_action_id": "33333333-3333-4333-8333-333333333333",
+        "artifact_id": "44444444-4444-4444-8444-444444444444",
+        "container": "TIFF_FAMILY",
+        "total_bytes": 5000000,
+        "chunk_size_bytes": 8388608,
+        "origin": {
+          "type": "original-wsi",
+          "source": {
+            "source_adapter_id": "qupath.s3.ome-tiff",
+            "credential_free_descriptor_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+            "width": 6000,
+            "height": 4000,
+            "z_slices": 1,
+            "timepoints": 1,
+            "calibration": {
+              "mpp_x": 0.5,
+              "mpp_y": 0.5
+            },
+            "content_version": {
+              "type": "s3-version-id",
+              "value": "3LgY-example-version"
+            }
+          },
+          "pyramid_series_index": 0,
+          "level_zero_pixels_to_slide": {
+            "scale_x": 1,
+            "scale_y": 1,
+            "translate_x": 0,
+            "translate_y": 0
+          }
+        },
+        "required_levels": [
+          {
+            "series_index": 0,
+            "resolution_level": 0,
+            "width": 6000,
+            "height": 4000
+          }
+        ]
+      },
+      "canonical": "{\"artifact_id\":\"44444444-4444-4444-8444-444444444444\",\"chunk_size_bytes\":8388608,\"container\":\"TIFF_FAMILY\",\"creation_action_id\":\"33333333-3333-4333-8333-333333333333\",\"origin\":{\"level_zero_pixels_to_slide\":{\"scale_x\":1,\"scale_y\":1,\"translate_x\":0,\"translate_y\":0},\"pyramid_series_index\":0,\"source\":{\"calibration\":{\"mpp_x\":0.5,\"mpp_y\":0.5},\"content_version\":{\"type\":\"s3-version-id\",\"value\":\"3LgY-example-version\"},\"credential_free_descriptor_digest\":\"2222222222222222222222222222222222222222222222222222222222222222\",\"height\":4000,\"source_adapter_id\":\"qupath.s3.ome-tiff\",\"timepoints\":1,\"width\":6000,\"z_slices\":1},\"type\":\"original-wsi\"},\"required_levels\":[{\"height\":4000,\"resolution_level\":0,\"series_index\":0,\"width\":6000}],\"schema_version\":1,\"total_bytes\":5000000}",
+      "sha256": "6b70b9219c7c573ca05d5434ab63782f6056995509b5d225e46341a2b4cc62a3",
+      "chunk_count": 1,
+      "chunk_ranges": [
+        {
+          "chunk_id": 0,
+          "offset": 0,
+          "size": 5000000
+        }
+      ],
+      "accepted": {
+        "schema_version": 1,
+        "creation_action_id": "33333333-3333-4333-8333-333333333333",
+        "artifact_id": "44444444-4444-4444-8444-444444444444",
+        "start_request_digest": "6b70b9219c7c573ca05d5434ab63782f6056995509b5d225e46341a2b4cc62a3",
+        "absolute_expires_at": "2026-08-14T00:00:00.000Z"
+      },
+      "accepted_canonical": "{\"absolute_expires_at\":\"2026-08-14T00:00:00.000Z\",\"artifact_id\":\"44444444-4444-4444-8444-444444444444\",\"creation_action_id\":\"33333333-3333-4333-8333-333333333333\",\"schema_version\":1,\"start_request_digest\":\"6b70b9219c7c573ca05d5434ab63782f6056995509b5d225e46341a2b4cc62a3\"}",
+      "accepted_sha256": "38376c599dabc122992ad824b5d6d606bf0492a3f2f1237a2b653ca1d6944ca2"
+    },
+    {
+      "name": "derived-region-s3-etag",
+      "value": {
+        "schema_version": 1,
+        "creation_action_id": "55555555-5555-4555-8555-555555555555",
+        "artifact_id": "66666666-6666-4666-8666-666666666666",
+        "container": "PNG",
+        "total_bytes": 3145729,
+        "chunk_size_bytes": 1048576,
+        "origin": {
+          "type": "derived-region",
+          "source": {
+            "source_adapter_id": "qupath.s3.generic-tiff",
+            "credential_free_descriptor_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+            "width": 50000,
+            "height": 40000,
+            "z_slices": 1,
+            "timepoints": 1,
+            "calibration": {
+              "mpp_x": 0.25,
+              "mpp_y": 0.25
+            },
+            "content_version": {
+              "type": "s3-etag",
+              "quoted_value": "\"abc123-2\""
+            }
+          },
+          "source_resolution_level": 2,
+          "plane": {
+            "z": 0,
+            "t": 0
+          },
+          "source_rect_at_level": {
+            "x": 100,
+            "y": 200,
+            "width": 4096,
+            "height": 3072
+          },
+          "artifact_pixels_to_slide": {
+            "scale_x": 4,
+            "scale_y": 4,
+            "translate_x": 400,
+            "translate_y": 800
+          },
+          "writer_build": {
+            "version": "0.2.1+writer",
+            "artifact_digest": "4444444444444444444444444444444444444444444444444444444444444444",
+            "manifest_digest": "5555555555555555555555555555555555555555555555555555555555555555"
+          }
+        },
+        "required_levels": [
+          {
+            "series_index": 0,
+            "resolution_level": 0,
+            "width": 4096,
+            "height": 3072
+          }
+        ]
+      },
+      "canonical": "{\"artifact_id\":\"66666666-6666-4666-8666-666666666666\",\"chunk_size_bytes\":1048576,\"container\":\"PNG\",\"creation_action_id\":\"55555555-5555-4555-8555-555555555555\",\"origin\":{\"artifact_pixels_to_slide\":{\"scale_x\":4,\"scale_y\":4,\"translate_x\":400,\"translate_y\":800},\"plane\":{\"t\":0,\"z\":0},\"source\":{\"calibration\":{\"mpp_x\":0.25,\"mpp_y\":0.25},\"content_version\":{\"quoted_value\":\"\\\"abc123-2\\\"\",\"type\":\"s3-etag\"},\"credential_free_descriptor_digest\":\"3333333333333333333333333333333333333333333333333333333333333333\",\"height\":40000,\"source_adapter_id\":\"qupath.s3.generic-tiff\",\"timepoints\":1,\"width\":50000,\"z_slices\":1},\"source_rect_at_level\":{\"height\":3072,\"width\":4096,\"x\":100,\"y\":200},\"source_resolution_level\":2,\"type\":\"derived-region\",\"writer_build\":{\"artifact_digest\":\"4444444444444444444444444444444444444444444444444444444444444444\",\"manifest_digest\":\"5555555555555555555555555555555555555555555555555555555555555555\",\"version\":\"0.2.1+writer\"}},\"required_levels\":[{\"height\":3072,\"resolution_level\":0,\"series_index\":0,\"width\":4096}],\"schema_version\":1,\"total_bytes\":3145729}",
+      "sha256": "348c1a918f3841f7f9da4ea91e3d790827bb57eba6b439b1c7dfa4e194566010",
+      "chunk_count": 4,
+      "chunk_ranges": [
+        {
+          "chunk_id": 0,
+          "offset": 0,
+          "size": 1048576
+        },
+        {
+          "chunk_id": 2,
+          "offset": 2097152,
+          "size": 1048576
+        },
+        {
+          "chunk_id": 3,
+          "offset": 3145728,
+          "size": 1
+        }
+      ],
+      "accepted": {
+        "schema_version": 1,
+        "creation_action_id": "55555555-5555-4555-8555-555555555555",
+        "artifact_id": "66666666-6666-4666-8666-666666666666",
+        "start_request_digest": "348c1a918f3841f7f9da4ea91e3d790827bb57eba6b439b1c7dfa4e194566010",
+        "absolute_expires_at": "2026-08-15T23:59:59.999Z"
+      },
+      "accepted_canonical": "{\"absolute_expires_at\":\"2026-08-15T23:59:59.999Z\",\"artifact_id\":\"66666666-6666-4666-8666-666666666666\",\"creation_action_id\":\"55555555-5555-4555-8555-555555555555\",\"schema_version\":1,\"start_request_digest\":\"348c1a918f3841f7f9da4ea91e3d790827bb57eba6b439b1c7dfa4e194566010\"}",
+      "accepted_sha256": "3d64c59c49760f95530f107f3f94277a17d558f80a497242602d6dad2bcfca22"
+    }
+  ],
+  "invalidStartMutations": [
+    {
+      "name": "unsupported-schema",
+      "base": "original-local-multilevel-normalizes-order",
+      "operation": "set",
+      "path": [
+        "schema_version"
+      ],
+      "value": 2
+    },
+    {
+      "name": "unsafe-total-bytes",
+      "base": "original-local-multilevel-normalizes-order",
+      "operation": "set",
+      "path": [
+        "total_bytes"
+      ],
+      "value": 9007199254740992
+    },
+    {
+      "name": "decimal-chunk-size",
+      "base": "original-local-multilevel-normalizes-order",
+      "operation": "set",
+      "path": [
+        "chunk_size_bytes"
+      ],
+      "value": 1024.0
+    },
+    {
+      "name": "unknown-start-field",
+      "base": "original-local-multilevel-normalizes-order",
+      "operation": "set",
+      "path": [
+        "unexpected"
+      ],
+      "value": true
+    },
+    {
+      "name": "missing-action-id",
+      "base": "original-local-multilevel-normalizes-order",
+      "operation": "remove",
+      "path": [
+        "creation_action_id"
+      ]
+    },
+    {
+      "name": "empty-level-set",
+      "base": "original-local-multilevel-normalizes-order",
+      "operation": "set",
+      "path": [
+        "required_levels"
+      ],
+      "value": []
+    },
+    {
+      "name": "noncanonical-origin-tag",
+      "base": "original-local-multilevel-normalizes-order",
+      "operation": "set",
+      "path": [
+        "origin",
+        "type"
+      ],
+      "value": "OriginalWsi"
+    },
+    {
+      "name": "original-container-mismatch",
+      "base": "original-local-multilevel-normalizes-order",
+      "operation": "set",
+      "path": [
+        "container"
+      ],
+      "value": "PNG"
+    },
+    {
+      "name": "local-byte-length-mismatch",
+      "base": "original-local-multilevel-normalizes-order",
+      "operation": "set",
+      "path": [
+        "origin",
+        "source",
+        "content_version",
+        "size_bytes"
+      ],
+      "value": 10485760
+    },
+    {
+      "name": "original-level-uses-wrong-series",
+      "base": "original-local-multilevel-normalizes-order",
+      "operation": "set",
+      "path": [
+        "required_levels",
+        0,
+        "series_index"
+      ],
+      "value": 1
+    },
+    {
+      "name": "original-missing-exact-level-zero",
+      "base": "original-local-multilevel-normalizes-order",
+      "operation": "set",
+      "path": [
+        "required_levels",
+        1,
+        "width"
+      ],
+      "value": 9999
+    },
+    {
+      "name": "unquoted-etag",
+      "base": "derived-region-s3-etag",
+      "operation": "set",
+      "path": [
+        "origin",
+        "source",
+        "content_version",
+        "quoted_value"
+      ],
+      "value": "abc123-2"
+    },
+    {
+      "name": "unsupported-derived-plane",
+      "base": "derived-region-s3-etag",
+      "operation": "set",
+      "path": [
+        "origin",
+        "plane",
+        "z"
+      ],
+      "value": 1
+    },
+    {
+      "name": "derived-level-shape-mismatch",
+      "base": "derived-region-s3-etag",
+      "operation": "set",
+      "path": [
+        "required_levels",
+        0,
+        "width"
+      ],
+      "value": 4095
+    },
+    {
+      "name": "nonpositive-transform-scale",
+      "base": "derived-region-s3-etag",
+      "operation": "set",
+      "path": [
+        "origin",
+        "artifact_pixels_to_slide",
+        "scale_x"
+      ],
+      "value": 0
+    }
+  ],
+  "invalidAcceptedMutations": [
+    {
+      "name": "acceptance-action-mismatch",
+      "operation": "set",
+      "path": [
+        "creation_action_id"
+      ],
+      "value": "77777777-7777-4777-8777-777777777777"
+    },
+    {
+      "name": "acceptance-artifact-mismatch",
+      "operation": "set",
+      "path": [
+        "artifact_id"
+      ],
+      "value": "88888888-8888-4888-8888-888888888888"
+    },
+    {
+      "name": "acceptance-request-digest-mismatch",
+      "operation": "set",
+      "path": [
+        "start_request_digest"
+      ],
+      "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    {
+      "name": "acceptance-timestamp-not-millis",
+      "operation": "set",
+      "path": [
+        "absolute_expires_at"
+      ],
+      "value": "2026-08-13T12:34:56Z"
+    }
+  ]
+}

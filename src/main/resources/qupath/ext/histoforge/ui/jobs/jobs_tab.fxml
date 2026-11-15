@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Columns + cell rendering are built programmatically in JobsTableColumns. -->
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="qupath.ext.histoforge.ui.jobs.JobsTabController">
+    <HBox spacing="8" alignment="CENTER_LEFT" styleClass="histoforge-strip">
+        <ProgressIndicator fx:id="loadingIndicator" prefWidth="16" prefHeight="16"
+                           maxWidth="16" maxHeight="16" visible="false" managed="false"/>
+        <Label fx:id="loadStatusLabel" styleClass="histoforge-muted"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="refreshButton" text="Refresh">
+            <tooltip><Tooltip text="Check for new jobs and update their status."/></tooltip>
+        </Button>
+    </HBox>
+    <TableView fx:id="jobsTable" VBox.vgrow="ALWAYS"/>
+</VBox>

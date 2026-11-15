@@ -1,0 +1,13 @@
+{
+  "canonical_preimage": {
+    "hierarchy_semantic_sha256": "138452ad3c09d6fd1791734fe415c233334af47f74e897acfc7cbb5e23badf44",
+    "image_type": "BRIGHTFIELD_H_E",
+    "property_semantic_sha256": {
+      "histoforge:test-state": "3bb705b19f8046deed785f129cf47d1341f085f4f39d37f63dee7f153f3bbc62"
+    },
+    "schema_version": 1,
+    "stains_semantic_sha256": "2cad4f6344aa8b32e6184e42b8645d42cc4f85442302cdc67f6d9938e8b6a9ac",
+    "workflow_semantic_sha256": "b287baca1f88a204efdae29299a2bae3c798b6b94a443e269899b89b4b2d7eaf"
+  },
+  "image_data_content_digest": "b6f57570b5abc68f5b6364da5ad2147578393152084d63d35edce9f7ba1f781d"
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "outputs": {
+    "leydigSynthetic": {
+      "all_leydig_cell_area": [672.8125, 636.5625, 607.8125, 236.4375, 194.5625],
+      "all_leydig_cell_area_percent_interstitium": 3.743809476358926,
+      "all_leydig_cell_area_percent_patch": 3.583049774169922,
+      "all_leydig_nuclear_area": [258.3125, 240.0625, 218.5625, 236.4375, 194.5625],
+      "all_leydig_nuclei_area_percent_interstitium": 1.8302027801305365,
+      "all_leydig_nuclei_area_percent_patch": 1.7516136169433594,
+      "all_leydig_round_spindle_ratio": 1.5,
+      "round_leydig_cell_area": [672.8125, 636.5625, 607.8125],
+      "round_leydig_cell_area_percent_interstitium": 3.056648896417717,
+      "round_leydig_cell_area_percent_patch": 2.925395965576172,
+      "round_leydig_cell_count": 3,
+      "round_leydig_cytoplasm_area": [414.5, 396.5, 389.25],
+      "round_leydig_nuclear_area": [258.3125, 240.0625, 218.5625],
+      "round_leydig_nuclear_cytoplasmic_ratio": [0.3839294008360427, 0.3771232204221895, 0.3595886889460154],
+      "round_leydig_nuclear_eccentricity": [0.7323336347606502, 0, 0.7155468448025754],
+      "round_leydig_nuclei_area_percent_interstitium": 1.143042200189328,
+      "round_leydig_nuclei_area_percent_patch": 1.0939598083496094,
+      "round_leydig_nuclei_count": 3,
+      "spindle_leydig_nuclear_area": [236.4375, 194.5625],
+      "spindle_leydig_nuclear_eccentricity": [0.9177273598179084, 0.9170542207779303],
+      "spindle_leydig_nuclei_area_percent_interstitium": 0.6871605799412087,
+      "spindle_leydig_nuclei_area_percent_patch": 0.65765380859375,
+      "spindle_leydig_nuclei_count": 2,
+      "tubule_area": [1416.5625, 1397.5625],
+      "tubule_area_percent_patch": 4.294013977050781,
+      "tubule_count": 2
+    },
+    "tubuleSynthetic": {
+      "count": 4,
+      "diameter": [49.98581077662831, 59.98350759222748, 64.96885858179539],
+      "epithelial_thickness": [11.10180165558726, 14.849242404917497, 19.80056817366613],
+      "lumen_percent": [30.146192311367326, 24.941941477008825, 14.752738447615995],
+      "tubule_percent": 14.789962768554688
+    },
+    "spermatogenesisNested": {
+      "elongated_spermatid_count": 0,
+      "elongated_spermatid_count_per_tubule": [0, 0],
+      "gonocyte_count": 0,
+      "gonocyte_count_per_tubule": [0, 0],
+      "round_spermatid_count": 0,
+      "round_spermatid_count_per_tubule": [0, 0],
+      "sertoli_count": 3,
+      "sertoli_count_per_tubule": [2, 1],
+      "spermatocyte_count": 1,
+      "spermatocyte_count_per_tubule": [1, 0],
+      "spermatogonia_count": 0,
+      "spermatogonia_count_per_tubule": [0, 0],
+      "tubule_count": 2
+    }
+  }
+}

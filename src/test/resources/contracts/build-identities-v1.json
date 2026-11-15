@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "fileSetCases": [
+    {
+      "name": "ordered-unicode",
+      "files": [
+        {"path": "src/z.py", "utf8": "print('z')\n"},
+        {"path": "src/🧪.py", "utf8": "pi\n"},
+        {"path": "src/a.py", "utf8": "a\n"}
+      ],
+      "manifest": {
+        "files": [
+          {
+            "path": "src/a.py",
+            "sha256": "87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7"
+          },
+          {
+            "path": "src/z.py",
+            "sha256": "24c0045008987b31663f0949e1b6beb0a9c99193ebb17efde9500b27be0393d8"
+          },
+          {
+            "path": "src/🧪.py",
+            "sha256": "94e95f0bb38f8e0fb52a6dab21f7708dde104b7edeb2eb5ce6b7e68f1328c295"
+          }
+        ]
+      },
+      "canonical": "{\"files\":[{\"path\":\"src/a.py\",\"sha256\":\"87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7\"},{\"path\":\"src/z.py\",\"sha256\":\"24c0045008987b31663f0949e1b6beb0a9c99193ebb17efde9500b27be0393d8\"},{\"path\":\"src/🧪.py\",\"sha256\":\"94e95f0bb38f8e0fb52a6dab21f7708dde104b7edeb2eb5ce6b7e68f1328c295\"}]}",
+      "sha256": "a0a88f3c4359d8a27c74b75a0de36295ea60e19b77f556f8f5922a0d0f3421d8"
+    },
+    {
+      "name": "unsigned-utf8-not-utf16",
+      "files": [
+        {"path": "src/🧪.py", "utf8": "emoji\n"},
+        {"path": "src/Ａ.py", "utf8": "wide\n"}
+      ],
+      "manifest": {
+        "files": [
+          {
+            "path": "src/Ａ.py",
+            "sha256": "cbda94fecc7e47c611296a22971ab8e8d8100ffaa274c5bc590db99686c16302"
+          },
+          {
+            "path": "src/🧪.py",
+            "sha256": "5312b0b582d805303c95d7e2b1bc6fad70e04b3dde5413aae758b68767b06ada"
+          }
+        ]
+      },
+      "canonical": "{\"files\":[{\"path\":\"src/Ａ.py\",\"sha256\":\"cbda94fecc7e47c611296a22971ab8e8d8100ffaa274c5bc590db99686c16302\"},{\"path\":\"src/🧪.py\",\"sha256\":\"5312b0b582d805303c95d7e2b1bc6fad70e04b3dde5413aae758b68767b06ada\"}]}",
+      "sha256": "a5bc8339fc8466567b4a8415b26e24d01d7f7fe67db72dcbeb463ed370c74693"
+    },
+    {
+      "name": "empty",
+      "files": [],
+      "manifest": {"files": []},
+      "canonical": "{\"files\":[]}",
+      "sha256": "602e35a92eec4bc0a2ec6ae113f07bfc6933322fb69fe8dee416e5a67217e2a2"
+    }
+  ],
+  "manifestCases": [
+    {
+      "name": "backend-gateway",
+      "value": {
+        "schema_version": 1,
+        "component": "backend.gateway",
+        "source_digest": "a0a88f3c4359d8a27c74b75a0de36295ea60e19b77f556f8f5922a0d0f3421d8",
+        "dependency_lock_digest": "0c030586945fe504b604ecc2e875c38ede400cd5cd73da9730302162e6b02c6f",
+        "resolved_environment_digest": "ba5285161ba6eed0085fb13784ce5c92f70ebc268b94fd66aa1d68a32884204d",
+        "build_configuration_digest": "b7d64a9221007dfd5390f7df6cd5b8f3ea4f82faa1237141e35ebf161f5511a1",
+        "behavior_policy_digest": "823412d1eacb67956220e532959f0104603057c88704863ca38e7cd188fda812"
+      },
+      "canonical": "{\"behavior_policy_digest\":\"823412d1eacb67956220e532959f0104603057c88704863ca38e7cd188fda812\",\"build_configuration_digest\":\"b7d64a9221007dfd5390f7df6cd5b8f3ea4f82faa1237141e35ebf161f5511a1\",\"component\":\"backend.gateway\",\"dependency_lock_digest\":\"0c030586945fe504b604ecc2e875c38ede400cd5cd73da9730302162e6b02c6f\",\"resolved_environment_digest\":\"ba5285161ba6eed0085fb13784ce5c92f70ebc268b94fd66aa1d68a32884204d\",\"schema_version\":1,\"source_digest\":\"a0a88f3c4359d8a27c74b75a0de36295ea60e19b77f556f8f5922a0d0f3421d8\"}",
+      "sha256": "9b00e88cf87345907a1800d7b140f8b180f63e2537bdae915389b76a89c8dbe8",
+      "identity": {
+        "version": "0.1.0+test",
+        "artifact_digest": "c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c",
+        "manifest_digest": "9b00e88cf87345907a1800d7b140f8b180f63e2537bdae915389b76a89c8dbe8"
+      },
+      "identityCanonical": "{\"artifact_digest\":\"c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c\",\"manifest_digest\":\"9b00e88cf87345907a1800d7b140f8b180f63e2537bdae915389b76a89c8dbe8\",\"version\":\"0.1.0+test\"}",
+      "identitySha256": "83b4aedb7de5e036141650f1d680960c77152f3f7e58dd043fa9bb1eb6e355d1"
+    }
+  ],
+  "invalidManifestCases": [
+    {
+      "name": "not-an-object",
+      "value": []
+    },
+    {
+      "name": "missing-component",
+      "value": {
+        "schema_version": 1,
+        "source_digest": "a0a88f3c4359d8a27c74b75a0de36295ea60e19b77f556f8f5922a0d0f3421d8",
+        "dependency_lock_digest": "0c030586945fe504b604ecc2e875c38ede400cd5cd73da9730302162e6b02c6f",
+        "resolved_environment_digest": "ba5285161ba6eed0085fb13784ce5c92f70ebc268b94fd66aa1d68a32884204d",
+        "build_configuration_digest": "b7d64a9221007dfd5390f7df6cd5b8f3ea4f82faa1237141e35ebf161f5511a1",
+        "behavior_policy_digest": "823412d1eacb67956220e532959f0104603057c88704863ca38e7cd188fda812"
+      }
+    },
+    {
+      "name": "unknown-field",
+      "value": {
+        "schema_version": 1,
+        "component": "backend.gateway",
+        "source_digest": "a0a88f3c4359d8a27c74b75a0de36295ea60e19b77f556f8f5922a0d0f3421d8",
+        "dependency_lock_digest": "0c030586945fe504b604ecc2e875c38ede400cd5cd73da9730302162e6b02c6f",
+        "resolved_environment_digest": "ba5285161ba6eed0085fb13784ce5c92f70ebc268b94fd66aa1d68a32884204d",
+        "build_configuration_digest": "b7d64a9221007dfd5390f7df6cd5b8f3ea4f82faa1237141e35ebf161f5511a1",
+        "behavior_policy_digest": "823412d1eacb67956220e532959f0104603057c88704863ca38e7cd188fda812",
+        "extra": true
+      }
+    },
+    {
+      "name": "unsupported-schema",
+      "value": {
+        "schema_version": 2,
+        "component": "backend.gateway",
+        "source_digest": "a0a88f3c4359d8a27c74b75a0de36295ea60e19b77f556f8f5922a0d0f3421d8",
+        "dependency_lock_digest": "0c030586945fe504b604ecc2e875c38ede400cd5cd73da9730302162e6b02c6f",
+        "resolved_environment_digest": "ba5285161ba6eed0085fb13784ce5c92f70ebc268b94fd66aa1d68a32884204d",
+        "build_configuration_digest": "b7d64a9221007dfd5390f7df6cd5b8f3ea4f82faa1237141e35ebf161f5511a1",
+        "behavior_policy_digest": "823412d1eacb67956220e532959f0104603057c88704863ca38e7cd188fda812"
+      }
+    },
+    {
+      "name": "blank-component",
+      "value": {
+        "schema_version": 1,
+        "component": " ",
+        "source_digest": "a0a88f3c4359d8a27c74b75a0de36295ea60e19b77f556f8f5922a0d0f3421d8",
+        "dependency_lock_digest": "0c030586945fe504b604ecc2e875c38ede400cd5cd73da9730302162e6b02c6f",
+        "resolved_environment_digest": "ba5285161ba6eed0085fb13784ce5c92f70ebc268b94fd66aa1d68a32884204d",
+        "build_configuration_digest": "b7d64a9221007dfd5390f7df6cd5b8f3ea4f82faa1237141e35ebf161f5511a1",
+        "behavior_policy_digest": "823412d1eacb67956220e532959f0104603057c88704863ca38e7cd188fda812"
+      }
+    },
+    {
+      "name": "uppercase-digest",
+      "value": {
+        "schema_version": 1,
+        "component": "backend.gateway",
+        "source_digest": "A0A88F3C4359D8A27C74B75A0DE36295EA60E19B77F556F8F5922A0D0F3421D8",
+        "dependency_lock_digest": "0c030586945fe504b604ecc2e875c38ede400cd5cd73da9730302162e6b02c6f",
+        "resolved_environment_digest": "ba5285161ba6eed0085fb13784ce5c92f70ebc268b94fd66aa1d68a32884204d",
+        "build_configuration_digest": "b7d64a9221007dfd5390f7df6cd5b8f3ea4f82faa1237141e35ebf161f5511a1",
+        "behavior_policy_digest": "823412d1eacb67956220e532959f0104603057c88704863ca38e7cd188fda812"
+      }
+    }
+  ],
+  "invalidIdentityCases": [
+    {
+      "name": "not-an-object",
+      "value": "build"
+    },
+    {
+      "name": "missing-manifest",
+      "value": {
+        "version": "0.1.0",
+        "artifact_digest": "c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c"
+      }
+    },
+    {
+      "name": "unknown-field",
+      "value": {
+        "version": "0.1.0",
+        "artifact_digest": "c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c",
+        "manifest_digest": "9b00e88cf87345907a1800d7b140f8b180f63e2537bdae915389b76a89c8dbe8",
+        "component": "gateway"
+      }
+    },
+    {
+      "name": "non-string-version",
+      "value": {
+        "version": 1,
+        "artifact_digest": "c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c",
+        "manifest_digest": "9b00e88cf87345907a1800d7b140f8b180f63e2537bdae915389b76a89c8dbe8"
+      }
+    },
+    {
+      "name": "blank-version",
+      "value": {
+        "version": "\t",
+        "artifact_digest": "c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c",
+        "manifest_digest": "9b00e88cf87345907a1800d7b140f8b180f63e2537bdae915389b76a89c8dbe8"
+      }
+    },
+    {
+      "name": "short-artifact-digest",
+      "value": {
+        "version": "0.1.0",
+        "artifact_digest": "c7c5",
+        "manifest_digest": "9b00e88cf87345907a1800d7b140f8b180f63e2537bdae915389b76a89c8dbe8"
+      }
+    }
+  ],
+  "invalidPaths": ["", "/absolute", "a//b", "a/./b", "a/../b", "a\\b", "a\u0000b"]
+}

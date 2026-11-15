@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "validCases": [
+    {
+      "name": "square-reversed-rotated-duplicates-negative-zero",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[4, 4], [4, 0], [4, 0], [-0.0, 0], [0, 4], [4, 4]]]
+      },
+      "canonical": "[[[0,0],[4,0],[4,4],[0,4],[0,0]]]",
+      "sha256": "291d579b9c7c8c04f901201feecd9221c9e7887a4a0f2e293783e14c06268dd6"
+    },
+    {
+      "name": "square-unclosed-equivalent",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[0, 4], [4, 4], [4, 0], [0, 0]]]
+      },
+      "canonical": "[[[0,0],[4,0],[4,4],[0,4],[0,0]]]",
+      "sha256": "291d579b9c7c8c04f901201feecd9221c9e7887a4a0f2e293783e14c06268dd6"
+    },
+    {
+      "name": "holes-reordered",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [[10, 10], [10, 0], [0, 0], [0, 10], [10, 10]],
+          [[8, 8], [6, 8], [6, 6], [8, 6], [8, 8]],
+          [[2, 1], [2, 2], [1, 2], [1, 1], [2, 1], [2, 1]]
+        ]
+      },
+      "canonical": "[[[0,0],[10,0],[10,10],[0,10],[0,0]],[[1,1],[1,2],[2,2],[2,1],[1,1]],[[6,6],[6,8],[8,8],[8,6],[6,6]]]",
+      "sha256": "b2ee39311909f92bf5b404f541869fa334650866e73d3f80d133e038e27ad36b"
+    },
+    {
+      "name": "multipolygon-reordered",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [[[12, 12], [12, 10], [10, 10], [10, 12], [12, 12]]],
+          [[[2, 2], [2, 0], [0, 0], [0, 2], [2, 2]]]
+        ]
+      },
+      "canonical": "[[[[0,0],[2,0],[2,2],[0,2],[0,0]]],[[[10,10],[12,10],[12,12],[10,12],[10,10]]]]",
+      "sha256": "afd6542ae4b3ae50faf9cb2b205200a1c62a50c3bd3ce57d1a08e73190d478f1"
+    },
+    {
+      "name": "fractional-triangle",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[0.1, 0.2], [-0.0, 1e-7], [1.25, 0.2], [0.1, 0.2]]]
+      },
+      "canonical": "[[[0,1e-7],[1.25,0.2],[0.1,0.2],[0,1e-7]]]",
+      "sha256": "cbcc11e9e42b630bf0a73558039afa4e1df7add5e69366dba39e50cd8f30d9a0"
+    },
+    {
+      "name": "binary64-coordinate-rounding",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [[9007199254740993, 0], [9007199254740996, 0], [9007199254740992, 4], [9007199254740993, 0]]
+        ]
+      },
+      "canonical": "[[[9007199254740992,0],[9007199254740996,0],[9007199254740992,4],[9007199254740992,0]]]",
+      "sha256": "267e4611b5b7d70dd1147e392ba4012b652f60086981e3a21e05c1e9b21cc949"
+    },
+    {
+      "name": "singleton-multipolygon-remains-distinct",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[[4, 4], [4, 0], [0, 0], [0, 4], [4, 4]]]]
+      },
+      "canonical": "[[[[0,0],[4,0],[4,4],[0,4],[0,0]]]]",
+      "sha256": "4a8e74ab7337b72025f6b997e59aed56c38e09d95069799a97fe3736b82afa53"
+    }
+  ],
+  "invalidCases": [
+    {
+      "name": "unsupported-point",
+      "geometry": {"type": "Point", "coordinates": [0, 0]}
+    },
+    {"name": "missing-coordinates", "geometry": {"type": "Polygon"}},
+    {"name": "empty-polygon", "geometry": {"type": "Polygon", "coordinates": []}},
+    {
+      "name": "empty-multipolygon",
+      "geometry": {"type": "MultiPolygon", "coordinates": []}
+    },
+    {
+      "name": "empty-multipolygon-component",
+      "geometry": {"type": "MultiPolygon", "coordinates": [[]]}
+    },
+    {
+      "name": "collapsed-ring",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [0, 0], [1, 0], [0, 0]]]
+      }
+    },
+    {
+      "name": "three-dimensional-coordinate",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0, 1], [1, 0, 1], [0, 1, 1], [0, 0, 1]]]
+      }
+    },
+    {
+      "name": "boolean-coordinate",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[false, 0], [1, 0], [0, 1], [false, 0]]]
+      }
+    },
+    {
+      "name": "self-intersecting-shell",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [2, 2], [0, 2], [2, 0], [0, 0]]]
+      }
+    },
+    {
+      "name": "hole-outside-shell",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [[0, 0], [4, 0], [4, 4], [0, 4], [0, 0]],
+          [[5, 5], [6, 5], [6, 6], [5, 6], [5, 5]]
+        ]
+      }
+    },
+    {
+      "name": "overlapping-multipolygon-components",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [[[0, 0], [3, 0], [3, 3], [0, 3], [0, 0]]],
+          [[[2, 2], [4, 2], [4, 4], [2, 4], [2, 2]]]
+        ]
+      }
+    }
+  ]
+}

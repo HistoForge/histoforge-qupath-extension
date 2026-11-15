@@ -1,0 +1,525 @@
+{
+  "accepted": {
+    "sha256": "819e1e99071b0d45fbb976082d0212d6b48e4da7c40b56afc0d7e8fec9fd75c3",
+    "value": {
+      "request_digest": "3148833993366f77089d18df1ae9c22851061eea23db3618571237df1db977a2",
+      "run_id": "66666666-6666-4666-8666-666666666666"
+    }
+  },
+  "fixture_schema_version": 1,
+  "page": {
+    "sha256": "db9d968f35bdac3834c45cd0246b802b3f79e8d18e53870db1a7f3f8cfb45982",
+    "value": {
+      "items": [
+        {
+          "created_at": "2026-09-04T16:00:00.000Z",
+          "progress": {
+            "completed_epochs": 1,
+            "total_epochs": 3
+          },
+          "report_revision": 3,
+          "result": {
+            "error": {
+              "code": "RUNNER_FAILED",
+              "message": "Training worker stopped before producing a complete result.",
+              "schema_version": 1
+            },
+            "report_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "type": "failed"
+          },
+          "result_display_name": "Fine-tuned Leydig workflow",
+          "result_form": "complete_source_workflow",
+          "run_id": "88888888-8888-4888-8888-888888888888",
+          "selected_model_id": "leydig_nuclear",
+          "source_module_ref": "histoforge/leydig",
+          "state": "FAILED",
+          "updated_at": "2026-09-04T16:15:00.000Z"
+        },
+        {
+          "created_at": "2026-09-04T15:00:00.000Z",
+          "primary_metric": {
+            "display_name": "Validation mSA",
+            "epoch": 2,
+            "series_id": "validation-instance-msa.v1",
+            "value": 0.7
+          },
+          "progress": {
+            "completed_epochs": 3,
+            "total_epochs": 3
+          },
+          "report_revision": 5,
+          "result": {
+            "type": "succeeded"
+          },
+          "result_display_name": "Fine-tuned Leydig workflow",
+          "result_form": "complete_source_workflow",
+          "run_id": "44444444-4444-4444-8444-444444444444",
+          "selected_model_id": "leydig_nuclear",
+          "source_module_ref": "histoforge/leydig",
+          "state": "SUCCEEDED",
+          "updated_at": "2026-09-04T15:30:00.000Z"
+        },
+        {
+          "created_at": "2026-09-04T15:00:00.000Z",
+          "primary_metric": {
+            "display_name": "Validation mSA",
+            "epoch": 2,
+            "series_id": "validation-instance-msa.v1",
+            "value": 0.7
+          },
+          "progress": {
+            "completed_epochs": 2,
+            "total_epochs": 3
+          },
+          "report_revision": 3,
+          "result_display_name": "Fine-tuned Leydig workflow",
+          "result_form": "complete_source_workflow",
+          "run_id": "55555555-5555-4555-8555-555555555555",
+          "selected_model_id": "leydig_nuclear",
+          "source_module_ref": "histoforge/leydig",
+          "state": "RUNNING",
+          "updated_at": "2026-09-04T15:10:00.000Z"
+        }
+      ],
+      "next_cursor": "eyJjcmVhdGVkX2F0IjoiMjAyNi0wOS0wNFQxNTowMDowMC4wMDBaIiwicnVuX2lkIjoiNTU1NTU1NTUtNTU1NS00NTU1LTg1NTUtNTU1NTU1NTU1NTU1In0"
+    }
+  },
+  "records": [
+    {
+      "name": "queued",
+      "sha256": "ba06fb51f138391380257f36fecb8e7277eb22e48470b61396b261cb0fbb42cb",
+      "value": {
+        "created_at": "2026-09-04T12:00:00.000Z",
+        "progress": {
+          "completed_epochs": 0,
+          "total_epochs": 3
+        },
+        "report_revision": 1,
+        "request": {
+          "augmentation": {
+            "enabled_operator_ids": [
+              "rotate90-v1",
+              "flip-v1"
+            ],
+            "profile_id": "he-v1"
+          },
+          "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+          "dataset_id": "33333333-3333-4333-8333-333333333333",
+          "field_profile": {
+            "aggregation": "mean-logits-v1",
+            "alignment_model_px": 16,
+            "planner": "fixed-field-v1",
+            "preprocessing": "normalize99-real-image-v1",
+            "side_model_px": 384,
+            "small_roi_context": true,
+            "tile_overlap": 0.25
+          },
+          "min_instance_pixels": 15,
+          "result_display_name": "Fine-tuned Leydig workflow",
+          "result_form": "complete_source_workflow",
+          "result_inference_gpu": "A100",
+          "schema_version": 1,
+          "selected_model_id": "leydig_nuclear",
+          "source_module": {
+            "content_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+            "module_ref": "histoforge/leydig",
+            "recipe_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+            "resolved_commit_sha": "1111111111111111111111111111111111111111"
+          },
+          "split_plan": {
+            "assignment_source": "generated",
+            "requested_validation_percent": 20,
+            "type": "split",
+            "unit": "image",
+            "units": [
+              {
+                "partition": "training",
+                "unit_index": 0
+              },
+              {
+                "partition": "validation",
+                "unit_index": 1
+              }
+            ]
+          },
+          "trainer_settings": {
+            "data_loading_workers": 2,
+            "gradient_accumulation_steps": 1,
+            "total_epochs": 3,
+            "training_batch_size": 1,
+            "training_gpu_id": "l4",
+            "warmup_epochs": 1,
+            "warmup_mode": "custom",
+            "flow_loss_weighting": "pixel"
+          },
+          "training_seed": 1234,
+          "class_initialization": "use"
+        },
+        "request_digest": "3148833993366f77089d18df1ae9c22851061eea23db3618571237df1db977a2",
+        "run_id": "66666666-6666-4666-8666-666666666666",
+        "state": "QUEUED",
+        "trainer_build": {
+          "artifact_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "manifest_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "version": "phase8-test"
+        },
+        "updated_at": "2026-09-04T12:00:00.000Z"
+      }
+    },
+    {
+      "name": "succeeded",
+      "sha256": "0426705d6f569d5bb794635aa6c672b1ab4eb6b691c9366d809a333355b715f2",
+      "value": {
+        "created_at": "2026-09-04T15:00:00.000Z",
+        "finalization": {
+          "module_content_digest": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "report_digest": "c13ffc85cb6479be33282e05b246607bf360af611ed2e38d059be287558f5a0f",
+          "selected_weight_digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "progress": {
+          "completed_epochs": 3,
+          "total_epochs": 3
+        },
+        "report_revision": 5,
+        "request": {
+          "augmentation": {
+            "enabled_operator_ids": [
+              "rotate90-v1",
+              "flip-v1"
+            ],
+            "profile_id": "he-v1"
+          },
+          "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+          "dataset_id": "33333333-3333-4333-8333-333333333333",
+          "field_profile": {
+            "aggregation": "mean-logits-v1",
+            "alignment_model_px": 16,
+            "planner": "fixed-field-v1",
+            "preprocessing": "normalize99-real-image-v1",
+            "side_model_px": 384,
+            "small_roi_context": true,
+            "tile_overlap": 0.25
+          },
+          "min_instance_pixels": 15,
+          "result_display_name": "Fine-tuned Leydig workflow",
+          "result_form": "complete_source_workflow",
+          "result_inference_gpu": "A100",
+          "schema_version": 1,
+          "selected_model_id": "leydig_nuclear",
+          "source_module": {
+            "content_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+            "module_ref": "histoforge/leydig",
+            "recipe_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+            "resolved_commit_sha": "1111111111111111111111111111111111111111"
+          },
+          "split_plan": {
+            "assignment_source": "generated",
+            "requested_validation_percent": 20,
+            "type": "split",
+            "unit": "image",
+            "units": [
+              {
+                "partition": "training",
+                "unit_index": 0
+              },
+              {
+                "partition": "validation",
+                "unit_index": 1
+              }
+            ]
+          },
+          "trainer_settings": {
+            "data_loading_workers": 2,
+            "gradient_accumulation_steps": 1,
+            "total_epochs": 3,
+            "training_batch_size": 1,
+            "training_gpu_id": "l4",
+            "warmup_epochs": 1,
+            "warmup_mode": "custom",
+            "flow_loss_weighting": "pixel"
+          },
+          "training_seed": 1234,
+          "class_initialization": "use"
+        },
+        "request_digest": "3148833993366f77089d18df1ae9c22851061eea23db3618571237df1db977a2",
+        "result": {
+          "type": "succeeded"
+        },
+        "run_id": "44444444-4444-4444-8444-444444444444",
+        "state": "SUCCEEDED",
+        "trainer_build": {
+          "artifact_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "manifest_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "version": "phase8-test"
+        },
+        "updated_at": "2026-09-04T15:30:00.000Z"
+      }
+    },
+    {
+      "name": "failed",
+      "sha256": "a0457e71d7a83cca884f8542de0bb521b63764ec7e401759fbb3bb1e2f2ccd05",
+      "value": {
+        "created_at": "2026-09-04T16:00:00.000Z",
+        "progress": {
+          "completed_epochs": 1,
+          "total_epochs": 3
+        },
+        "report_revision": 3,
+        "request": {
+          "augmentation": {
+            "enabled_operator_ids": [
+              "rotate90-v1",
+              "flip-v1"
+            ],
+            "profile_id": "he-v1"
+          },
+          "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+          "dataset_id": "33333333-3333-4333-8333-333333333333",
+          "field_profile": {
+            "aggregation": "mean-logits-v1",
+            "alignment_model_px": 16,
+            "planner": "fixed-field-v1",
+            "preprocessing": "normalize99-real-image-v1",
+            "side_model_px": 384,
+            "small_roi_context": true,
+            "tile_overlap": 0.25
+          },
+          "min_instance_pixels": 15,
+          "result_display_name": "Fine-tuned Leydig workflow",
+          "result_form": "complete_source_workflow",
+          "result_inference_gpu": "A100",
+          "schema_version": 1,
+          "selected_model_id": "leydig_nuclear",
+          "source_module": {
+            "content_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+            "module_ref": "histoforge/leydig",
+            "recipe_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+            "resolved_commit_sha": "1111111111111111111111111111111111111111"
+          },
+          "split_plan": {
+            "assignment_source": "generated",
+            "requested_validation_percent": 20,
+            "type": "split",
+            "unit": "image",
+            "units": [
+              {
+                "partition": "training",
+                "unit_index": 0
+              },
+              {
+                "partition": "validation",
+                "unit_index": 1
+              }
+            ]
+          },
+          "trainer_settings": {
+            "data_loading_workers": 2,
+            "gradient_accumulation_steps": 1,
+            "total_epochs": 3,
+            "training_batch_size": 1,
+            "training_gpu_id": "l4",
+            "warmup_epochs": 1,
+            "warmup_mode": "custom",
+            "flow_loss_weighting": "pixel"
+          },
+          "training_seed": 1234,
+          "class_initialization": "use"
+        },
+        "request_digest": "3148833993366f77089d18df1ae9c22851061eea23db3618571237df1db977a2",
+        "result": {
+          "error": {
+            "code": "RUNNER_FAILED",
+            "message": "Training worker stopped before producing a complete result.",
+            "schema_version": 1
+          },
+          "report_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "type": "failed"
+        },
+        "run_id": "88888888-8888-4888-8888-888888888888",
+        "state": "FAILED",
+        "trainer_build": {
+          "artifact_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "manifest_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "version": "phase8-test"
+        },
+        "updated_at": "2026-09-04T16:15:00.000Z"
+      }
+    },
+    {
+      "name": "finalizing",
+      "sha256": "74cbff52b3b7df3390a371b25ddc912499359764db46c36ef3881f998a9a8436",
+      "value": {
+        "created_at": "2026-09-04T14:00:00.000Z",
+        "finalization": {
+          "module_content_digest": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "report_digest": "cd704e9419018d726464bf12346d31c815ade8961d9a881fd11de46f43fb4b43",
+          "selected_weight_digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "progress": {
+          "completed_epochs": 3,
+          "total_epochs": 3
+        },
+        "report_revision": 4,
+        "request": {
+          "augmentation": {
+            "enabled_operator_ids": [
+              "rotate90-v1",
+              "flip-v1"
+            ],
+            "profile_id": "he-v1"
+          },
+          "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+          "dataset_id": "33333333-3333-4333-8333-333333333333",
+          "field_profile": {
+            "aggregation": "mean-logits-v1",
+            "alignment_model_px": 16,
+            "planner": "fixed-field-v1",
+            "preprocessing": "normalize99-real-image-v1",
+            "side_model_px": 384,
+            "small_roi_context": true,
+            "tile_overlap": 0.25
+          },
+          "min_instance_pixels": 15,
+          "result_display_name": "Fine-tuned Leydig workflow",
+          "result_form": "complete_source_workflow",
+          "result_inference_gpu": "A100",
+          "schema_version": 1,
+          "selected_model_id": "leydig_nuclear",
+          "source_module": {
+            "content_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+            "module_ref": "histoforge/leydig",
+            "recipe_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+            "resolved_commit_sha": "1111111111111111111111111111111111111111"
+          },
+          "split_plan": {
+            "assignment_source": "generated",
+            "requested_validation_percent": 20,
+            "type": "split",
+            "unit": "image",
+            "units": [
+              {
+                "partition": "training",
+                "unit_index": 0
+              },
+              {
+                "partition": "validation",
+                "unit_index": 1
+              }
+            ]
+          },
+          "trainer_settings": {
+            "data_loading_workers": 2,
+            "gradient_accumulation_steps": 1,
+            "total_epochs": 3,
+            "training_batch_size": 1,
+            "training_gpu_id": "l4",
+            "warmup_epochs": 1,
+            "warmup_mode": "custom",
+            "flow_loss_weighting": "pixel"
+          },
+          "training_seed": 1234,
+          "class_initialization": "use"
+        },
+        "request_digest": "3148833993366f77089d18df1ae9c22851061eea23db3618571237df1db977a2",
+        "run_id": "77777777-7777-4777-8777-777777777777",
+        "state": "FINALIZING",
+        "trainer_build": {
+          "artifact_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "manifest_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "version": "phase8-test"
+        },
+        "updated_at": "2026-09-04T14:20:00.000Z"
+      }
+    },
+    {
+      "name": "cancelled",
+      "sha256": "c619826baa1c8b275fea7e399a7d80fbbd7e4cc8742fccabeacea0cb4ad090f2",
+      "value": {
+        "created_at": "2026-09-04T11:00:00.000Z",
+        "progress": {
+          "completed_epochs": 0,
+          "total_epochs": 3
+        },
+        "report_revision": 2,
+        "request": {
+          "augmentation": {
+            "enabled_operator_ids": [
+              "rotate90-v1",
+              "flip-v1"
+            ],
+            "profile_id": "he-v1"
+          },
+          "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+          "dataset_id": "33333333-3333-4333-8333-333333333333",
+          "field_profile": {
+            "aggregation": "mean-logits-v1",
+            "alignment_model_px": 16,
+            "planner": "fixed-field-v1",
+            "preprocessing": "normalize99-real-image-v1",
+            "side_model_px": 384,
+            "small_roi_context": true,
+            "tile_overlap": 0.25
+          },
+          "min_instance_pixels": 15,
+          "result_display_name": "Fine-tuned Leydig workflow",
+          "result_form": "complete_source_workflow",
+          "result_inference_gpu": "A100",
+          "schema_version": 1,
+          "selected_model_id": "leydig_nuclear",
+          "source_module": {
+            "content_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+            "module_ref": "histoforge/leydig",
+            "recipe_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+            "resolved_commit_sha": "1111111111111111111111111111111111111111"
+          },
+          "split_plan": {
+            "assignment_source": "generated",
+            "requested_validation_percent": 20,
+            "type": "split",
+            "unit": "image",
+            "units": [
+              {
+                "partition": "training",
+                "unit_index": 0
+              },
+              {
+                "partition": "validation",
+                "unit_index": 1
+              }
+            ]
+          },
+          "trainer_settings": {
+            "data_loading_workers": 2,
+            "gradient_accumulation_steps": 1,
+            "total_epochs": 3,
+            "training_batch_size": 1,
+            "training_gpu_id": "l4",
+            "warmup_epochs": 1,
+            "warmup_mode": "custom",
+            "flow_loss_weighting": "pixel"
+          },
+          "training_seed": 1234,
+          "class_initialization": "use"
+        },
+        "request_digest": "3148833993366f77089d18df1ae9c22851061eea23db3618571237df1db977a2",
+        "result": {
+          "report_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+          "type": "cancelled"
+        },
+        "run_id": "99999999-9999-4999-8999-999999999999",
+        "state": "CANCELLED",
+        "trainer_build": {
+          "artifact_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "manifest_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "version": "phase8-test"
+        },
+        "updated_at": "2026-09-04T11:05:00.000Z"
+      }
+    }
+  ],
+  "report_response": {
+    "report_digest": "c13ffc85cb6479be33282e05b246607bf360af611ed2e38d059be287558f5a0f",
+    "report_revision": 5,
+    "sha256": "4ac133135eac64c5edaad7146c8dc15b2dad479e38137464311579a87841a9e2"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "validCases": [
+    {
+      "name": "empty",
+      "declaredClasses": ["Lumen"],
+      "instances": [],
+      "canonical": "{\"features\":[],\"type\":\"FeatureCollection\"}",
+      "sha256": "ad37fe6278e0c7caf3b77c1c5068a56e18a6c87b78ed5a840ee22a0f961ea7a8"
+    },
+    {
+      "name": "order-duplicates-and-multipolygon",
+      "declaredClasses": ["Lumen", "Tubule", "Tubule 🧪"],
+      "instances": [
+        {
+          "pathClass": "Tubule",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[2, 0], [2, 2], [0, 2], [0, 0], [2, 0]]]
+          }
+        },
+        {
+          "pathClass": "Lumen",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [[[12, 10], [12, 12], [10, 12], [10, 10], [12, 10]]],
+              [[[22, 20], [20, 20], [20, 22], [22, 22], [22, 20]]]
+            ]
+          }
+        },
+        {
+          "pathClass": "Tubule 🧪",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[32, 30], [30, 30], [30, 32], [32, 32], [32, 30]]]
+          }
+        },
+        {
+          "pathClass": "Tubule",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[0, 0], [0, 2], [0, 2], [2, 2], [2, 0], [0, 0]]]
+          }
+        }
+      ],
+      "canonical": "{\"features\":[{\"geometry\":{\"coordinates\":[[[0,0],[2,0],[2,2],[0,2],[0,0]]],\"type\":\"Polygon\"},\"id\":\"057b9c9c95a05480317cc6ebaf200a7bac07b4cc407622e650060ab89fc0e48a\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Tubule\"},\"type\":\"Feature\"},{\"geometry\":{\"coordinates\":[[[30,30],[32,30],[32,32],[30,32],[30,30]]],\"type\":\"Polygon\"},\"id\":\"1ae7c5fc1509b34fc78dfab4d6773db6f9f31e80e36e8c57520b98feb18ed221\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Tubule 🧪\"},\"type\":\"Feature\"},{\"geometry\":{\"coordinates\":[[[0,0],[2,0],[2,2],[0,2],[0,0]]],\"type\":\"Polygon\"},\"id\":\"38b4bc2f8b50bfe06e648e4017365bc85bd19f524249db1a091152bc828813bf\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Tubule\"},\"type\":\"Feature\"},{\"geometry\":{\"coordinates\":[[[[10,10],[12,10],[12,12],[10,12],[10,10]]],[[[20,20],[22,20],[22,22],[20,22],[20,20]]]],\"type\":\"MultiPolygon\"},\"id\":\"a7c05ccd992887aa2075effd9acc152903279c47f277898275869187f4005b10\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Lumen\"},\"type\":\"Feature\"}],\"type\":\"FeatureCollection\"}",
+      "sha256": "4be8110d23ded3c7a290cc877eed7bebd4c9a5269aa86f00d2ae8d4400bc4115"
+    }
+  ],
+  "invalidCases": [
+    {
+      "name": "missing-features",
+      "declaredClasses": ["Tubule"],
+      "featureCollection": {"type": "FeatureCollection"}
+    },
+    {
+      "name": "unknown-feature-property",
+      "declaredClasses": ["Tubule"],
+      "featureCollection": {
+        "type": "FeatureCollection",
+        "features": [{
+          "type": "Feature",
+          "id": "057b9c9c95a05480317cc6ebaf200a7bac07b4cc407622e650060ab89fc0e48a",
+          "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [2, 0], [2, 2], [0, 2], [0, 0]]]},
+          "properties": {"object_type": "DETECTION", "path_class": "Tubule", "score": 1}
+        }]
+      }
+    },
+    {
+      "name": "lowercase-object-type",
+      "declaredClasses": ["Tubule"],
+      "featureCollection": {
+        "type": "FeatureCollection",
+        "features": [{
+          "type": "Feature",
+          "id": "057b9c9c95a05480317cc6ebaf200a7bac07b4cc407622e650060ab89fc0e48a",
+          "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [2, 0], [2, 2], [0, 2], [0, 0]]]},
+          "properties": {"object_type": "detection", "path_class": "Tubule"}
+        }]
+      }
+    },
+    {
+      "name": "undeclared-class",
+      "declaredClasses": ["Lumen"],
+      "featureCollection": {
+        "type": "FeatureCollection",
+        "features": [{
+          "type": "Feature",
+          "id": "057b9c9c95a05480317cc6ebaf200a7bac07b4cc407622e650060ab89fc0e48a",
+          "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [2, 0], [2, 2], [0, 2], [0, 0]]]},
+          "properties": {"object_type": "DETECTION", "path_class": "Tubule"}
+        }]
+      }
+    },
+    {
+      "name": "noncanonical-geometry",
+      "declaredClasses": ["Tubule"],
+      "featureCollection": {
+        "type": "FeatureCollection",
+        "features": [{
+          "type": "Feature",
+          "id": "057b9c9c95a05480317cc6ebaf200a7bac07b4cc407622e650060ab89fc0e48a",
+          "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [0, 2], [2, 2], [2, 0], [0, 0]]]},
+          "properties": {"object_type": "DETECTION", "path_class": "Tubule"}
+        }]
+      }
+    },
+    {
+      "name": "wrong-feature-id",
+      "declaredClasses": ["Tubule"],
+      "featureCollection": {
+        "type": "FeatureCollection",
+        "features": [{
+          "type": "Feature",
+          "id": "0000000000000000000000000000000000000000000000000000000000000000",
+          "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [2, 0], [2, 2], [0, 2], [0, 0]]]},
+          "properties": {"object_type": "DETECTION", "path_class": "Tubule"}
+        }]
+      }
+    },
+    {
+      "name": "ids-out-of-order",
+      "declaredClasses": ["Tubule"],
+      "featureCollection": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "id": "38b4bc2f8b50bfe06e648e4017365bc85bd19f524249db1a091152bc828813bf",
+            "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [2, 0], [2, 2], [0, 2], [0, 0]]]},
+            "properties": {"object_type": "DETECTION", "path_class": "Tubule"}
+          },
+          {
+            "type": "Feature",
+            "id": "057b9c9c95a05480317cc6ebaf200a7bac07b4cc407622e650060ab89fc0e48a",
+            "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [2, 0], [2, 2], [0, 2], [0, 0]]]},
+            "properties": {"object_type": "DETECTION", "path_class": "Tubule"}
+          }
+        ]
+      }
+    },
+    {
+      "name": "duplicate-feature-id",
+      "declaredClasses": ["Tubule"],
+      "featureCollection": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "id": "057b9c9c95a05480317cc6ebaf200a7bac07b4cc407622e650060ab89fc0e48a",
+            "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [2, 0], [2, 2], [0, 2], [0, 0]]]},
+            "properties": {"object_type": "DETECTION", "path_class": "Tubule"}
+          },
+          {
+            "type": "Feature",
+            "id": "057b9c9c95a05480317cc6ebaf200a7bac07b4cc407622e650060ab89fc0e48a",
+            "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [2, 0], [2, 2], [0, 2], [0, 0]]]},
+            "properties": {"object_type": "DETECTION", "path_class": "Tubule"}
+          }
+        ]
+      }
+    }
+  ]
+}

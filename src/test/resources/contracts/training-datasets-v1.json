@@ -1,0 +1,626 @@
+{
+  "schemaVersion": 1,
+  "trainingApiLimits": {
+    "dataset": {
+      "max_rois": 2000,
+      "max_objects_per_roi": 10000,
+      "max_total_objects": 500000,
+      "max_vertices_per_geometry": 100000,
+      "max_total_vertices": 6500000,
+      "max_json_member_bytes": 8388608,
+      "max_archive_bytes": 9672065024,
+      "max_extracted_bytes": 9663676416
+    },
+    "transfer": {
+      "max_chunk_bytes": 8388608,
+      "max_chunks_per_upload": 1153
+    },
+    "report": {
+      "max_metric_series": 100,
+      "max_epochs": 1000,
+      "max_messages": 1000,
+      "max_text_bytes": 4096,
+      "max_component_parameters_bytes": 65536,
+      "max_component_parameter_depth": 16,
+      "max_component_collection_entries": 1024,
+      "max_report_bytes": 8388608
+    },
+    "max_page_size": 100,
+    "max_page_encoded_bytes": 1048576
+  },
+  "trainingApiLimitsSha256": "134254152cf86d20a91060f4dd27486e327716a8b53de02b9281a2946342eeb1",
+  "capability": {
+    "value": {
+      "allowed_field_side_model_px": {
+        "maximum": 384,
+        "minimum": 384
+      },
+      "augmentation_profiles": [
+        {
+          "description": "Geometry and bounded H&E color variation.",
+          "display_name": "H&E",
+          "operators": [
+            {
+              "default_enabled": true,
+              "description": "Rotate the field by multiples of 90 degrees.",
+              "display_name": "Right-angle rotations",
+              "operator_id": "rotate90-v1"
+            },
+            {
+              "default_enabled": true,
+              "description": "Reflect the field horizontally or vertically.",
+              "display_name": "Flips",
+              "operator_id": "flip-v1"
+            }
+          ],
+          "profile_id": "he-v1"
+        }
+      ],
+      "capability_id": "cellpose-sam-cls-fixed-v1",
+      "crop_padding_model_px": 0,
+      "data_loading_workers_range": {
+        "maximum": 8,
+        "minimum": 0
+      },
+      "default_augmentation_profile_id": "he-v1",
+      "default_field_profile": {
+        "aggregation": "mean-logits-v1",
+        "alignment_model_px": 16,
+        "planner": "fixed-field-v1",
+        "preprocessing": "brightfield-rgb-v1",
+        "side_model_px": 384,
+        "small_roi_context": true,
+        "tile_overlap": 0.25
+      },
+      "default_training_settings": {
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "training_batch_size": 1,
+        "training_gpu_id": "l4",
+        "warmup_epochs": 10,
+        "warmup_mode": "auto",
+        "flow_loss_weighting": "pixel"
+      },
+      "gradient_accumulation_steps_range": {
+        "maximum": 16,
+        "minimum": 1
+      },
+      "input_kind": "field",
+      "output_type": "instance_segmentation",
+      "small_roi_context_editable": false,
+      "supports_negative_rois": true,
+      "task_display_name": "Leydig cell segmentation",
+      "total_epochs_range": {
+        "maximum": 1000,
+        "minimum": 1
+      },
+      "automatic_warmup": {
+        "divisor": 8,
+        "maximum_epochs": 10
+      },
+      "training_batch_size_range": {
+        "maximum": 8,
+        "minimum": 1
+      },
+      "training_gpus": [
+        {
+          "display_name": "L4",
+          "training_gpu_id": "l4"
+        }
+      ],
+      "flow_loss_weighting_options": [
+        "pixel",
+        "equal_instance"
+      ]
+    },
+    "sha256": "62b332013178ce58c14a34d1377d40fab002148b0d738a9e3dc58cd90781945b"
+  },
+  "manifest": {
+    "value": {
+      "artifacts": [
+        {
+          "image_index": 0,
+          "representation": "png"
+        },
+        {
+          "image_index": 1,
+          "representation": "png"
+        }
+      ],
+      "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+      "files": [
+        {
+          "path": "artifacts/0/origin.json",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "size_bytes": 100
+        },
+        {
+          "path": "artifacts/0/source.png",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "size_bytes": 500
+        },
+        {
+          "path": "artifacts/1/origin.json",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "size_bytes": 100
+        },
+        {
+          "path": "artifacts/1/source.png",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "size_bytes": 400
+        },
+        {
+          "path": "rois/0/objects.geojson",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "size_bytes": 120
+        },
+        {
+          "path": "rois/0/roi.geojson",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "size_bytes": 80
+        },
+        {
+          "path": "rois/1/objects.geojson",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "size_bytes": 120
+        },
+        {
+          "path": "rois/1/roi.geojson",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "size_bytes": 80
+        }
+      ],
+      "images": [
+        {
+          "project_entry_id_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+          "project_group_index": 0
+        },
+        {
+          "project_entry_id_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+          "project_group_index": 0
+        }
+      ],
+      "project_groups": [
+        "Control"
+      ],
+      "rois": [
+        {
+          "image_index": 0,
+          "source_envelope": {
+            "artifact_index": 0,
+            "pixel_rect": {
+              "height": 80,
+              "width": 100,
+              "x": 0,
+              "y": 0
+            },
+            "resolution_level": 0,
+            "series_index": 0
+          },
+          "source_roi_uuid": "11111111-1111-4111-8111-111111111111"
+        },
+        {
+          "image_index": 1,
+          "source_envelope": {
+            "artifact_index": 1,
+            "pixel_rect": {
+              "height": 40,
+              "width": 60,
+              "x": 0,
+              "y": 0
+            },
+            "resolution_level": 0,
+            "series_index": 0
+          },
+          "source_roi_uuid": "22222222-2222-4222-8222-222222222222"
+        }
+      ],
+      "schema_version": 1,
+      "task": {
+        "capability_id": "cellpose-sam-cls-fixed-v1",
+        "input_kind": "field",
+        "model_microns_per_pixel": 0.5,
+        "model_output": {
+          "classes": [
+            "Leydig cell"
+          ],
+          "type": "instance_segmentation"
+        },
+        "supports_negative_rois": true,
+        "annotation_class_map": {
+          "Leydig cell": "Leydig cell"
+        }
+      }
+    },
+    "sha256": "da44e84c248a469c80dabcdf6406afe424faeacb7237cbba25f27293e14affac"
+  },
+  "split": {
+    "value": {
+      "assignment_source": "generated",
+      "requested_validation_percent": 20,
+      "type": "split",
+      "unit": "image",
+      "units": [
+        {
+          "partition": "training",
+          "unit_index": 0
+        },
+        {
+          "partition": "validation",
+          "unit_index": 1
+        }
+      ]
+    },
+    "sha256": "89ba773a8e68f871b74acc1c2cf52484d8923abd6bd797946339bee48cb7742e"
+  },
+  "runRequest": {
+    "value": {
+      "schema_version": 1,
+      "dataset_id": "33333333-3333-4333-8333-333333333333",
+      "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+      "source_module": {
+        "module_ref": "histoforge/leydig",
+        "resolved_commit_sha": "1111111111111111111111111111111111111111",
+        "recipe_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+        "content_digest": "3333333333333333333333333333333333333333333333333333333333333333"
+      },
+      "selected_model_id": "leydig_nuclear",
+      "result_form": "complete_source_workflow",
+      "result_display_name": "Fine-tuned Leydig workflow",
+      "result_inference_gpu": "A100",
+      "split_plan": {
+        "assignment_source": "generated",
+        "requested_validation_percent": 20,
+        "type": "split",
+        "unit": "image",
+        "units": [
+          {
+            "partition": "training",
+            "unit_index": 0
+          },
+          {
+            "partition": "validation",
+            "unit_index": 1
+          }
+        ]
+      },
+      "field_profile": {
+        "aggregation": "mean-logits-v1",
+        "alignment_model_px": 16,
+        "planner": "fixed-field-v1",
+        "preprocessing": "brightfield-rgb-v1",
+        "side_model_px": 384,
+        "small_roi_context": true,
+        "tile_overlap": 0.25
+      },
+      "min_instance_pixels": 15,
+      "augmentation": {
+        "profile_id": "he-v1",
+        "enabled_operator_ids": [
+          "rotate90-v1",
+          "flip-v1"
+        ]
+      },
+      "trainer_settings": {
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "training_batch_size": 1,
+        "training_gpu_id": "l4",
+        "warmup_epochs": 10,
+        "warmup_mode": "auto",
+        "flow_loss_weighting": "pixel"
+      },
+      "training_seed": 1234,
+      "class_initialization": "use"
+    },
+    "sha256": "f8beb1a51c65627d955d7404c6e42a5f5a5743d7dbbf06bc0956461a748b04ed"
+  },
+  "start": {
+    "value": {
+      "schema_version": 1,
+      "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+      "archive_bytes_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+      "total_bytes": 20000001,
+      "chunk_size_bytes": 8388608
+    },
+    "sha256": "3fa76b6ce961b59d37914708250f73e76dc4c266f223794f912bac20c0ccc994",
+    "chunkRange2": {
+      "chunk_index": 2,
+      "offset": 16777216,
+      "size_bytes": 3222785
+    }
+  },
+  "retained": {
+    "value": {
+      "type": "retained",
+      "dataset_id": "33333333-3333-4333-8333-333333333333",
+      "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+      "retained_bytes": 19000000,
+      "task_display_name": "Leydig cell segmentation",
+      "image_count": 2,
+      "roi_count": 2,
+      "created_at": "2026-09-02T12:00:00.000Z"
+    },
+    "sha256": "6853cc65f3d5c5ae02f2e4423ceb6d45f06ffccda7947a8c6d3db5f160371e7c"
+  },
+  "uploadAccepted": {
+    "value": {
+      "type": "upload",
+      "dataset_id": "33333333-3333-4333-8333-333333333333",
+      "start_request_digest": "3fa76b6ce961b59d37914708250f73e76dc4c266f223794f912bac20c0ccc994",
+      "expires_at": "2026-09-02T13:00:00.000Z"
+    },
+    "sha256": "cd0d9d6936116aacb4cf84674ee513689961a524fadd83531b97a29f90744dfd"
+  },
+  "existing": {
+    "value": {
+      "type": "existing",
+      "dataset": {
+        "type": "retained",
+        "dataset_id": "33333333-3333-4333-8333-333333333333",
+        "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+        "retained_bytes": 19000000,
+        "task_display_name": "Leydig cell segmentation",
+        "image_count": 2,
+        "roi_count": 2,
+        "created_at": "2026-09-02T12:00:00.000Z"
+      }
+    },
+    "sha256": "acb1c58e4910a4050c3e7049d78cca4dd3d259de4c6a546c2d3b61abed222717"
+  },
+  "sealRequest": {
+    "value": {
+      "schema_version": 1,
+      "start_request_digest": "3fa76b6ce961b59d37914708250f73e76dc4c266f223794f912bac20c0ccc994"
+    },
+    "sha256": "b4ec3e130d1c26b72c12370c8461a30c005ed272dacf6c30bf7163edcaaa6112"
+  },
+  "chunkReceipt": {
+    "value": {
+      "dataset_id": "33333333-3333-4333-8333-333333333333",
+      "chunk": {
+        "start_request_digest": "3fa76b6ce961b59d37914708250f73e76dc4c266f223794f912bac20c0ccc994",
+        "chunk_index": 2,
+        "size_bytes": 3222785,
+        "sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+        "accepted_at": "2026-09-02T12:10:00.000Z"
+      },
+      "expires_at": "2026-09-02T13:10:00.000Z"
+    },
+    "sha256": "74ce04815482b3c6c38d5a707bf005a196385ef10dcecf8de01e4baa17fb5d2d"
+  },
+  "cleanup": {
+    "value": {
+      "type": "cleanup-required",
+      "dataset_id": "44444444-4444-4444-8444-444444444444",
+      "task_display_name": "Germ cell segmentation",
+      "image_count": 1,
+      "roi_count": 3,
+      "last_known_remaining_bytes": 1234,
+      "created_at": "2026-09-02T11:00:00.000Z",
+      "last_error": {
+        "schema_version": 1,
+        "code": "SERVICE_UNAVAILABLE",
+        "message": "dataset cleanup did not complete"
+      }
+    },
+    "sha256": "5e9113e9c79789d1793bca1b89383a1d30bb7f2e15e1706a441a59e9d31c2387"
+  },
+  "datasetPage": {
+    "value": {
+      "items": [
+        {
+          "record": {
+            "type": "retained",
+            "dataset_id": "33333333-3333-4333-8333-333333333333",
+            "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+            "retained_bytes": 19000000,
+            "task_display_name": "Leydig cell segmentation",
+            "image_count": 2,
+            "roi_count": 2,
+            "created_at": "2026-09-02T12:00:00.000Z"
+          },
+          "in_use": true
+        },
+        {
+          "record": {
+            "type": "cleanup-required",
+            "dataset_id": "44444444-4444-4444-8444-444444444444",
+            "task_display_name": "Germ cell segmentation",
+            "image_count": 1,
+            "roi_count": 3,
+            "last_known_remaining_bytes": 1234,
+            "created_at": "2026-09-02T11:00:00.000Z",
+            "last_error": {
+              "schema_version": 1,
+              "code": "SERVICE_UNAVAILABLE",
+              "message": "dataset cleanup did not complete"
+            }
+          },
+          "in_use": false
+        }
+      ],
+      "next_cursor": "opaque-cursor"
+    },
+    "sha256": "4864daa4d69ca1af110184d94aace428063316863e1194f4147ff2f27268fe6d"
+  },
+  "splitSidecar": {
+    "value": {
+      "schema_version": 1,
+      "dataset_digest": "522e963ea0c3851e9fd8a1f4de298610ee0bb5a93195727471b5d51cd0963b09",
+      "split_plan": {
+        "assignment_source": "generated",
+        "requested_validation_percent": 20,
+        "type": "split",
+        "unit": "image",
+        "units": [
+          {
+            "partition": "training",
+            "unit_index": 0
+          },
+          {
+            "partition": "validation",
+            "unit_index": 1
+          }
+        ]
+      }
+    },
+    "sha256": "065a726f065fb31fdd92fded3062650400809622f05563424fc762d60e13bbeb"
+  },
+  "flowSettingCases": [
+    {
+      "name": "pixel",
+      "advertised": true,
+      "value": {
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "training_batch_size": 1,
+        "training_gpu_id": "l4",
+        "warmup_epochs": 10,
+        "warmup_mode": "auto",
+        "flow_loss_weighting": "pixel"
+      },
+      "valid_syntax": true,
+      "allowed": true,
+      "sha256": "21cceba914586d25d5bb7bd5fae2dd1c61985fd690b4799a6e65430c0af24898"
+    },
+    {
+      "name": "equal-instance",
+      "advertised": true,
+      "value": {
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "training_batch_size": 1,
+        "training_gpu_id": "l4",
+        "warmup_epochs": 10,
+        "warmup_mode": "auto",
+        "flow_loss_weighting": "equal_instance"
+      },
+      "valid_syntax": true,
+      "allowed": true,
+      "sha256": "bff62d22bf176ca50ef4091705bdfac8644cf08f0c5e646888c9f735fe6cd148"
+    },
+    {
+      "name": "required-missing",
+      "advertised": true,
+      "value": {
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "training_batch_size": 1,
+        "training_gpu_id": "l4",
+        "warmup_epochs": 10,
+        "warmup_mode": "auto"
+      },
+      "valid_syntax": true,
+      "allowed": false,
+      "sha256": "60dc8f02b6099ea3792e984cdd158843449efb02ae45e349677899ecad0c4592"
+    },
+    {
+      "name": "inapplicable-absent",
+      "advertised": false,
+      "value": {
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "training_batch_size": 1,
+        "training_gpu_id": "l4",
+        "warmup_epochs": 10,
+        "warmup_mode": "auto"
+      },
+      "valid_syntax": true,
+      "allowed": true,
+      "sha256": "60dc8f02b6099ea3792e984cdd158843449efb02ae45e349677899ecad0c4592"
+    },
+    {
+      "name": "inapplicable-present",
+      "advertised": false,
+      "value": {
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "training_batch_size": 1,
+        "training_gpu_id": "l4",
+        "warmup_epochs": 10,
+        "warmup_mode": "auto",
+        "flow_loss_weighting": "pixel"
+      },
+      "valid_syntax": true,
+      "allowed": false,
+      "sha256": "21cceba914586d25d5bb7bd5fae2dd1c61985fd690b4799a6e65430c0af24898"
+    },
+    {
+      "name": "null-is-not-absence",
+      "advertised": false,
+      "value": {
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "training_batch_size": 1,
+        "training_gpu_id": "l4",
+        "warmup_epochs": 10,
+        "warmup_mode": "auto",
+        "flow_loss_weighting": null
+      },
+      "valid_syntax": false,
+      "allowed": false,
+      "sha256": "d4a2b9a1624ddcb349c695b97ce1565f1ff8b28e7140c15d181f8091cc49e503"
+    },
+    {
+      "name": "unknown-enum",
+      "advertised": true,
+      "value": {
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "training_batch_size": 1,
+        "training_gpu_id": "l4",
+        "warmup_epochs": 10,
+        "warmup_mode": "auto",
+        "flow_loss_weighting": "equal"
+      },
+      "valid_syntax": false,
+      "allowed": false,
+      "sha256": "f4e7a9e4612dfc4083373bc7a25e2845db4c836f77e6ae3a7b0c6ef34b54ad96"
+    },
+    {
+      "name": "number-is-not-enum",
+      "advertised": true,
+      "value": {
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "training_batch_size": 1,
+        "training_gpu_id": "l4",
+        "warmup_epochs": 10,
+        "warmup_mode": "auto",
+        "flow_loss_weighting": 0
+      },
+      "valid_syntax": false,
+      "allowed": false,
+      "sha256": "a1ccd8dd2095d4bd33d618f649206ac96d7bc99bfe43fce60366e3cfa6d529e3"
+    },
+    {
+      "name": "unknown-field",
+      "advertised": true,
+      "value": {
+        "data_loading_workers": 2,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 80,
+        "training_batch_size": 1,
+        "training_gpu_id": "l4",
+        "warmup_epochs": 10,
+        "warmup_mode": "auto",
+        "flow_loss_weighting": "pixel",
+        "flow_weight": 1
+      },
+      "valid_syntax": false,
+      "allowed": false,
+      "sha256": "60358da6bc6ec0b91eac9de0458501db477aa20d4b7867cb85af8bf0aafbac20"
+    }
+  ]
+}

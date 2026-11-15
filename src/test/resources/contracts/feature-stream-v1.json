@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "declaredClasses": ["Tubule"],
+  "cases": [
+    {
+      "name": "two-polygons",
+      "collectionCanonical": "{\"features\":[{\"geometry\":{\"coordinates\":[[[0,0],[2,0],[2,2],[0,0]]],\"type\":\"Polygon\"},\"id\":\"5d94695eee8bf081f44d67f5c61930299c212f43f7c6139c6c79ff89b8b9b9e1\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Tubule\"},\"type\":\"Feature\"},{\"geometry\":{\"coordinates\":[[[4,0],[6,0],[6,2],[4,0]]],\"type\":\"Polygon\"},\"id\":\"fd3734ef2693e2d2d1b3b7107d427026f8f3984bdbea34a231b987250ed650ce\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Tubule\"},\"type\":\"Feature\"}],\"type\":\"FeatureCollection\"}",
+      "gzipBase64": "H4sIAAAAAAAC/7WPPW+DMBRF9/6IDG9m8Be2X9Y0lbq0HdgQirD9nFLRGBEzINT/XqiYs3W50rs60rvnsMCV0jflcYbjAj6lMXS3NtMdjnVds4I1RS32FGtuTdMUkOeB4AgfqZ+v6QY/BXRhvcuASmNJRNZFZnlUKmgTS685SiYQveAiKhnN2kj02huM0aKzDh0ShwKGMQ005m6bsEByX+TzZX/3fK7Op+r1/W3j2vx58X17XzmoJjf1tM3YyRdq8zSuzdPhsaL6k9N7borqsWIM0khFUWiUJIII3ElnODNBCcOEjjZKtMoFR61UrZDcoTWiZBR0yTz9g+IvmAtppMYBAAA=",
+      "sizeBytes": 260,
+      "sha256": "3f2fd4a0a37c051f55df2998a435ac5e09ec05b6b50344e45d121ea2eba11941",
+      "featureCount": 2,
+      "vertexCount": 6
+    },
+    {
+      "name": "valid-empty",
+      "collectionCanonical": "{\"features\":[],\"type\":\"FeatureCollection\"}",
+      "gzipBase64": "H4sIAAAAAAAC/wMAAAAAAAAAAAA=",
+      "sizeBytes": 20,
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "featureCount": 0,
+      "vertexCount": 0
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+[versions]
+bioformats = "8.2.0"
+commonmark = "0.24.0"
+groovy = "4.0.26"
+javafx = "23.0.2"
+jdk = "21"
+junit = "5.11.0"
+logback = "1.5.8"
+mockito = "5.11.0"
+ome-common = "6.0.25"
+openslide = "4.0.0.6"
+qupath = "0.6.0"
+qupath-fxtras = "0.2.0"
+slf4j = "2.0.17"
+
+[libraries]
+commonmark-core = { module = "org.commonmark:commonmark", version.ref = "commonmark" }
+commonmark-yaml = { module = "org.commonmark:commonmark-ext-yaml-front-matter", version.ref = "commonmark" }
+formats-bsd = { module = "ome:formats-bsd", version.ref = "bioformats" }
+formats-gpl = { module = "ome:formats-gpl", version.ref = "bioformats" }
+groovy-core = { module = "org.apache.groovy:groovy", version.ref = "groovy" }
+groovy-json = { module = "org.apache.groovy:groovy-json", version.ref = "groovy" }
+junit = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+junit-platform = { module = "org.junit.platform:junit-platform-launcher" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+mockito = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+ome-common = { module = "org.openmicroscopy:ome-common", version.ref = "ome-common" }
+qupath-core = { module = "io.github.qupath:qupath-core", version.ref = "qupath" }
+qupath-core-processing = { module = "io.github.qupath:qupath-core-processing", version.ref = "qupath" }
+qupath-ext-bioformats = { module = "io.github.qupath:qupath-extension-bioformats", version.ref = "qupath" }
+qupath-ext-openslide = { module = "io.github.qupath:qupath-extension-openslide", version.ref = "qupath" }
+qupath-fxtras = { module = "io.github.qupath:qupath-fxtras", version.ref = "qupath-fxtras" }
+qupath-gui-fx = { module = "io.github.qupath:qupath-gui-fx", version.ref = "qupath" }
+slf4j = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+
+[bundles]
+logging = ["slf4j", "logback"]
+qupath = ["qupath-gui-fx", "qupath-core", "qupath-core-processing"]

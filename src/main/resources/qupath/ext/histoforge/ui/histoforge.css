@@ -1,0 +1,175 @@
+.histoforge-root {
+    -histoforge-success-color: ladder(
+        -fx-background,
+        #81c784 49%,
+        #2e7d32 50%
+    );
+    -histoforge-warning-color: ladder(
+        -fx-background,
+        #ffb74d 49%,
+        #9a5a00 50%
+    );
+    -histoforge-error-color: ladder(
+        -fx-background,
+        #ef9a9a 49%,
+        #b3261e 50%
+    );
+    -histoforge-connection-success-color: ladder(
+        -fx-background,
+        #00e676 49%,
+        #008a34 50%
+    );
+    -histoforge-connection-error-color: ladder(
+        -fx-background,
+        #ff5252 49%,
+        #d50000 50%
+    );
+    -histoforge-busy-color: ladder(
+        -fx-background,
+        #90caf9 49%,
+        #1565c0 50%
+    );
+    -histoforge-warning-background: ladder(
+        -fx-background,
+        #3a2b14 49%,
+        #fff3e0 50%
+    );
+    -histoforge-warning-border: ladder(
+        -fx-background,
+        #b7791f 49%,
+        #ffcc80 50%
+    );
+}
+
+.histoforge-muted,
+.histoforge-neutral {
+    -fx-text-fill: -fx-text-base-color;
+    -fx-opacity: 0.68;
+}
+
+.histoforge-heading {
+    -fx-font-weight: bold;
+}
+
+.histoforge-success {
+    -fx-text-fill: -histoforge-success-color;
+}
+
+.histoforge-warning {
+    -fx-text-fill: -histoforge-warning-color;
+}
+
+.histoforge-error {
+    -fx-text-fill: -histoforge-error-color;
+}
+
+.histoforge-busy {
+    -fx-text-fill: -histoforge-busy-color;
+}
+
+.histoforge-connection-indicator.histoforge-success {
+    -fx-text-fill: -histoforge-connection-success-color;
+}
+
+.histoforge-connection-indicator.histoforge-error {
+    -fx-text-fill: -histoforge-connection-error-color;
+}
+
+.table-row-cell:selected .histoforge-success,
+.table-row-cell:selected .histoforge-neutral,
+.table-row-cell:selected .histoforge-warning,
+.table-row-cell:selected .histoforge-error,
+.table-row-cell:selected .histoforge-busy {
+    -fx-text-fill: -fx-selection-bar-text;
+    -fx-opacity: 1;
+}
+
+.histoforge-clickable {
+    -fx-cursor: hand;
+}
+
+.histoforge-info-button {
+    -fx-background-color: transparent;
+    -fx-padding: 1 4 1 4;
+    -fx-cursor: hand;
+}
+
+.histoforge-info-surface {
+    -fx-background-color: -fx-control-inner-background;
+    -fx-border-color: -fx-box-border;
+    -fx-border-width: 1;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.22), 8, 0.1, 0, 2);
+}
+
+.histoforge-warning-surface {
+    -fx-background-color: -histoforge-warning-background;
+    -fx-border-color: -histoforge-warning-border;
+    -fx-border-width: 1;
+}
+
+.histoforge-strip {
+    -fx-padding: 4 8 4 8;
+    -fx-background-color: derive(-fx-base, 4%);
+    -fx-border-color: -fx-box-border;
+    -fx-border-width: 0 0 1 0;
+}
+
+.histoforge-status-bar {
+    -fx-background-color: derive(-fx-base, -2%);
+}
+
+.histoforge-project-controls {
+    -fx-padding: 8;
+    -fx-background-color: derive(-fx-base, 4%);
+    -fx-border-color: -fx-box-border;
+    -fx-border-width: 0 0 1 0;
+}
+
+.histoforge-section-row {
+    -fx-font-weight: bold;
+    -fx-background-color: derive(-fx-base, 6%);
+}
+
+.histoforge-module-toolbar {
+    -fx-padding: 12;
+}
+
+.histoforge-module-title {
+    -fx-font-size: 19px;
+}
+
+.histoforge-module-list {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.histoforge-module-list .list-cell {
+    -fx-background-insets: 0;
+}
+
+.histoforge-module-list .list-cell:empty {
+    -fx-background-color: -fx-control-inner-background;
+}
+
+.histoforge-module-ref {
+    -fx-opacity: 0.72;
+}
+
+.histoforge-module-tabs > .tab-header-area {
+    -fx-padding: 0 22 0 22;
+}
+
+.histoforge-module-scroll {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.histoforge-module-scroll > .viewport {
+    -fx-background-color: -fx-background;
+}
+
+.histoforge-module-scroll HBox > Text {
+    -fx-fill: -fx-text-base-color;
+}
