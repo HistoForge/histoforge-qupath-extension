@@ -1,0 +1,394 @@
+{
+  "cases": [
+    {
+      "source_dimensions": [
+        192,
+        96
+      ],
+      "source_mpp": [
+        0.4,
+        0.8
+      ],
+      "target_mpp": 0.5,
+      "planner": "variable-field-v2",
+      "minimum_side_model_px": 32,
+      "small_roi_context": false,
+      "input_kind": "field",
+      "crop_padding_model_px": 0,
+      "name": "fractional-anisotropic",
+      "roi_bounds": [
+        10.1,
+        10.4,
+        30.2,
+        30.3
+      ],
+      "frame_slide": [
+        10.1,
+        10.4,
+        30.2,
+        30.3
+      ],
+      "expected_raster": {
+        "raster": {
+          "width": 17,
+          "height": 32,
+          "plane": {
+            "z": 0,
+            "t": 0
+          },
+          "target_mpp": 0.5,
+          "resampling": "BILINEAR",
+          "pixel_format": "SRGB_UINT8"
+        },
+        "raster_to_slide": {
+          "scale_x": 1.25,
+          "scale_y": 0.625,
+          "translate_x": 10.1,
+          "translate_y": 10.4
+        }
+      }
+    },
+    {
+      "source_dimensions": [
+        192,
+        96
+      ],
+      "source_mpp": [
+        0.5,
+        0.5
+      ],
+      "target_mpp": 0.5,
+      "planner": "variable-field-v2",
+      "minimum_side_model_px": 32,
+      "small_roi_context": false,
+      "input_kind": "field",
+      "crop_padding_model_px": 0,
+      "name": "large-roi-not-resized",
+      "roi_bounds": [
+        3,
+        4,
+        183,
+        76
+      ],
+      "frame_slide": [
+        3,
+        4,
+        183,
+        76
+      ],
+      "expected_raster": {
+        "raster": {
+          "width": 180,
+          "height": 72,
+          "plane": {
+            "z": 0,
+            "t": 0
+          },
+          "target_mpp": 0.5,
+          "resampling": "BILINEAR",
+          "pixel_format": "SRGB_UINT8"
+        },
+        "raster_to_slide": {
+          "scale_x": 1,
+          "scale_y": 1,
+          "translate_x": 3,
+          "translate_y": 4
+        }
+      }
+    },
+    {
+      "source_dimensions": [
+        192,
+        96
+      ],
+      "source_mpp": [
+        0.5,
+        0.5
+      ],
+      "target_mpp": 0.5,
+      "planner": "variable-field-v2",
+      "minimum_side_model_px": 32,
+      "small_roi_context": true,
+      "input_kind": "field",
+      "crop_padding_model_px": 0,
+      "name": "context-only-on-short-axis",
+      "roi_bounds": [
+        20,
+        30,
+        60,
+        40
+      ],
+      "frame_slide": [
+        20,
+        19,
+        60,
+        51
+      ],
+      "expected_raster": {
+        "raster": {
+          "width": 40,
+          "height": 32,
+          "plane": {
+            "z": 0,
+            "t": 0
+          },
+          "target_mpp": 0.5,
+          "resampling": "BILINEAR",
+          "pixel_format": "SRGB_UINT8"
+        },
+        "raster_to_slide": {
+          "scale_x": 1,
+          "scale_y": 1,
+          "translate_x": 20,
+          "translate_y": 19
+        }
+      }
+    },
+    {
+      "source_dimensions": [
+        192,
+        96
+      ],
+      "source_mpp": [
+        0.5,
+        0.5
+      ],
+      "target_mpp": 0.5,
+      "planner": "variable-field-v2",
+      "minimum_side_model_px": 32,
+      "small_roi_context": true,
+      "input_kind": "field",
+      "crop_padding_model_px": 0,
+      "name": "context-clipped-at-image-edge",
+      "roi_bounds": [
+        110,
+        5,
+        125,
+        16
+      ],
+      "frame_slide": [
+        101.5,
+        0,
+        133.5,
+        26.5
+      ],
+      "expected_raster": {
+        "raster": {
+          "width": 32,
+          "height": 27,
+          "plane": {
+            "z": 0,
+            "t": 0
+          },
+          "target_mpp": 0.5,
+          "resampling": "BILINEAR",
+          "pixel_format": "SRGB_UINT8"
+        },
+        "raster_to_slide": {
+          "scale_x": 1,
+          "scale_y": 1,
+          "translate_x": 101.5,
+          "translate_y": 0
+        }
+      }
+    },
+    {
+      "source_dimensions": [
+        192,
+        96
+      ],
+      "source_mpp": [
+        0.5,
+        0.5
+      ],
+      "target_mpp": 0.5,
+      "planner": "fixed-field-v1",
+      "minimum_side_model_px": 32,
+      "small_roi_context": true,
+      "input_kind": "field",
+      "crop_padding_model_px": 0,
+      "name": "fixed-field-context",
+      "roi_bounds": [
+        110,
+        5,
+        125,
+        16
+      ],
+      "frame_slide": [
+        101.5,
+        0,
+        133.5,
+        26.5
+      ],
+      "expected_raster": {
+        "raster": {
+          "width": 32,
+          "height": 27,
+          "plane": {
+            "z": 0,
+            "t": 0
+          },
+          "target_mpp": 0.5,
+          "resampling": "BILINEAR",
+          "pixel_format": "SRGB_UINT8"
+        },
+        "raster_to_slide": {
+          "scale_x": 1,
+          "scale_y": 1,
+          "translate_x": 101.5,
+          "translate_y": 0
+        }
+      }
+    },
+    {
+      "source_dimensions": [
+        192,
+        96
+      ],
+      "source_mpp": [
+        0.4,
+        0.8
+      ],
+      "target_mpp": 0.5,
+      "planner": "variable-field-v2",
+      "minimum_side_model_px": 32,
+      "small_roi_context": false,
+      "input_kind": "crop",
+      "crop_padding_model_px": 8,
+      "name": "crop-anisotropic-padding",
+      "roi_bounds": [
+        10,
+        10,
+        30,
+        30
+      ],
+      "frame_slide": [
+        0,
+        5,
+        40,
+        35
+      ],
+      "expected_raster": {
+        "raster": {
+          "width": 32,
+          "height": 48,
+          "plane": {
+            "z": 0,
+            "t": 0
+          },
+          "target_mpp": 0.5,
+          "resampling": "BILINEAR",
+          "pixel_format": "SRGB_UINT8"
+        },
+        "raster_to_slide": {
+          "scale_x": 1.25,
+          "scale_y": 0.625,
+          "translate_x": 0,
+          "translate_y": 5
+        }
+      }
+    },
+    {
+      "source_dimensions": [
+        64,
+        64
+      ],
+      "source_mpp": [
+        0.4,
+        0.4
+      ],
+      "target_mpp": 0.5,
+      "planner": "variable-field-v2",
+      "minimum_side_model_px": 32,
+      "small_roi_context": true,
+      "input_kind": "field",
+      "crop_padding_model_px": 0,
+      "name": "ceil-over-physical-edge",
+      "roi_bounds": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "frame_slide": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "expected_raster": {
+        "raster": {
+          "width": 52,
+          "height": 52,
+          "plane": {
+            "z": 0,
+            "t": 0
+          },
+          "target_mpp": 0.5,
+          "resampling": "BILINEAR",
+          "pixel_format": "SRGB_UINT8"
+        },
+        "raster_to_slide": {
+          "scale_x": 1.25,
+          "scale_y": 1.25,
+          "translate_x": 0,
+          "translate_y": 0
+        }
+      }
+    },
+    {
+      "source_dimensions": [
+        64,
+        64
+      ],
+      "source_mpp": [
+        0.4,
+        0.8
+      ],
+      "target_mpp": 0.5,
+      "planner": "variable-field-v2",
+      "minimum_side_model_px": 32,
+      "small_roi_context": true,
+      "input_kind": "field",
+      "crop_padding_model_px": 0,
+      "name": "original-translated-physical-bounds",
+      "roi_bounds": [
+        101,
+        51,
+        109,
+        61
+      ],
+      "level_zero_pixels_to_slide": {
+        "scale_x": 2,
+        "scale_y": 1.5,
+        "translate_x": 100,
+        "translate_y": 50
+      },
+      "frame_slide": [
+        100,
+        50,
+        125,
+        66
+      ],
+      "expected_raster": {
+        "raster": {
+          "width": 20,
+          "height": 26,
+          "plane": {
+            "z": 0,
+            "t": 0
+          },
+          "target_mpp": 0.5,
+          "resampling": "BILINEAR",
+          "pixel_format": "SRGB_UINT8"
+        },
+        "raster_to_slide": {
+          "scale_x": 1.25,
+          "scale_y": 0.625,
+          "translate_x": 100,
+          "translate_y": 50
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "source_file": {
+    "sha256": "3801fbdb8e5526cf56f77b0a9db433f088804cf0428d3d33e49aff12881c0852",
+    "size_bytes": 261864,
+    "source_adapter_id": "qupath.openslide.local",
+    "vendor": "generic-tiff",
+    "mpp_x": 0.25,
+    "mpp_y": 0.25
+  },
+  "levels": [
+    {
+      "resolution_level": 0,
+      "width": 513,
+      "height": 385,
+      "native_downsample": 1,
+      "qupath_downsample": 1
+    },
+    {
+      "resolution_level": 1,
+      "width": 257,
+      "height": 193,
+      "native_downsample": 1.9954638011330417,
+      "qupath_downsample": 2
+    },
+    {
+      "resolution_level": 2,
+      "width": 129,
+      "height": 97,
+      "native_downsample": 3.9729081754974827,
+      "qupath_downsample": 4
+    }
+  ],
+  "window_cases": [
+    {
+      "name": "level-one-cross-tile-and-bottom-edge",
+      "resolution_level": 1,
+      "pixel_rect": {
+        "x": 119,
+        "y": 73,
+        "width": 120,
+        "height": 120
+      },
+      "rgb_sha256": "a49a05ffaada828e392a419058044b05a02942198b942b7d93e1b616a3139b03"
+    },
+    {
+      "name": "level-one-minimal-target-footprint",
+      "resolution_level": 1,
+      "pixel_rect": {
+        "x": 125,
+        "y": 80,
+        "width": 96,
+        "height": 84
+      },
+      "rgb_sha256": "f8df9ba48266694a39322261fb6ce0b99be714070fd2411e21a2f7def53d1aeb"
+    },
+    {
+      "name": "level-two-right-and-bottom-edge",
+      "resolution_level": 2,
+      "pixel_rect": {
+        "x": 90,
+        "y": 60,
+        "width": 39,
+        "height": 37
+      },
+      "rgb_sha256": "ea68e7283ce8f114aab9226c222332f2fea255a3c9a064c33dc8ae54d1db41f1"
+    }
+  ],
+  "target_case": {
+    "source_window": "level-one-minimal-target-footprint",
+    "source_view_to_slide": {
+      "scale_x": 2,
+      "scale_y": 2,
+      "translate_x": 250,
+      "translate_y": 160
+    },
+    "original_physical_bounds_in_view": {
+      "min_x": -125,
+      "min_y": -80,
+      "max_x": 132,
+      "max_y": 113
+    },
+    "derived_physical_bounds_in_view": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 96,
+      "max_y": 84
+    },
+    "target_grid": {
+      "raster": {
+        "width": 80,
+        "height": 70,
+        "plane": {
+          "z": 0,
+          "t": 0
+        },
+        "target_mpp": 0.6,
+        "resampling": "BILINEAR",
+        "pixel_format": "SRGB_UINT8"
+      },
+      "raster_to_slide": {
+        "scale_x": 2.4,
+        "scale_y": 2.4,
+        "translate_x": 250,
+        "translate_y": 160
+      }
+    },
+    "target_rgb_sha256": "339f710e1b2974cb189e52fccd0375d4ddecff935eb19622a4192a86708c8c0c"
+  }
+}

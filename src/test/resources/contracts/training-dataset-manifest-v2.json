@@ -1,0 +1,119 @@
+{
+  "value": {
+    "artifacts": [
+      {
+        "image_index": 0,
+        "representation": "png"
+      },
+      {
+        "image_index": 1,
+        "representation": "png"
+      }
+    ],
+    "files": [
+      {
+        "path": "artifacts/0/origin.json",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "size_bytes": 100
+      },
+      {
+        "path": "artifacts/0/source.png",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "size_bytes": 500
+      },
+      {
+        "path": "artifacts/1/origin.json",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "size_bytes": 100
+      },
+      {
+        "path": "artifacts/1/source.png",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "size_bytes": 400
+      },
+      {
+        "path": "rois/0/objects.geojson",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "size_bytes": 120
+      },
+      {
+        "path": "rois/0/roi.geojson",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "size_bytes": 80
+      },
+      {
+        "path": "rois/1/objects.geojson",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "size_bytes": 120
+      },
+      {
+        "path": "rois/1/roi.geojson",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "size_bytes": 80
+      }
+    ],
+    "images": [
+      {
+        "project_entry_id_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+        "project_group_index": 0
+      },
+      {
+        "project_entry_id_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+        "project_group_index": 0
+      }
+    ],
+    "project_groups": [
+      "Control"
+    ],
+    "rois": [
+      {
+        "image_index": 0,
+        "source_envelope": {
+          "artifact_index": 0,
+          "pixel_rect": {
+            "height": 80,
+            "width": 100,
+            "x": 0,
+            "y": 0
+          },
+          "resolution_level": 0,
+          "series_index": 0
+        },
+        "source_roi_uuid": "11111111-1111-4111-8111-111111111111"
+      },
+      {
+        "image_index": 1,
+        "source_envelope": {
+          "artifact_index": 1,
+          "pixel_rect": {
+            "height": 40,
+            "width": 60,
+            "x": 0,
+            "y": 0
+          },
+          "resolution_level": 0,
+          "series_index": 0
+        },
+        "source_roi_uuid": "22222222-2222-4222-8222-222222222222"
+      }
+    ],
+    "schema_version": 2,
+    "task": {
+      "capability_id": "cellpose-sam-cls-fixed-v1",
+      "input_kind": "field",
+      "model_microns_per_pixel": 0.5,
+      "model_output": {
+        "classes": [
+          "Leydig cell"
+        ],
+        "type": "instance_segmentation"
+      },
+      "supports_negative_rois": true,
+      "annotation_class_map": {
+        "Leydig cell": "Leydig cell"
+      }
+    },
+    "dataset_digest": "4078d0eaf29dd27938f4f12f7d32178c69d00e9ab1851971fa48283760ec7593"
+  },
+  "sha256": "f0d1cff916bf93d15d27472ab6cb0b2b230b81a934446994d27e472e5343add8"
+}

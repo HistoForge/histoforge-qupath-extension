@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "actions": [
+    {
+      "name": "fill-all-rois",
+      "input": {
+        "type": "fill",
+        "work": {
+          "type": "all-models",
+          "regions": {
+            "type": "roi-regions",
+            "roi_ids": [
+              "22222222-2222-4222-8222-222222222222",
+              "11111111-1111-4111-8111-111111111111"
+            ]
+          }
+        },
+        "remove_overlapping_same_class_duplicates": true
+      },
+      "canonical": "{\"remove_overlapping_same_class_duplicates\":true,\"type\":\"fill\",\"work\":{\"regions\":{\"roi_ids\":[\"11111111-1111-4111-8111-111111111111\",\"22222222-2222-4222-8222-222222222222\"],\"type\":\"roi-regions\"},\"type\":\"all-models\"}}",
+      "sha256": "52e844b1489ab529cbec85304f29f6fe608b529553bd2980d914c891ded66c85"
+    },
+    {
+      "name": "redo-selected-rois",
+      "input": {
+        "type": "redo",
+        "work": {
+          "type": "selected-models",
+          "regions": {
+            "type": "roi-regions",
+            "roi_ids": [
+              "22222222-2222-4222-8222-222222222222",
+              "11111111-1111-4111-8111-111111111111"
+            ]
+          },
+          "steps": [
+            {
+              "step_id": "tubule_semantic",
+              "targets": {
+                "selectors": [
+                  {
+                    "type": "roi-target",
+                    "roi_id": "22222222-2222-4222-8222-222222222222"
+                  },
+                  {
+                    "type": "roi-target",
+                    "roi_id": "11111111-1111-4111-8111-111111111111"
+                  }
+                ]
+              }
+            },
+            {
+              "step_id": "germ_cell",
+              "targets": {
+                "selectors": [
+                  {
+                    "type": "roi-target",
+                    "roi_id": "22222222-2222-4222-8222-222222222222"
+                  },
+                  {
+                    "type": "parent-target",
+                    "region": {
+                      "type": "roi",
+                      "roi_id": "11111111-1111-4111-8111-111111111111"
+                    },
+                    "parent_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "remove_overlapping_same_class_duplicates": false
+      },
+      "canonical": "{\"remove_overlapping_same_class_duplicates\":false,\"type\":\"redo\",\"work\":{\"regions\":{\"roi_ids\":[\"11111111-1111-4111-8111-111111111111\",\"22222222-2222-4222-8222-222222222222\"],\"type\":\"roi-regions\"},\"steps\":[{\"step_id\":\"tubule_semantic\",\"targets\":{\"selectors\":[{\"roi_id\":\"11111111-1111-4111-8111-111111111111\",\"type\":\"roi-target\"},{\"roi_id\":\"22222222-2222-4222-8222-222222222222\",\"type\":\"roi-target\"}]}},{\"step_id\":\"germ_cell\",\"targets\":{\"selectors\":[{\"parent_id\":\"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa\",\"region\":{\"roi_id\":\"11111111-1111-4111-8111-111111111111\",\"type\":\"roi\"},\"type\":\"parent-target\"},{\"roi_id\":\"22222222-2222-4222-8222-222222222222\",\"type\":\"roi-target\"}]}}],\"type\":\"selected-models\"}}",
+      "sha256": "917052514d51bcc374f386bfb5bacdb5e37ecc988f56e436d5b6cd909de8dc52"
+    },
+    {
+      "name": "fill-selected-full-slide",
+      "input": {
+        "type": "fill",
+        "work": {
+          "type": "selected-models",
+          "regions": {
+            "type": "slide-region",
+            "region": {
+              "type": "full-slide"
+            }
+          },
+          "steps": [
+            {
+              "step_id": "tubule_semantic",
+              "targets": {
+                "selectors": [
+                  {
+                    "type": "slide-target"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "remove_overlapping_same_class_duplicates": true
+      },
+      "canonical": "{\"remove_overlapping_same_class_duplicates\":true,\"type\":\"fill\",\"work\":{\"regions\":{\"region\":{\"type\":\"full-slide\"},\"type\":\"slide-region\"},\"steps\":[{\"step_id\":\"tubule_semantic\",\"targets\":{\"selectors\":[{\"type\":\"slide-target\"}]}}],\"type\":\"selected-models\"}}",
+      "sha256": "cfa93a65356849f750eb8590ef905f62956539847e4af35cc3a251c39d1c866e"
+    },
+    {
+      "name": "metrics-annotation-union",
+      "input": {
+        "type": "metrics",
+        "targets": {
+          "type": "slide-region",
+          "region": {
+            "type": "annotation-union",
+            "annotation_ids": [
+              "44444444-4444-4444-8444-444444444444",
+              "33333333-3333-4333-8333-333333333333"
+            ]
+          }
+        }
+      },
+      "canonical": "{\"targets\":{\"region\":{\"annotation_ids\":[\"33333333-3333-4333-8333-333333333333\",\"44444444-4444-4444-8444-444444444444\"],\"type\":\"annotation-union\"},\"type\":\"slide-region\"},\"type\":\"metrics\"}",
+      "sha256": "ed7bf5f71c2ac789176d49b1dd26fc22745ff5dd8c5e3977892f042edd6d625f"
+    }
+  ],
+  "outputKeys": [
+    {
+      "name": "field-roi",
+      "input": {
+        "producer": {
+          "module_ref": "histoforge/spermatogenesis",
+          "step_id": "tubule_semantic"
+        },
+        "scope": {
+          "type": "field",
+          "region": {
+            "type": "roi",
+            "roi_id": "11111111-1111-4111-8111-111111111111"
+          }
+        }
+      },
+      "canonical": "{\"producer\":{\"module_ref\":\"histoforge/spermatogenesis\",\"step_id\":\"tubule_semantic\"},\"scope\":{\"region\":{\"roi_id\":\"11111111-1111-4111-8111-111111111111\",\"type\":\"roi\"},\"type\":\"field\"}}",
+      "sha256": "a0447b865a32f1c6fe3e8e554aecc4f817b752e56f3b777385650b8613707c7e"
+    },
+    {
+      "name": "parent-slide",
+      "input": {
+        "producer": {
+          "module_ref": "histoforge/spermatogenesis",
+          "step_id": "germ_cell"
+        },
+        "scope": {
+          "type": "parent",
+          "region": {
+            "type": "slide"
+          },
+          "parent_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        }
+      },
+      "canonical": "{\"producer\":{\"module_ref\":\"histoforge/spermatogenesis\",\"step_id\":\"germ_cell\"},\"scope\":{\"parent_id\":\"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa\",\"region\":{\"type\":\"slide\"},\"type\":\"parent\"}}",
+      "sha256": "6f269a0aacda4a0b72157e115c76a62bd644d4d40a1b1f5111ea1c4d893c0a99"
+    }
+  ]
+}

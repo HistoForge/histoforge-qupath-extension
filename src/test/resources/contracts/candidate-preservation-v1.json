@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "defaultEnabled": true,
+  "geometries": {
+    "candidate": {
+      "type": "Polygon",
+      "coordinates": [[[0, 0], [10, 0], [10, 10], [0, 10], [0, 0]]]
+    },
+    "positive-overlap": {
+      "type": "Polygon",
+      "coordinates": [[[5, 0], [15, 0], [15, 10], [5, 10], [5, 0]]]
+    },
+    "second-positive-overlap": {
+      "type": "Polygon",
+      "coordinates": [[[2, 2], [8, 2], [8, 8], [2, 8], [2, 2]]]
+    },
+    "boundary-touch": {
+      "type": "Polygon",
+      "coordinates": [[[10, 0], [20, 0], [20, 10], [10, 10], [10, 0]]]
+    },
+    "disjoint": {
+      "type": "Polygon",
+      "coordinates": [[[20, 0], [30, 0], [30, 10], [20, 10], [20, 0]]]
+    },
+    "candidate-two": {
+      "type": "Polygon",
+      "coordinates": [[[40, 0], [50, 0], [50, 10], [40, 10], [40, 0]]]
+    },
+    "overlap-two": {
+      "type": "Polygon",
+      "coordinates": [[[45, 0], [55, 0], [55, 10], [45, 10], [45, 0]]]
+    },
+    "candidate-three": {
+      "type": "Polygon",
+      "coordinates": [[[80, 0], [90, 0], [90, 10], [80, 10], [80, 0]]]
+    },
+    "multi-candidate": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [[[0, 0], [4, 0], [4, 4], [0, 4], [0, 0]]],
+        [[[20, 0], [24, 0], [24, 4], [20, 4], [20, 0]]]
+      ]
+    },
+    "multi-overlap": {
+      "type": "Polygon",
+      "coordinates": [[[22, 1], [26, 1], [26, 3], [22, 3], [22, 1]]]
+    }
+  },
+  "defaultCandidate": {
+    "id": "11111111-1111-4111-8111-111111111111",
+    "geometry": "candidate",
+    "pathClass": "Tubule",
+    "plane": {"z": 0, "t": 0}
+  },
+  "defaultExisting": {
+    "geometry": "positive-overlap",
+    "pathClass": "Tubule",
+    "plane": {"z": 0, "t": 0},
+    "objectType": "detection",
+    "attributed": false,
+    "administrative": false
+  },
+  "cases": [
+    {
+      "name": "enabled-detection-positive-overlap-suppresses",
+      "enabled": true,
+      "expectedRetained": false,
+      "expectedSuppressedCount": 1
+    },
+    {
+      "name": "disabled-keeps-both",
+      "enabled": false,
+      "expectedRetained": true,
+      "expectedSuppressedCount": 0
+    },
+    {
+      "name": "annotation-positive-overlap-suppresses",
+      "enabled": true,
+      "existing": {"objectType": "annotation"},
+      "expectedRetained": false,
+      "expectedSuppressedCount": 1
+    },
+    {
+      "name": "different-plane-does-not-suppress",
+      "enabled": true,
+      "existing": {"plane": {"z": 1, "t": 0}},
+      "expectedRetained": true,
+      "expectedSuppressedCount": 0
+    },
+    {
+      "name": "different-timepoint-does-not-suppress",
+      "enabled": true,
+      "existing": {"plane": {"z": 0, "t": 1}},
+      "expectedRetained": true,
+      "expectedSuppressedCount": 0
+    },
+    {
+      "name": "different-class-does-not-suppress",
+      "enabled": true,
+      "existing": {"pathClass": "Lumen"},
+      "expectedRetained": true,
+      "expectedSuppressedCount": 0
+    },
+    {
+      "name": "attributed-other-producer-does-not-suppress",
+      "enabled": true,
+      "existing": {"attributed": true},
+      "expectedRetained": true,
+      "expectedSuppressedCount": 0
+    },
+    {
+      "name": "administrative-object-does-not-suppress",
+      "enabled": true,
+      "existing": {"objectType": "annotation", "administrative": true},
+      "expectedRetained": true,
+      "expectedSuppressedCount": 0
+    },
+    {
+      "name": "unsupported-object-type-does-not-suppress",
+      "enabled": true,
+      "existing": {"objectType": "other"},
+      "expectedRetained": true,
+      "expectedSuppressedCount": 0
+    },
+    {
+      "name": "boundary-only-contact-does-not-suppress",
+      "enabled": true,
+      "existing": {"geometry": "boundary-touch"},
+      "expectedRetained": true,
+      "expectedSuppressedCount": 0
+    },
+    {
+      "name": "disjoint-does-not-suppress",
+      "enabled": true,
+      "existing": {"geometry": "disjoint"},
+      "expectedRetained": true,
+      "expectedSuppressedCount": 0
+    },
+    {
+      "name": "unclassified-object-does-not-suppress",
+      "enabled": true,
+      "existing": {"pathClass": null},
+      "expectedRetained": true,
+      "expectedSuppressedCount": 0
+    },
+    {
+      "name": "multipolygon-positive-overlap-suppresses",
+      "enabled": true,
+      "candidate": {"geometry": "multi-candidate"},
+      "existing": {"geometry": "multi-overlap"},
+      "expectedRetained": false,
+      "expectedSuppressedCount": 1
+    }
+  ],
+  "multiCandidateCase": {
+    "name": "each-candidate-is-counted-once-with-many-overlaps",
+    "enabled": true,
+    "candidates": [
+      {
+        "id": "11111111-1111-4111-8111-111111111111",
+        "geometry": "candidate",
+        "pathClass": "Tubule",
+        "plane": {"z": 0, "t": 0}
+      },
+      {
+        "id": "22222222-2222-4222-8222-222222222222",
+        "geometry": "candidate-two",
+        "pathClass": "Tubule",
+        "plane": {"z": 0, "t": 0}
+      },
+      {
+        "id": "33333333-3333-4333-8333-333333333333",
+        "geometry": "candidate-three",
+        "pathClass": "Tubule",
+        "plane": {"z": 0, "t": 0}
+      }
+    ],
+    "existing": [
+      {
+        "geometry": "positive-overlap",
+        "pathClass": "Tubule",
+        "plane": {"z": 0, "t": 0},
+        "objectType": "detection",
+        "attributed": false,
+        "administrative": false
+      },
+      {
+        "geometry": "second-positive-overlap",
+        "pathClass": "Tubule",
+        "plane": {"z": 0, "t": 0},
+        "objectType": "annotation",
+        "attributed": false,
+        "administrative": false
+      },
+      {
+        "geometry": "overlap-two",
+        "pathClass": "Tubule",
+        "plane": {"z": 0, "t": 0},
+        "objectType": "detection",
+        "attributed": false,
+        "administrative": false
+      }
+    ],
+    "expectedRetainedIds": ["33333333-3333-4333-8333-333333333333"],
+    "expectedSuppressedCount": 2
+  },
+  "sharedExistingCase": {
+    "name": "one-existing-object-independently-suppresses-each-candidate",
+    "enabled": true,
+    "candidates": [
+      {
+        "id": "44444444-4444-4444-8444-444444444444",
+        "geometry": "candidate",
+        "pathClass": "Tubule",
+        "plane": {"z": 0, "t": 0}
+      },
+      {
+        "id": "55555555-5555-4555-8555-555555555555",
+        "geometry": "candidate",
+        "pathClass": "Tubule",
+        "plane": {"z": 0, "t": 0}
+      }
+    ],
+    "existing": [
+      {
+        "geometry": "positive-overlap",
+        "pathClass": "Tubule",
+        "plane": {"z": 0, "t": 0},
+        "objectType": "detection",
+        "attributed": false,
+        "administrative": false
+      }
+    ],
+    "expectedRetainedIds": [],
+    "expectedSuppressedCount": 2
+  }
+}

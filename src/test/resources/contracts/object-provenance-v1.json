@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "metadataKey": "histoforge:provenance",
+  "cases": [
+    {
+      "name": "field-roi-output",
+      "input": {
+        "schema_version": 1,
+        "output": {
+          "producer": {
+            "module_ref": "histoforge/spermatogenesis",
+            "step_id": "tubule_semantic"
+          },
+          "scope": {
+            "type": "field",
+            "region": {
+              "type": "roi",
+              "roi_id": "11111111-1111-4111-8111-111111111111"
+            }
+          }
+        },
+        "output_generation_id": "55555555-5555-4555-8555-555555555555"
+      },
+      "canonical": "{\"output\":{\"producer\":{\"module_ref\":\"histoforge/spermatogenesis\",\"step_id\":\"tubule_semantic\"},\"scope\":{\"region\":{\"roi_id\":\"11111111-1111-4111-8111-111111111111\",\"type\":\"roi\"},\"type\":\"field\"}},\"output_generation_id\":\"55555555-5555-4555-8555-555555555555\",\"schema_version\":1}",
+      "sha256": "a88a5a918d7e342398d82db293ea2294ce5109b48770ada97c260e5cfb720475"
+    },
+    {
+      "name": "parent-slide-output",
+      "input": {
+        "schema_version": 1,
+        "output": {
+          "producer": {
+            "module_ref": "histoforge/spermatogenesis",
+            "step_id": "germ_cell"
+          },
+          "scope": {
+            "type": "parent",
+            "region": {
+              "type": "slide"
+            },
+            "parent_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+          }
+        },
+        "output_generation_id": "66666666-6666-4666-8666-666666666666"
+      },
+      "canonical": "{\"output\":{\"producer\":{\"module_ref\":\"histoforge/spermatogenesis\",\"step_id\":\"germ_cell\"},\"scope\":{\"parent_id\":\"aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa\",\"region\":{\"type\":\"slide\"},\"type\":\"parent\"}},\"output_generation_id\":\"66666666-6666-4666-8666-666666666666\",\"schema_version\":1}",
+      "sha256": "aee11125b3d2a5d89ae7024f6e158c36c8b2cb66522803231c2403af8994e3f2"
+    }
+  ],
+  "invalidMutations": [
+    {
+      "name": "unsupported-schema",
+      "operation": "set",
+      "field": "schema_version",
+      "value": 2
+    },
+    {
+      "name": "noninteger-schema",
+      "operation": "set",
+      "field": "schema_version",
+      "value": 1.0
+    },
+    {
+      "name": "boolean-schema",
+      "operation": "set",
+      "field": "schema_version",
+      "value": true
+    },
+    {
+      "name": "missing-output",
+      "operation": "remove",
+      "field": "output"
+    },
+    {
+      "name": "invalid-output",
+      "operation": "set",
+      "field": "output",
+      "value": null
+    },
+    {
+      "name": "malformed-generation-id",
+      "operation": "set",
+      "field": "output_generation_id",
+      "value": "not-a-uuid"
+    },
+    {
+      "name": "noncanonical-generation-id",
+      "operation": "set",
+      "field": "output_generation_id",
+      "value": "AAAAAAAA-AAAA-4AAA-8AAA-AAAAAAAAAAAA"
+    },
+    {
+      "name": "unknown-field",
+      "operation": "set",
+      "field": "unexpected",
+      "value": true
+    }
+  ]
+}

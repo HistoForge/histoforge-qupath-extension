@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "accepted": {
+    "value": {
+      "job_id": "11111111-1111-4111-8111-111111111111"
+    },
+    "canonical": "{\"job_id\":\"11111111-1111-4111-8111-111111111111\"}",
+    "sha256": "3d07e8d49e092cc9e4bcd077f17e8c4c1ce2e9c356e6d3db09cb1a851dad95d2"
+  },
+  "statusCases": [
+    {
+      "name": "queued-install",
+      "value": {
+        "job_id": "11111111-1111-4111-8111-111111111111",
+        "type": "INSTALL",
+        "requested_module_ref": "owner/module",
+        "phase": "QUEUED",
+        "updated_at": "2026-08-15T01:02:03.004Z"
+      },
+      "canonical": "{\"job_id\":\"11111111-1111-4111-8111-111111111111\",\"phase\":\"QUEUED\",\"requested_module_ref\":\"owner/module\",\"type\":\"INSTALL\",\"updated_at\":\"2026-08-15T01:02:03.004Z\"}",
+      "sha256": "5e15e96ff00baa2ef86281fa2a6237b7e45a0a0a96b3c27fda4b72590d94fac2"
+    },
+    {
+      "name": "succeeded-install",
+      "value": {
+        "job_id": "22222222-2222-4222-8222-222222222222",
+        "type": "INSTALL",
+        "requested_module_ref": "owner/module",
+        "phase": "SUCCEEDED",
+        "updated_at": "2026-08-15T02:03:04.005Z",
+        "result": {
+          "type": "installed",
+          "installed_module": {
+            "module_ref": "owner/module",
+            "resolved_commit_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "recipe_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "content_digest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+          }
+        }
+      },
+      "canonical": "{\"job_id\":\"22222222-2222-4222-8222-222222222222\",\"phase\":\"SUCCEEDED\",\"requested_module_ref\":\"owner/module\",\"result\":{\"installed_module\":{\"content_digest\":\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\",\"module_ref\":\"owner/module\",\"recipe_digest\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"resolved_commit_sha\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"type\":\"installed\"},\"type\":\"INSTALL\",\"updated_at\":\"2026-08-15T02:03:04.005Z\"}",
+      "sha256": "f82c600fa79fd20e429c518c6b83f01bef8cea6693875c384dfd7604eb08df69"
+    },
+    {
+      "name": "succeeded-publish",
+      "value": {
+        "job_id": "33333333-3333-4333-8333-333333333333",
+        "type": "PUBLISH",
+        "requested_module_ref": "owner/published",
+        "phase": "SUCCEEDED",
+        "updated_at": "2026-08-15T03:04:05.006Z",
+        "result": {
+          "type": "published",
+          "target_repository": "owner/published",
+          "commit_sha": "dddddddddddddddddddddddddddddddddddddddd",
+          "local_sync": {
+            "type": "not-requested"
+          }
+        }
+      },
+      "canonical": "{\"job_id\":\"33333333-3333-4333-8333-333333333333\",\"phase\":\"SUCCEEDED\",\"requested_module_ref\":\"owner/published\",\"result\":{\"commit_sha\":\"dddddddddddddddddddddddddddddddddddddddd\",\"local_sync\":{\"type\":\"not-requested\"},\"target_repository\":\"owner/published\",\"type\":\"published\"},\"type\":\"PUBLISH\",\"updated_at\":\"2026-08-15T03:04:05.006Z\"}",
+      "sha256": "ba0d66d186fefebcf4e8e37fab5fc3dd0845c41324cea7989ea041725781d86a"
+    },
+    {
+      "name": "partial-publish",
+      "value": {
+        "job_id": "44444444-4444-4444-8444-444444444444",
+        "type": "PUBLISH",
+        "requested_module_ref": "owner/published",
+        "phase": "PARTIAL",
+        "updated_at": "2026-08-15T04:05:06.007Z",
+        "result": {
+          "type": "published",
+          "target_repository": "owner/published",
+          "commit_sha": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "local_sync": {
+            "type": "failed",
+            "failure": {
+              "schema_version": 1,
+              "code": "SERVICE_UNAVAILABLE",
+              "message": "local synchronization failed",
+              "resource_id": "owner/published"
+            }
+          }
+        }
+      },
+      "canonical": "{\"job_id\":\"44444444-4444-4444-8444-444444444444\",\"phase\":\"PARTIAL\",\"requested_module_ref\":\"owner/published\",\"result\":{\"commit_sha\":\"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\",\"local_sync\":{\"failure\":{\"code\":\"SERVICE_UNAVAILABLE\",\"message\":\"local synchronization failed\",\"resource_id\":\"owner/published\",\"schema_version\":1},\"type\":\"failed\"},\"target_repository\":\"owner/published\",\"type\":\"published\"},\"type\":\"PUBLISH\",\"updated_at\":\"2026-08-15T04:05:06.007Z\"}",
+      "sha256": "c7269efb1b286c88dff7ff37aedb4b4577a6299da88bcaec438b687de2a90eee"
+    },
+    {
+      "name": "succeeded-publish-with-local-sync",
+      "value": {
+        "job_id": "66666666-6666-4666-8666-666666666666",
+        "type": "PUBLISH",
+        "requested_module_ref": "owner/published",
+        "phase": "SUCCEEDED",
+        "updated_at": "2026-08-15T06:07:08.009Z",
+        "result": {
+          "type": "published",
+          "target_repository": "owner/published",
+          "commit_sha": "ffffffffffffffffffffffffffffffffffffffff",
+          "local_sync": {
+            "type": "succeeded",
+            "installed_module": {
+              "module_ref": "owner/published",
+              "resolved_commit_sha": "ffffffffffffffffffffffffffffffffffffffff",
+              "recipe_digest": "1111111111111111111111111111111111111111111111111111111111111111",
+              "content_digest": "2222222222222222222222222222222222222222222222222222222222222222"
+            }
+          }
+        }
+      },
+      "canonical": "{\"job_id\":\"66666666-6666-4666-8666-666666666666\",\"phase\":\"SUCCEEDED\",\"requested_module_ref\":\"owner/published\",\"result\":{\"commit_sha\":\"ffffffffffffffffffffffffffffffffffffffff\",\"local_sync\":{\"installed_module\":{\"content_digest\":\"2222222222222222222222222222222222222222222222222222222222222222\",\"module_ref\":\"owner/published\",\"recipe_digest\":\"1111111111111111111111111111111111111111111111111111111111111111\",\"resolved_commit_sha\":\"ffffffffffffffffffffffffffffffffffffffff\"},\"type\":\"succeeded\"},\"target_repository\":\"owner/published\",\"type\":\"published\"},\"type\":\"PUBLISH\",\"updated_at\":\"2026-08-15T06:07:08.009Z\"}",
+      "sha256": "a645234d87df561b4b0dd7dc2db6d9e2d116f5bc11e2867c08f188454d5a56ef"
+    },
+    {
+      "name": "failed-install",
+      "value": {
+        "job_id": "55555555-5555-4555-8555-555555555555",
+        "type": "INSTALL",
+        "requested_module_ref": "owner/module",
+        "phase": "FAILED",
+        "updated_at": "2026-08-15T05:06:07.008Z",
+        "failure": {
+          "schema_version": 1,
+          "code": "REGISTRY_AUTHENTICATION_FAILED",
+          "message": "registry access denied",
+          "resource_id": "owner/module"
+        }
+      },
+      "canonical": "{\"failure\":{\"code\":\"REGISTRY_AUTHENTICATION_FAILED\",\"message\":\"registry access denied\",\"resource_id\":\"owner/module\",\"schema_version\":1},\"job_id\":\"55555555-5555-4555-8555-555555555555\",\"phase\":\"FAILED\",\"requested_module_ref\":\"owner/module\",\"type\":\"INSTALL\",\"updated_at\":\"2026-08-15T05:06:07.008Z\"}",
+      "sha256": "ab14e448dcab9524ae5c97ffbf4b61317bee2abd223a2e1f345294cbad17c8dc"
+    }
+  ],
+  "page": {
+    "statusNames": [
+      "partial-publish",
+      "succeeded-publish"
+    ],
+    "nextCursor": "eyJqb2JfaWQiOiIzMzMzMzMzMy0zMzMzLTQzMzMtODMzMy0zMzMzMzMzMzMzMzMiLCJ1cGRhdGVkX2F0IjoiMjAyNi0wOC0xNVQwMzowNDowNS4wMDZaIn0",
+    "canonical": "{\"jobs\":[{\"job_id\":\"44444444-4444-4444-8444-444444444444\",\"phase\":\"PARTIAL\",\"requested_module_ref\":\"owner/published\",\"result\":{\"commit_sha\":\"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\",\"local_sync\":{\"failure\":{\"code\":\"SERVICE_UNAVAILABLE\",\"message\":\"local synchronization failed\",\"resource_id\":\"owner/published\",\"schema_version\":1},\"type\":\"failed\"},\"target_repository\":\"owner/published\",\"type\":\"published\"},\"type\":\"PUBLISH\",\"updated_at\":\"2026-08-15T04:05:06.007Z\"},{\"job_id\":\"33333333-3333-4333-8333-333333333333\",\"phase\":\"SUCCEEDED\",\"requested_module_ref\":\"owner/published\",\"result\":{\"commit_sha\":\"dddddddddddddddddddddddddddddddddddddddd\",\"local_sync\":{\"type\":\"not-requested\"},\"target_repository\":\"owner/published\",\"type\":\"published\"},\"type\":\"PUBLISH\",\"updated_at\":\"2026-08-15T03:04:05.006Z\"}],\"next_cursor\":\"eyJqb2JfaWQiOiIzMzMzMzMzMy0zMzMzLTQzMzMtODMzMy0zMzMzMzMzMzMzMzMiLCJ1cGRhdGVkX2F0IjoiMjAyNi0wOC0xNVQwMzowNDowNS4wMDZaIn0\"}",
+    "sha256": "c41854f302ca61cad92366dd60b8dc544d1a4d193e194d26d6baccf7dd4a1763"
+  }
+}

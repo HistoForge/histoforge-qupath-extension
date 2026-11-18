@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "modules": {
+    "leydig": {
+      "recipeDigest": "2c230a4d7e164288ef77ebf8cae1f59c3989e7cd01f53bed515d917a3e68e28f",
+      "modelConfigDigests": {
+        "leydig_nuclear": "f2a2fb861c57d86502ba49116fb4a1370be31e9b8fad653a6fa718a74231b988",
+        "leydig_wholecell": "7c19b31ccf04303f6e9a10931a9d361d7f2594078174f91850f071a1cbcb57e3"
+      },
+      "scriptSetDigest": "ae2110a70d9b9384237f051c3f59c2f38107c83aae83fa144769692357e59b04",
+      "stepIds": [
+        "leydig_nuclear",
+        "leydig_wholecell",
+        "metrics.groovy"
+      ]
+    },
+    "leydig_nuclear": {
+      "recipeDigest": "530c1fead04983c8debd041b2b89833025cd1776d8ea112405460c88e227f002",
+      "modelConfigDigests": {
+        "leydig_nuclear": "f2a2fb861c57d86502ba49116fb4a1370be31e9b8fad653a6fa718a74231b988"
+      },
+      "scriptSetDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "stepIds": [
+        "leydig_nuclear"
+      ]
+    },
+    "leydig_wholecell": {
+      "recipeDigest": "f34b91fe30c37e318f3b981225c8c0febe5c00bb9a4b424e95123a85a3d2b001",
+      "modelConfigDigests": {
+        "leydig_wholecell": "7c19b31ccf04303f6e9a10931a9d361d7f2594078174f91850f071a1cbcb57e3"
+      },
+      "scriptSetDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "stepIds": [
+        "leydig_wholecell"
+      ]
+    },
+    "lumen": {
+      "recipeDigest": "217b45d17b90b824e8bbd0c4e2826b64eb0bbf87f6468c9acc9d83a94cc24aba",
+      "modelConfigDigests": {
+        "lumen": "f4253bc3837c7288b0b2ff8ca04ee69fbd8a3c73ef50694167507cf72cd60375"
+      },
+      "scriptSetDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "stepIds": [
+        "lumen"
+      ]
+    },
+    "spermatogenesis": {
+      "recipeDigest": "77518a73226cc6d39a8591c3fc8095cfa7bcbd8b6c1844fb6e46347e3883a10e",
+      "modelConfigDigests": {
+        "germ_cell": "65588bfc6212d998edc2ba441baff76bc54507aca07643473934b685053cbadf",
+        "lumen": "f4253bc3837c7288b0b2ff8ca04ee69fbd8a3c73ef50694167507cf72cd60375",
+        "tubule_semantic": "ad598bf2d5aa4cc34e94e7a751a76c7c653f97c9e9763f8a8cf65e4717aad1cb"
+      },
+      "scriptSetDigest": "964e125ea2baecbc0685312b1efca25f7f69587e59032a9218141e70c145785a",
+      "stepIds": [
+        "tubule_semantic",
+        "lumen",
+        "cross_section.groovy",
+        "germ_cell",
+        "metrics.groovy"
+      ]
+    },
+    "tubule": {
+      "recipeDigest": "a0f399045641c768f98ebfe6b34143198a14face27d34b1bd80b66241c1bd222",
+      "modelConfigDigests": {
+        "lumen": "f4253bc3837c7288b0b2ff8ca04ee69fbd8a3c73ef50694167507cf72cd60375",
+        "tubule_semantic": "ad598bf2d5aa4cc34e94e7a751a76c7c653f97c9e9763f8a8cf65e4717aad1cb"
+      },
+      "scriptSetDigest": "35a76749fed47fe1e47315e64f50f80a42a25ffa7b3d4df32ad9b0ac7a60ce4e",
+      "stepIds": [
+        "tubule_semantic",
+        "lumen",
+        "cross_section.groovy",
+        "metrics.groovy"
+      ]
+    },
+    "tubule_semantic": {
+      "recipeDigest": "746cd041498f4b5e395935d236d9d736fcdcde8e75590ee5cc8ad2ab8568e0b3",
+      "modelConfigDigests": {
+        "tubule_semantic": "ad598bf2d5aa4cc34e94e7a751a76c7c653f97c9e9763f8a8cf65e4717aad1cb"
+      },
+      "scriptSetDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "stepIds": [
+        "tubule_semantic"
+      ]
+    }
+  }
+}

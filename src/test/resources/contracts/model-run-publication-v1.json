@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "name": "complete-finite",
+      "requestFixtureCase": 0,
+      "phase": "COMPLETE",
+      "phaseDeadline": "2026-08-13T12:00:00.000Z",
+      "requestArtifactId": "20202020-2020-4020-8020-202020202020",
+      "terminalManifestArtifactId": "22222222-2222-4222-8222-222222222222",
+      "planSha256": "d7bb1aeff01ded96f8472d3e2c8f6d0ff46cda40ca8d1fd9b1f8f876096e94a2",
+      "featureStreamArtifact": {
+        "artifact_id": "21212121-2121-4121-8121-212121212121",
+        "media_type": "application/geo+json-seq",
+        "size_bytes": 20,
+        "sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+        "content_encoding": "gzip"
+      },
+      "manifestDigest": "749a22f0825b88ad99c745f043b9303b1237d417c68505c1a1c0d0cd6343ee3f",
+      "manifestArtifactSize": 2448,
+      "manifestArtifactSha256": "2860889f01893533047fd85f7097ca35513bb5b6f01f661dd50ea5d884d79097",
+      "statusSha256": "3ec5e36988eb700fe7a799b62167ba0f2a6bc96d9bafd873d0c2328b93bf5f4b"
+    },
+    {
+      "name": "partial-core-halo",
+      "requestFixtureCase": 1,
+      "phase": "PARTIAL",
+      "phaseDeadline": "2026-08-13T13:00:00.000Z",
+      "requestArtifactId": "30303030-3030-4030-8030-303030303030",
+      "terminalManifestArtifactId": "32323232-3232-4232-8232-323232323232",
+      "planSha256": "b0ed73803ec974ab4ac0f24405f847f6994ed53c890061780da21b06ca9f3ada",
+      "reusableStateArtifact": {
+        "artifact_id": "31313131-3131-4131-8131-313131313131",
+        "media_type": "application/octet-stream",
+        "size_bytes": 4096,
+        "sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+      },
+      "executionIdentityDigest": "0d81663721f6bfb912ab93dbd7f1632807e59395ecfac2fa22a743ce3e51a3ff",
+      "manifestDigest": "89d0a422e4c7768ec49d80cd23847323cc2283bd8c830359ebf0320e588f35f3",
+      "manifestArtifactSize": 1920,
+      "manifestArtifactSha256": "dd815cfd958b7600880c17c5a5a71c1fe3af95f87fbd458fe2692fa8c85022a1",
+      "statusSha256": "bd9460751497da2b1bbd2d5e8f2308960edad7b6f4691fb787caf4aca0948870"
+    },
+    {
+      "name": "partial-global-checkpoint",
+      "requestFixtureCase": 2,
+      "phase": "PARTIAL",
+      "phaseDeadline": "2026-08-13T14:00:00.000Z",
+      "requestArtifactId": "40404040-4040-4040-8040-404040404040",
+      "terminalManifestArtifactId": "42424242-4242-4242-8242-424242424242",
+      "planSha256": "5393ed2861109700498b5591ee5f7b3fef8c66462fd9c234838a68d20e05809d",
+      "checkpointStateArtifact": {
+        "artifact_id": "41414141-4141-4141-8141-414141414141",
+        "media_type": "application/octet-stream",
+        "size_bytes": 8192,
+        "sha256": "4444444444444444444444444444444444444444444444444444444444444444"
+      },
+      "checkpointSequence": 64,
+      "executionIdentityDigest": "0adc0c2d83d802f0b524011d9f7d93b16b342289093f2269464eef45925db754",
+      "manifestDigest": "48b10428956a1225d3ad4d184ff7522db71c756b99ad04c71f53ef9a8c7e10ee",
+      "manifestArtifactSize": 2035,
+      "manifestArtifactSha256": "e756bf34390674fb8ce8a48738d35f7890a36d6b0a722f6503ce92f13ed1f60e",
+      "statusSha256": "02d88f41a6dabdc2c442f10758365dd642f89b5c9686cfa2053f5b13c5c077e8"
+    }
+  ]
+}

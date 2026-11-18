@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "encodedArtifactRef": {
+    "value": {
+      "artifact_id": "99999999-9999-4999-8999-999999999993",
+      "media_type": "application/geo+json-seq",
+      "content_encoding": "gzip",
+      "size_bytes": 20,
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "canonical": "{\"artifact_id\":\"99999999-9999-4999-8999-999999999993\",\"content_encoding\":\"gzip\",\"media_type\":\"application/geo+json-seq\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"size_bytes\":20}",
+    "sha256": "4e210238877d59cb414d9b7b0d820b4e5df642f3460f8fadcfd6f0b7f5b8b6c1"
+  },
+  "cases": [
+    {
+      "name": "original-multilevel-publication",
+      "startCaseName": "original-local-multilevel-normalizes-order",
+      "chunkCommit": {
+        "chunk_id": 1,
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "chunkAccepted": {
+        "schema_version": 2,
+        "artifact_id": "22222222-2222-4222-8222-222222222222",
+        "chunk": {
+          "chunk_id": 1,
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      },
+      "chunkAcceptedCanonical": "{\"artifact_id\":\"22222222-2222-4222-8222-222222222222\",\"chunk\":{\"chunk_id\":1,\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"schema_version\":2}",
+      "chunkAcceptedSha256": "2dfb7ffb7a8960aa632315eba781c2a374b14444c08e465da26b02aabeb128e1",
+      "sealRequest": {
+        "bytes_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "sealRequestCanonical": "{\"bytes_digest\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}",
+      "sealRequestSha256": "321cffa8680567725389e38b780801c1a2f62d5a72470ec13ee0d3b562747ab9",
+      "validatedLevels": [
+        {
+          "series_index": 2,
+          "resolution_level": 3,
+          "width": 1250,
+          "height": 750
+        },
+        {
+          "series_index": 2,
+          "resolution_level": 0,
+          "width": 10000,
+          "height": 6000
+        },
+        {
+          "series_index": 2,
+          "resolution_level": 2,
+          "width": 2500,
+          "height": 1500
+        },
+        {
+          "series_index": 2,
+          "resolution_level": 1,
+          "width": 5000,
+          "height": 3000
+        }
+      ],
+      "manifest": {
+        "artifact_id": "22222222-2222-4222-8222-222222222222",
+        "bytes_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "container": "SLIDE_FILE",
+        "creation_action_id": "11111111-1111-4111-8111-111111111111",
+        "manifest_digest": "433458e2970064ee3b896bd00718cc3e887d7dc4b2f795eb210a3dd006d8fc63",
+        "schema_version": 2,
+        "total_bytes": 10485761,
+        "validated_levels": [
+          {
+            "height": 6000,
+            "resolution_level": 0,
+            "series_index": 2,
+            "width": 10000
+          },
+          {
+            "height": 3000,
+            "resolution_level": 1,
+            "series_index": 2,
+            "width": 5000
+          },
+          {
+            "height": 1500,
+            "resolution_level": 2,
+            "series_index": 2,
+            "width": 2500
+          },
+          {
+            "height": 750,
+            "resolution_level": 3,
+            "series_index": 2,
+            "width": 1250
+          }
+        ]
+      },
+      "manifestCanonical": "{\"artifact_id\":\"22222222-2222-4222-8222-222222222222\",\"bytes_digest\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"container\":\"SLIDE_FILE\",\"creation_action_id\":\"11111111-1111-4111-8111-111111111111\",\"manifest_digest\":\"433458e2970064ee3b896bd00718cc3e887d7dc4b2f795eb210a3dd006d8fc63\",\"schema_version\":2,\"total_bytes\":10485761,\"validated_levels\":[{\"height\":6000,\"resolution_level\":0,\"series_index\":2,\"width\":10000},{\"height\":3000,\"resolution_level\":1,\"series_index\":2,\"width\":5000},{\"height\":1500,\"resolution_level\":2,\"series_index\":2,\"width\":2500},{\"height\":750,\"resolution_level\":3,\"series_index\":2,\"width\":1250}]}",
+      "manifestSha256": "64b478b39bb4e986dc5aba60d3033bbebf891c40b82a53e8fe10a36876bbe8c4",
+      "artifactRef": {
+        "artifact_id": "22222222-2222-4222-8222-222222222222",
+        "creation_action_id": "11111111-1111-4111-8111-111111111111",
+        "start_request_digest": "06a0c3331095a0c3648f03b2c9e05f8988a3da6be504aa47c1cc833a856c41b2",
+        "bytes_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "manifest_digest": "433458e2970064ee3b896bd00718cc3e887d7dc4b2f795eb210a3dd006d8fc63",
+        "container": "SLIDE_FILE"
+      },
+      "artifactRefCanonical": "{\"artifact_id\":\"22222222-2222-4222-8222-222222222222\",\"bytes_digest\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"container\":\"SLIDE_FILE\",\"creation_action_id\":\"11111111-1111-4111-8111-111111111111\",\"manifest_digest\":\"433458e2970064ee3b896bd00718cc3e887d7dc4b2f795eb210a3dd006d8fc63\",\"start_request_digest\":\"06a0c3331095a0c3648f03b2c9e05f8988a3da6be504aa47c1cc833a856c41b2\"}",
+      "artifactRefSha256": "9f7c689c0f3e636eb1822aae8be3351c97e04baf8b3eab0e71b4768c7cd2de54",
+      "sealed": {
+        "schema_version": 2,
+        "artifact": {
+          "artifact_id": "22222222-2222-4222-8222-222222222222",
+          "creation_action_id": "11111111-1111-4111-8111-111111111111",
+          "start_request_digest": "06a0c3331095a0c3648f03b2c9e05f8988a3da6be504aa47c1cc833a856c41b2",
+          "bytes_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "manifest_digest": "433458e2970064ee3b896bd00718cc3e887d7dc4b2f795eb210a3dd006d8fc63",
+          "container": "SLIDE_FILE"
+        },
+        "absolute_expires_at": "2026-08-13T12:34:56.789Z"
+      },
+      "sealedCanonical": "{\"absolute_expires_at\":\"2026-08-13T12:34:56.789Z\",\"artifact\":{\"artifact_id\":\"22222222-2222-4222-8222-222222222222\",\"bytes_digest\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"container\":\"SLIDE_FILE\",\"creation_action_id\":\"11111111-1111-4111-8111-111111111111\",\"manifest_digest\":\"433458e2970064ee3b896bd00718cc3e887d7dc4b2f795eb210a3dd006d8fc63\",\"start_request_digest\":\"06a0c3331095a0c3648f03b2c9e05f8988a3da6be504aa47c1cc833a856c41b2\"},\"schema_version\":2}",
+      "sealedSha256": "9da2072059fe271460c02ed3ecca75039d5702c2927af7eac09ebf34d9563589",
+      "status": {
+        "schema_version": 2,
+        "artifact_id": "22222222-2222-4222-8222-222222222222",
+        "start_request_digest": "06a0c3331095a0c3648f03b2c9e05f8988a3da6be504aa47c1cc833a856c41b2",
+        "phase": "UPLOADING",
+        "missing_chunks": [
+          0,
+          2
+        ],
+        "upload_idle_expires_at": "2026-08-13T11:34:56.789Z",
+        "absolute_expires_at": "2026-08-13T12:34:56.789Z"
+      },
+      "statusCanonical": "{\"absolute_expires_at\":\"2026-08-13T12:34:56.789Z\",\"artifact_id\":\"22222222-2222-4222-8222-222222222222\",\"missing_chunks\":[0,2],\"phase\":\"UPLOADING\",\"schema_version\":2,\"start_request_digest\":\"06a0c3331095a0c3648f03b2c9e05f8988a3da6be504aa47c1cc833a856c41b2\",\"upload_idle_expires_at\":\"2026-08-13T11:34:56.789Z\"}",
+      "statusSha256": "fb5586ea92e711613bbd08eb426152ec0039f0af67872653cf46da46f7dbb211"
+    },
+    {
+      "name": "derived-region-publication",
+      "startCaseName": "derived-region-s3-etag",
+      "chunkCommit": {
+        "chunk_id": 3,
+        "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      "chunkAccepted": {
+        "schema_version": 2,
+        "artifact_id": "66666666-6666-4666-8666-666666666666",
+        "chunk": {
+          "chunk_id": 3,
+          "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        }
+      },
+      "chunkAcceptedCanonical": "{\"artifact_id\":\"66666666-6666-4666-8666-666666666666\",\"chunk\":{\"chunk_id\":3,\"sha256\":\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\"},\"schema_version\":2}",
+      "chunkAcceptedSha256": "63c2dd236b72b04dda659ee89535a8b66caca2f3de9a360791b693fc15574dd6",
+      "sealRequest": {
+        "bytes_digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      },
+      "sealRequestCanonical": "{\"bytes_digest\":\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"}",
+      "sealRequestSha256": "f751765b939b2c9b8280734fa69b40b444e6f842bcd0a8f10dd88e2592034ea5",
+      "validatedLevels": [
+        {
+          "series_index": 0,
+          "resolution_level": 0,
+          "width": 4096,
+          "height": 3072
+        }
+      ],
+      "manifest": {
+        "artifact_id": "66666666-6666-4666-8666-666666666666",
+        "bytes_digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "container": "PNG",
+        "creation_action_id": "55555555-5555-4555-8555-555555555555",
+        "manifest_digest": "c0cbcdaf2e0974bd3885f67644638a30bb6fee76b256fab2776e73482276b49f",
+        "schema_version": 2,
+        "total_bytes": 3145729,
+        "validated_levels": [
+          {
+            "height": 3072,
+            "resolution_level": 0,
+            "series_index": 0,
+            "width": 4096
+          }
+        ]
+      },
+      "manifestCanonical": "{\"artifact_id\":\"66666666-6666-4666-8666-666666666666\",\"bytes_digest\":\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\",\"container\":\"PNG\",\"creation_action_id\":\"55555555-5555-4555-8555-555555555555\",\"manifest_digest\":\"c0cbcdaf2e0974bd3885f67644638a30bb6fee76b256fab2776e73482276b49f\",\"schema_version\":2,\"total_bytes\":3145729,\"validated_levels\":[{\"height\":3072,\"resolution_level\":0,\"series_index\":0,\"width\":4096}]}",
+      "manifestSha256": "38bd9581d8d2393105691f4d6f571ea49122350bbb64f028d145b3f211987e1d",
+      "artifactRef": {
+        "artifact_id": "66666666-6666-4666-8666-666666666666",
+        "creation_action_id": "55555555-5555-4555-8555-555555555555",
+        "start_request_digest": "6c36b6800eefdc3114febaea8890cc2fc8e2445bcd6a70d5b3a94f5b0051a98c",
+        "bytes_digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "manifest_digest": "c0cbcdaf2e0974bd3885f67644638a30bb6fee76b256fab2776e73482276b49f",
+        "container": "PNG"
+      },
+      "artifactRefCanonical": "{\"artifact_id\":\"66666666-6666-4666-8666-666666666666\",\"bytes_digest\":\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\",\"container\":\"PNG\",\"creation_action_id\":\"55555555-5555-4555-8555-555555555555\",\"manifest_digest\":\"c0cbcdaf2e0974bd3885f67644638a30bb6fee76b256fab2776e73482276b49f\",\"start_request_digest\":\"6c36b6800eefdc3114febaea8890cc2fc8e2445bcd6a70d5b3a94f5b0051a98c\"}",
+      "artifactRefSha256": "d811dceb28bd854c0b9a787c9ebd34876fc6c6d439f6e0d0eb3b1ac0026a8846",
+      "sealed": {
+        "schema_version": 2,
+        "artifact": {
+          "artifact_id": "66666666-6666-4666-8666-666666666666",
+          "creation_action_id": "55555555-5555-4555-8555-555555555555",
+          "start_request_digest": "6c36b6800eefdc3114febaea8890cc2fc8e2445bcd6a70d5b3a94f5b0051a98c",
+          "bytes_digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "manifest_digest": "c0cbcdaf2e0974bd3885f67644638a30bb6fee76b256fab2776e73482276b49f",
+          "container": "PNG"
+        },
+        "absolute_expires_at": "2026-08-15T23:59:59.999Z"
+      },
+      "sealedCanonical": "{\"absolute_expires_at\":\"2026-08-15T23:59:59.999Z\",\"artifact\":{\"artifact_id\":\"66666666-6666-4666-8666-666666666666\",\"bytes_digest\":\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\",\"container\":\"PNG\",\"creation_action_id\":\"55555555-5555-4555-8555-555555555555\",\"manifest_digest\":\"c0cbcdaf2e0974bd3885f67644638a30bb6fee76b256fab2776e73482276b49f\",\"start_request_digest\":\"6c36b6800eefdc3114febaea8890cc2fc8e2445bcd6a70d5b3a94f5b0051a98c\"},\"schema_version\":2}",
+      "sealedSha256": "bd68c39bd546e9659dc55db3ceb4db5f3730e47c62626da8fd0e34aadf8c3e0c",
+      "status": {
+        "schema_version": 2,
+        "artifact_id": "66666666-6666-4666-8666-666666666666",
+        "start_request_digest": "6c36b6800eefdc3114febaea8890cc2fc8e2445bcd6a70d5b3a94f5b0051a98c",
+        "phase": "SEALED",
+        "missing_chunks": [],
+        "sealed_artifact": {
+          "artifact_id": "66666666-6666-4666-8666-666666666666",
+          "creation_action_id": "55555555-5555-4555-8555-555555555555",
+          "start_request_digest": "6c36b6800eefdc3114febaea8890cc2fc8e2445bcd6a70d5b3a94f5b0051a98c",
+          "bytes_digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "manifest_digest": "c0cbcdaf2e0974bd3885f67644638a30bb6fee76b256fab2776e73482276b49f",
+          "container": "PNG"
+        },
+        "absolute_expires_at": "2026-08-15T23:59:59.999Z"
+      },
+      "statusCanonical": "{\"absolute_expires_at\":\"2026-08-15T23:59:59.999Z\",\"artifact_id\":\"66666666-6666-4666-8666-666666666666\",\"missing_chunks\":[],\"phase\":\"SEALED\",\"schema_version\":2,\"sealed_artifact\":{\"artifact_id\":\"66666666-6666-4666-8666-666666666666\",\"bytes_digest\":\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\",\"container\":\"PNG\",\"creation_action_id\":\"55555555-5555-4555-8555-555555555555\",\"manifest_digest\":\"c0cbcdaf2e0974bd3885f67644638a30bb6fee76b256fab2776e73482276b49f\",\"start_request_digest\":\"6c36b6800eefdc3114febaea8890cc2fc8e2445bcd6a70d5b3a94f5b0051a98c\"},\"start_request_digest\":\"6c36b6800eefdc3114febaea8890cc2fc8e2445bcd6a70d5b3a94f5b0051a98c\"}",
+      "statusSha256": "0471b3feec5e06ebd8a65f1540b666d0cc9a11d345c69eb82bfe42e4a7351244"
+    }
+  ]
+}

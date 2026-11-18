@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import qupath.ext.histoforge.ui.HistoforgeTooltip?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="qupath.ext.histoforge.ui.modules.ModulesTabController"
+      spacing="0">
+
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="histoforge-module-toolbar">
+        <Button fx:id="installButton" text="Install module">
+            <tooltip><HistoforgeTooltip text="Install a module from Hugging Face."/></tooltip>
+        </Button>
+        <Region HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="searchField" promptText="Search modules" prefWidth="250">
+            <tooltip><HistoforgeTooltip text="Find an installed module by name, source or description."/></tooltip>
+        </TextField>
+    </HBox>
+
+    <HBox fx:id="loadStatus" spacing="8" alignment="CENTER_LEFT"
+          visible="false" managed="false" styleClass="histoforge-strip">
+        <ProgressIndicator fx:id="loadingIndicator" prefWidth="16" prefHeight="16"
+                           maxWidth="16" maxHeight="16"/>
+        <Label fx:id="loadStatusLabel" minWidth="0" wrapText="true"
+               styleClass="histoforge-muted"/>
+        <Button fx:id="retryButton" text="Retry" visible="false" managed="false">
+            <tooltip><HistoforgeTooltip text="Try loading the installed modules again."/></tooltip>
+        </Button>
+    </HBox>
+
+    <SplitPane fx:id="moduleBrowser" dividerPositions="0.245" VBox.vgrow="ALWAYS">
+        <ListView fx:id="moduleList" minWidth="180" prefWidth="255"
+                  accessibleText="Installed modules" styleClass="histoforge-module-list">
+            <placeholder>
+                <Label fx:id="emptyStateLabel" text="Connect to load modules."
+                       wrapText="true" maxWidth="170" alignment="CENTER" textAlignment="CENTER"
+                       styleClass="histoforge-muted"/>
+            </placeholder>
+        </ListView>
+        <BorderPane fx:id="moduleDetail" minWidth="350"/>
+    </SplitPane>
+</VBox>

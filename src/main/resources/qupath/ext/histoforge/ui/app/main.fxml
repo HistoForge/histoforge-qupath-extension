@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="qupath.ext.histoforge.ui.app.MainController"
+      fx:id="root"
+      spacing="6">
+
+    <!-- Header: jobs badge + connection status chip + Settings gear. -->
+    <HBox fx:id="header" alignment="CENTER_RIGHT" spacing="6">
+        <padding><Insets top="4" right="8" bottom="0" left="8"/></padding>
+        <Label fx:id="jobsBadge" visible="false" managed="false"/>
+        <Label fx:id="connectionProgress" text="Connecting…" styleClass="histoforge-muted"
+               visible="false" managed="false"/>
+        <Label fx:id="connectionChip" text="●"/>
+        <Button fx:id="settingsButton" text="⚙"/>
+    </HBox>
+
+    <!-- Connection banner: shown only on a problem (offline / revoked), hidden otherwise. -->
+    <HBox fx:id="connectionBanner" alignment="CENTER_LEFT" spacing="8"
+          visible="false" managed="false"
+          styleClass="histoforge-warning-surface">
+        <padding><Insets top="5" right="8" bottom="5" left="8"/></padding>
+        <Label fx:id="bannerLabel" maxWidth="Infinity" wrapText="true" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="bannerButton"/>
+    </HBox>
+
+    <!-- Content slot (root child 2): the SetupPane or the Project pane, added by MainController. -->
+</VBox>

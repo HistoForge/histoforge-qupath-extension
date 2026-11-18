@@ -1,0 +1,4 @@
+# Script-set identity hashes exact UTF-8 bytes, so checkout must preserve LF endings.
+*.groovy text eol=lf
+# Preserve upstream licence and notice bytes on every checkout platform.
+/src/main/resources/META-INF/licenses/** text eol=lf

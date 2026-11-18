@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "declaredClasses": [
+    "Mitotic figure",
+    "Cell é 🧪 \"quoted\" \\ subgroup"
+  ],
+  "cases": [
+    {
+      "name": "empty",
+      "instances": [],
+      "collectionCanonical": "{\"features\":[],\"type\":\"FeatureCollection\"}",
+      "collectionSha256": "ad37fe6278e0c7caf3b77c1c5068a56e18a6c87b78ed5a840ee22a0f961ea7a8",
+      "gzipBase64": "H4sIAAAAAAAC/wMAAAAAAAAAAAA=",
+      "streamSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "sizeBytes": 20,
+      "decodedBytes": 0,
+      "featureCount": 0,
+      "vertexCount": 0,
+      "maxRecordBytes": 1
+    },
+    {
+      "name": "zero",
+      "instances": [
+        [
+          "Mitotic figure",
+          [
+            10.125,
+            20.25
+          ],
+          0.0
+        ]
+      ],
+      "collectionCanonical": "{\"features\":[{\"geometry\":{\"coordinates\":[10.125,20.25],\"type\":\"Point\"},\"id\":\"ac023dcafc409a7b64455595ebb4637d04065ae94452369e479819622b1346c7\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Mitotic figure\",\"score\":0},\"type\":\"Feature\"}],\"type\":\"FeatureCollection\"}",
+      "collectionSha256": "90a1f0f639d57d9c3faeb72ad0d00b0c09d160a6dafe0618a198543ea15cf4b7",
+      "gzipBase64": "H4sIAAAAAAAC/z2OT4vCMBTE7/shZHnnImmapJteVwUP/jl4WxZJXp9uRE1Jnwcp/e6mIHsaZn4DM7MBzhRvxOkJzQAYY2rD3TH10PyUYl5KXUgxl/q3AH52BA3sY7gzjAWENjuHQlYtuhMqYV3tjVJaa6vJe2WquhVKGO3I5lhWxpKq7VdpjZS+rJTBGgroUuwocZg2B4j+QsjH99hieVh+H9a77dRz/HfEq+tzDzaBIwf8PIXzI1GmPcasjRj/j67I8cTGjxe+fqTs5gAAAA==",
+      "streamSha256": "4f412353437b2270a8efc34eb141912a5490bfdf2291adeb3db53eddcf579cd4",
+      "sizeBytes": 208,
+      "decodedBytes": 230,
+      "featureCount": 1,
+      "vertexCount": 1,
+      "maxRecordBytes": 228
+    },
+    {
+      "name": "coincident",
+      "instances": [
+        [
+          "Mitotic figure",
+          [
+            5.5,
+            7.5
+          ],
+          0.0
+        ],
+        [
+          "Mitotic figure",
+          [
+            5.5,
+            7.5
+          ],
+          0.5
+        ],
+        [
+          "Mitotic figure",
+          [
+            5.5,
+            7.5
+          ],
+          0.5
+        ],
+        [
+          "Mitotic figure",
+          [
+            5.5,
+            7.5
+          ],
+          1.0
+        ]
+      ],
+      "collectionCanonical": "{\"features\":[{\"geometry\":{\"coordinates\":[5.5,7.5],\"type\":\"Point\"},\"id\":\"034fb1dfd30edd27af9fc58cf02b73e67984fd6199ce48f4bccc408fc93c1393\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Mitotic figure\",\"score\":1},\"type\":\"Feature\"},{\"geometry\":{\"coordinates\":[5.5,7.5],\"type\":\"Point\"},\"id\":\"1b2cee8c5b9baa83755990af707abf6c71f7f2c6b4d4538659f3f20571331004\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Mitotic figure\",\"score\":0},\"type\":\"Feature\"},{\"geometry\":{\"coordinates\":[5.5,7.5],\"type\":\"Point\"},\"id\":\"43aad22044496071722b2bf16ac2b065e0207071ac236d230d2f907b37b3ba67\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Mitotic figure\",\"score\":0.5},\"type\":\"Feature\"},{\"geometry\":{\"coordinates\":[5.5,7.5],\"type\":\"Point\"},\"id\":\"55f1e6833a762f791d9faf60a7fa203247487958335e33fe39668960db6a955d\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Mitotic figure\",\"score\":0.5},\"type\":\"Feature\"}],\"type\":\"FeatureCollection\"}",
+      "collectionSha256": "8bf615a831b501dcb8e6a2d5c9ec1f45c4ccd3041896edc48823523bf4ae0d0c",
+      "gzipBase64": "H4sIAAAAAAAC/72QzYpbMQyF932IoXgdgmxZlp1tO4Uu+rOYXSmDLFvTW9q54cZdDCHvXgdKX6ChIBCHc+Do093ZPfX1Zx/bizucna7r1pZnGf3kDl9oTzve09edGy/H7g7u87o8D3fZuaVNBRit+mYNobcWWKyYUlaDUBl74pKjteRL0R6zxaqqEbJpQfVY0O3ccVuPfRvLte7s1vq963j8U/b2/uH+zcP7Tx+vORnfHvWHnGbOfVjGOhZ9bcvTr61P96Tr3Ad/+Xvouy7j6l1e3f0DoK9Be89KtVSRjExUCogxsFRLyt7YgqYaWyTMiYqhBSD2iB4g3hoQbg0YUaSFADHGkoA9h1BDNZ9EQ4VEHQJMWD8lphYQWrACXHFOlcQ3B9zTrRGJzPeUEYVTMC6+FRNLIGwSAEPkmLnQDFBHtI4lpTyf0WqSQtT+E+Jv1ZI6B4gDAAA=",
+      "streamSha256": "9c1fe1573ac72fd596786de507aa8fdc5310fd5552c3c7c0e5cf0e8ec185d8df",
+      "sizeBytes": 344,
+      "decodedBytes": 904,
+      "featureCount": 4,
+      "vertexCount": 4,
+      "maxRecordBytes": 225
+    },
+    {
+      "name": "binary64-and-unicode",
+      "instances": [
+        [
+          "Cell é 🧪 \"quoted\" \\ subgroup",
+          [
+            0.600000004,
+            0.399999995
+          ],
+          0.8999999761581421
+        ],
+        [
+          "Mitotic figure",
+          [
+            1e-07,
+            9007199254740992
+          ],
+          0.10000000149011612
+        ]
+      ],
+      "collectionCanonical": "{\"features\":[{\"geometry\":{\"coordinates\":[1e-7,9007199254740992],\"type\":\"Point\"},\"id\":\"198e19a5bf8073f6536706d70c4530cc0924b58794c68c7227d277df51401405\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Mitotic figure\",\"score\":0.10000000149011612},\"type\":\"Feature\"},{\"geometry\":{\"coordinates\":[0.600000004,0.399999995],\"type\":\"Point\"},\"id\":\"dfede5dbcf273368d73666a0fbe949930e13ba2fa312cbdd7c579a8c14b56505\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Cell é 🧪 \\\"quoted\\\" \\\\ subgroup\",\"score\":0.8999999761581421},\"type\":\"Feature\"}],\"type\":\"FeatureCollection\"}",
+      "collectionSha256": "86462c5936d019e0147b71e4d32ef7b8ee8f0aa5934f98a0b642f78b51db4a1f",
+      "gzipBase64": "H4sIAAAAAAAC/52QS0oDQRCG9x4iDL0eQ7+re7Yxggsfi+yMhH7GkZgeZ3oWIeQsLkWv4YU8ghMSxIW6sCgoivqpv+obbdEypMeQ2w2qtsil1Pp6bXLoUHVLwimUGmMgWlPBgeOh3pUob5qAKnST6nVGuxLVfuiIVoFoI2xUGFiUgknA0gN2XDDsHNaUW6FAcyeVA0rBUwAfBeF4SIFK1LSpCW2u9+ZblOxDcHlxNDubzqaT2cX11V5n8v3CrUw36NBlnVOuXRHrZd+GYdq5NNQKjwk+BOEaEyIJ3X2dfh5M3qt3J6O/AOCxPO7gJR4zfQjxGwIfgw/CWxcpMCaVByalNDjaoLnWDAfCrKHRMEKd9R6cAG2UIwMYKf6PYBJWq+L9tfh4fnkr5uipTzn4OSrm86Lr7bJNffOdizq8AZIIRTglP2H5BHk2xRoYAgAA",
+      "streamSha256": "c8bfe435269add59ce47ec4c8a1f4ded14c58947cd20d269ee25cfebaf0260ce",
+      "sizeBytes": 336,
+      "decodedBytes": 536,
+      "featureCount": 2,
+      "vertexCount": 2,
+      "maxRecordBytes": 277
+    }
+  ]
+}

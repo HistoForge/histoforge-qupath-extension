@@ -1,0 +1,375 @@
+name: Test
+
+# `./gradlew build` checks compilation, formatting, and JUnit tests.
+# Runs on every push to main and on every pull request.
+# Test reports expire after 14 days; the shared CI JAR after 30 days.
+# Published release assets have a separate, durable lifecycle.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  canonical-distribution:
+    name: Canonical distribution (QuPath 0.6.0 / Java 21)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21.0.10+7.0.LTS"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Reject unsupported QuPath 0.5.1
+        shell: bash
+        run: |
+          if ./gradlew help -PhistoforgeQuPathVersion=0.5.1 --no-daemon >unsupported.log 2>&1; then
+            echo "QuPath 0.5.1 was accepted unexpectedly" >&2
+            exit 1
+          fi
+          grep -F "Unsupported HistoForge QuPath version '0.5.1'. Supported versions: 0.6.0, 0.7.0" unsupported.log
+
+      - name: Build and test canonical source target
+        run: ./gradlew clean build shadowJar --no-daemon
+
+      - name: Upload canonical source-target tests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qupath-0.6.0-source-tests
+          path: |
+            build/reports/tests/test/
+            build/test-results/test/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Stage the one distribution artifact
+        shell: bash
+        run: |
+          mkdir -p canonical-distribution
+          artifact=$(find build/libs -name '*-all.jar' -print -quit)
+          test -n "$artifact"
+          cp "$artifact" canonical-distribution/histoforge-extension-qupath-0.6.0.jar
+          sha256sum canonical-distribution/histoforge-extension-qupath-0.6.0.jar
+
+      - name: Test the packaged distribution on QuPath 0.6.0
+        run: >-
+          ./gradlew test
+          -PhistoforgeDistributionArtifact=canonical-distribution/histoforge-extension-qupath-0.6.0.jar
+          --rerun-tasks
+          --no-daemon
+
+      - name: Upload canonical artifact tests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qupath-0.6.0-canonical-artifact-tests
+          path: |
+            build/reports/tests/test/
+            build/test-results/test/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Upload the one distribution artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: histoforge-canonical-qupath-0.6.0
+          path: canonical-distribution/histoforge-extension-qupath-0.6.0.jar
+          if-no-files-found: error
+          retention-days: 30
+
+  qupath-0-7-compatibility:
+    name: Compatibility (QuPath 0.7.0 / Java 25)
+    needs: canonical-distribution
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "25.0.4+7.0.LTS"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: histoforge-canonical-qupath-0.6.0
+          path: canonical-distribution
+
+      - name: Build and test sources against QuPath 0.7.0
+        run: >-
+          ./gradlew clean build
+          -PhistoforgeQuPathVersion=0.7.0
+          --no-daemon
+
+      - name: Upload QuPath 0.7.0 source-target tests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qupath-0.7.0-source-tests
+          path: |
+            build/reports/tests/test/
+            build/test-results/test/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Test the packaged distribution on QuPath 0.7.0
+        run: >-
+          ./gradlew test
+          -PhistoforgeQuPathVersion=0.7.0
+          -PhistoforgeDistributionArtifact=canonical-distribution/histoforge-extension-qupath-0.6.0.jar
+          --rerun-tasks
+          --no-daemon
+
+      - name: Upload QuPath 0.7.0 canonical-artifact tests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qupath-0.7.0-canonical-artifact-tests
+          path: |
+            build/reports/tests/test/
+            build/test-results/test/
+          if-no-files-found: warn
+          retention-days: 14
+
+  local-persistence:
+    name: Local runtime (${{ matrix.id }})
+    needs: canonical-distribution
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - id: ubuntu-24.04-x64-ext4-qupath-0.6.0
+            os: ubuntu-24.04
+            os_prefix: Linux
+            os_arch: amd64
+            filesystem_type: ext4
+            qupath_version: 0.6.0
+            java_setup: 21.0.10+7.0.LTS
+            java_version: 21.0.10
+            java_runtime_version: 21.0.10+7-LTS
+          - id: ubuntu-24.04-x64-ext4-qupath-0.7.0
+            os: ubuntu-24.04
+            os_prefix: Linux
+            os_arch: amd64
+            filesystem_type: ext4
+            qupath_version: 0.7.0
+            java_setup: 25.0.4+7.0.LTS
+            java_version: 25.0.4
+            java_runtime_version: 25.0.4+7-LTS
+          - id: macos-15-arm64-apfs-qupath-0.6.0
+            os: macos-15
+            os_prefix: Mac OS X
+            os_arch: aarch64
+            filesystem_type: apfs
+            qupath_version: 0.6.0
+            java_setup: 21.0.10+7.0.LTS
+            java_version: 21.0.10
+            java_runtime_version: 21.0.10+7-LTS
+          - id: macos-15-arm64-apfs-qupath-0.7.0
+            os: macos-15
+            os_prefix: Mac OS X
+            os_arch: aarch64
+            filesystem_type: apfs
+            qupath_version: 0.7.0
+            java_setup: 25.0.4+7.0.LTS
+            java_version: 25.0.4
+            java_runtime_version: 25.0.4+7-LTS
+          - id: windows-2022-x64-ntfs-qupath-0.6.0
+            os: windows-2022
+            os_prefix: Windows Server 2022
+            os_arch: amd64
+            filesystem_type: NTFS
+            qupath_version: 0.6.0
+            java_setup: 21.0.10+7.0.LTS
+            java_version: 21.0.10
+            java_runtime_version: 21.0.10+7-LTS
+          - id: windows-2022-x64-ntfs-qupath-0.7.0
+            os: windows-2022
+            os_prefix: Windows Server 2022
+            os_arch: amd64
+            filesystem_type: NTFS
+            qupath_version: 0.7.0
+            java_setup: 25.0.4+7.0.LTS
+            java_version: 25.0.4
+            java_runtime_version: 25.0.4+7-LTS
+    env:
+      HISTOFORGE_PLATFORM_EVIDENCE_OUTPUT: build/platform-evidence/${{ matrix.id }}.json
+      HISTOFORGE_RUNNER_LABEL: ${{ matrix.os }} / QuPath ${{ matrix.qupath_version }}
+      HISTOFORGE_EXPECTED_OS_PREFIX: ${{ matrix.os_prefix }}
+      HISTOFORGE_EXPECTED_OS_ARCH: ${{ matrix.os_arch }}
+      HISTOFORGE_EXPECTED_FILESYSTEM_TYPE: ${{ matrix.filesystem_type }}
+      HISTOFORGE_EXPECTED_JAVA_VERSION: ${{ matrix.java_version }}
+      HISTOFORGE_EXPECTED_JAVA_RUNTIME_VERSION: ${{ matrix.java_runtime_version }}
+      HISTOFORGE_EXPECTED_JAVA_VENDOR: Eclipse Adoptium
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java_setup }}
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: histoforge-canonical-qupath-0.6.0
+          path: canonical-distribution
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.7.12"
+
+      - name: Verify private atomic local-state publication
+        shell: bash
+        run: >-
+          ./gradlew test
+          --tests qupath.ext.histoforge.util.SecureFileStoreTest
+          --tests qupath.ext.histoforge.util.LocalPersistencePlatformTest
+          --tests qupath.ext.histoforge.client.DeploymentStoreTest
+          -PhistoforgeQuPathVersion=${{ matrix.qupath_version }}
+          -PhistoforgeDistributionArtifact=canonical-distribution/histoforge-extension-qupath-0.6.0.jar
+          --rerun-tasks
+          --no-daemon
+
+      - name: Verify exact bundled helper on this platform
+        shell: bash
+        run: |
+          jar_file="$PWD/canonical-distribution/histoforge-extension-qupath-0.6.0.jar"
+          test -s "$jar_file"
+          runtime_dir=$(mktemp -d)
+          extract_dir="$runtime_dir/artifact"
+          mkdir -p "$extract_dir"
+          (
+            cd "$extract_dir"
+            jar xf "$jar_file" \
+              qupath/ext/histoforge/build/release.properties
+          )
+          release_file="$extract_dir/qupath/ext/histoforge/build/release.properties"
+          test -s "$release_file"
+          wheel_name=$(sed -n 's/^bundledWheel=//p' "$release_file")
+          [[ "$wheel_name" =~ ^histoforge-[0-9]+\.[0-9]+\.[0-9]+-py3-none-any\.whl$ ]]
+          (
+            cd "$extract_dir"
+            jar xf "$jar_file" \
+              "qupath/ext/histoforge/runtime/$wheel_name" \
+              qupath/ext/histoforge/runtime/requirements-bundled-cli.lock
+          )
+          wheel="$extract_dir/qupath/ext/histoforge/runtime/$wheel_name"
+          lock="$extract_dir/qupath/ext/histoforge/runtime/requirements-bundled-cli.lock"
+          test -s "$wheel"
+          test -s "$lock"
+          uv venv --quiet --clear --no-config --no-project \
+            --python 3.12.11 --managed-python "$runtime_dir/venv"
+          if [[ "$RUNNER_OS" == "Windows" ]]; then
+            python_exe="$runtime_dir/venv/Scripts/python.exe"
+            cli_exe="$runtime_dir/venv/Scripts/histoforge.exe"
+          else
+            python_exe="$runtime_dir/venv/bin/python"
+            cli_exe="$runtime_dir/venv/bin/histoforge"
+          fi
+          uv pip install --quiet --no-config --python "$python_exe" \
+            --require-hashes --no-build --requirements "$lock"
+          uv pip install --quiet --no-config --python "$python_exe" \
+            --no-build --no-deps --no-index "$wheel"
+          "$cli_exe" self-check --json
+
+      - name: Check Project controls in native Windows UI
+        if: runner.os == 'Windows'
+        timeout-minutes: 3
+        shell: bash
+        run: >-
+          ./gradlew annotationScopeSmoke
+          -PhistoforgeQuPathVersion=${{ matrix.qupath_version }}
+          -PhistoforgeDistributionArtifact=canonical-distribution/histoforge-extension-qupath-0.6.0.jar
+          --no-daemon
+
+      - name: Upload Project controls evidence
+        if: always() && runner.os == 'Windows'
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-controls-${{ matrix.id }}
+          path: |
+            build/annotation-scope-smoke/project-controls-*.png
+            build/annotation-scope-smoke/project-controls-layout.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Check module removal feedback in native UI
+        if: runner.os != 'Linux'
+        timeout-minutes: 4
+        shell: bash
+        run: >-
+          ./gradlew catalogJobsRefreshSmoke
+          -PhistoforgeQuPathVersion=${{ matrix.qupath_version }}
+          -PhistoforgeDistributionArtifact=canonical-distribution/histoforge-extension-qupath-0.6.0.jar
+          --no-daemon
+
+      - name: Upload module removal evidence
+        if: always() && runner.os != 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: module-removal-${{ matrix.id }}
+          path: |
+            build/catalog-jobs-refresh-smoke/module-removal-*.png
+            build/catalog-jobs-refresh-smoke/module-removal-feedback.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload connection-header startup evidence
+        if: always() && runner.os != 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-startup-${{ matrix.id }}
+          path: build/catalog-jobs-refresh-smoke/connecting-*.png
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Check setup dialogs and diagnostic logs in native UI
+        if: runner.os != 'Linux'
+        timeout-minutes: 4
+        shell: bash
+        run: >-
+          ./gradlew trainingFormSmoke
+          -PhistoforgeQuPathVersion=${{ matrix.qupath_version }}
+          -PhistoforgeDistributionArtifact=canonical-distribution/histoforge-extension-qupath-0.6.0.jar
+          --no-daemon
+
+      - name: Upload setup UI evidence
+        if: always() && runner.os != 'Linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: setup-ui-${{ matrix.id }}
+          path: |
+            build/training-form-smoke/*.png
+            build/training-form-smoke/settings-distribution-receipt.json
+            build/training-form-smoke/settings-layout-*.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload platform evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: local-persistence-evidence-${{ matrix.id }}
+          path: build/platform-evidence/${{ matrix.id }}.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload local-persistence test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: local-persistence-tests-${{ matrix.id }}
+          path: |
+            build/reports/tests/test/
+            build/test-results/test/
+          if-no-files-found: error
+          retention-days: 14

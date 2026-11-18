@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "readme_markdown": "---\nlicense: mit\n---\n# Cells\n\n| Class | Resolution |\n| --- | --- |\n| Leydig cell | 0.22 µm/px |\n\n[Methods](methods.md) · ![Example](images/field.png)\n",
+  "canonical_field": "{\"readme_markdown\":\"---\\nlicense: mit\\n---\\n# Cells\\n\\n| Class | Resolution |\\n| --- | --- |\\n| Leydig cell | 0.22 µm/px |\\n\\n[Methods](methods.md) · ![Example](images/field.png)\\n\"}",
+  "invalid_values": [
+    null,
+    42,
+    [
+      "text"
+    ],
+    {
+      "text": "bad"
+    }
+  ]
+}

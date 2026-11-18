@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "description": "Synthetic distinct limit sentinels for field binding; these are not release limits.",
+  "case": {
+    "name": "complete-client-build",
+    "value": {
+      "extension": {
+        "version": "0.1.0+fixture",
+        "artifact_digest": "c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c",
+        "manifest_digest": "9b00e88cf87345907a1800d7b140f8b180f63e2537bdae915389b76a89c8dbe8"
+      },
+      "qupath_version": "0.6.0",
+      "runtime_versions": {
+        "jts": "1.20.0",
+        "java": "21.0.6",
+        "groovy": "4.0.22"
+      },
+      "limits": {
+        "max_hierarchy_objects": 1009,
+        "max_hierarchy_geometry_vertices": 2003,
+        "max_hierarchy_measurements": 3001,
+        "max_hierarchy_text_utf8_bytes": 4001,
+        "max_generation_store_utf8_bytes": 5003,
+        "max_metric_values_per_region": 6007,
+        "max_metric_values_per_image": 7001,
+        "max_local_source_artifact_bytes": 8009
+      }
+    },
+    "canonical": "{\"extension\":{\"artifact_digest\":\"c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c\",\"manifest_digest\":\"9b00e88cf87345907a1800d7b140f8b180f63e2537bdae915389b76a89c8dbe8\",\"version\":\"0.1.0+fixture\"},\"limits\":{\"max_generation_store_utf8_bytes\":5003,\"max_hierarchy_geometry_vertices\":2003,\"max_hierarchy_measurements\":3001,\"max_hierarchy_objects\":1009,\"max_hierarchy_text_utf8_bytes\":4001,\"max_local_source_artifact_bytes\":8009,\"max_metric_values_per_image\":7001,\"max_metric_values_per_region\":6007},\"qupath_version\":\"0.6.0\",\"runtime_versions\":{\"groovy\":\"4.0.22\",\"java\":\"21.0.6\",\"jts\":\"1.20.0\"}}",
+    "sha256": "6cd411ea658f37f913030b74f36dfabe7bcf50dbf49d3c05414f4441bb7d9384"
+  }
+}

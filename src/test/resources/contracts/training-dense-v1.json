@@ -1,0 +1,890 @@
+{
+  "description": "Synthetic dense admission: true instance-threshold absence and full-head TRAIN evidence.",
+  "report": {
+    "sha256": "64b3d49f8dde8ac5791a45a54b78d871855f91121a79f4251c85c2e888aaa864",
+    "value": {
+      "augmentation": {
+        "enabled_operator_ids": [],
+        "profile_id": "he-morphology-v1"
+      },
+      "dataset_digest": "cb04b5f4fbf4b1a91a6fee8af229fd4bef96b338f8a4e2c75ca3b6f9b45f7f85",
+      "dataset_image_count": 1,
+      "epochs": [],
+      "field_profile": {
+        "aggregation": "cellpose-tapered-mean-v1",
+        "alignmentModelPx": 16,
+        "maxSideModelPx": 64,
+        "minSideModelPx": 16,
+        "outerArtificialPaddingModelPx": 8,
+        "planner": "variable-field-v2",
+        "preferredTileSideModelPx": 32,
+        "preprocessing": "normalize99-real-image-v1",
+        "smallRoiContext": false,
+        "tileOverlap": 0.25
+      },
+      "messages": [],
+      "metric_policy": {
+        "primary_selection_direction": "maximize",
+        "primary_validation_series_id": "validation-pixel-macro-f1.pooled.v1",
+        "series": [
+          {
+            "definition": "Mean resolved training objective over all actual model fields in this epoch, evaluated during optimization with the current model and learned task weights.",
+            "display_name": "Training loss",
+            "partition": "training",
+            "series_id": "training-loss.v1",
+            "value_domain": "real"
+          },
+          {
+            "definition": "Run ordinary full-head argmax on every validation ROI. Pool supervised real-pixel TP,FP,FN across all ROIs for each emitted channel. Average defined class F1 values 2TP/(2TP+FP+FN). Undefined only if all emitted denominators are zero. Background and training-only winners remain in the confusion counts; no connected-component matching or size filter.",
+            "display_name": "Validation pixel macro F1",
+            "partition": "validation",
+            "series_id": "validation-pixel-macro-f1.pooled.v1",
+            "value_domain": "unit_interval"
+          },
+          {
+            "definition": "Pixel F1 for emitted channel 1 (Leydig cell). Pool TP,FP,FN over the complete validation set's supervised real pixels, then compute 2TP/(2TP+FP+FN). Undefined only for a zero denominator; target-only or prediction-only support yields zero.",
+            "display_name": "Validation pixel F1: Leydig cell",
+            "partition": "validation",
+            "series_id": "validation-pixel-f1.channel-1.v1",
+            "value_domain": "unit_interval"
+          },
+          {
+            "definition": "Pixel F1 for emitted channel 3 (Sertoli cell). Pool TP,FP,FN over the complete validation set's supervised real pixels, then compute 2TP/(2TP+FP+FN). Undefined only for a zero denominator; target-only or prediction-only support yields zero.",
+            "display_name": "Validation pixel F1: Sertoli cell",
+            "partition": "validation",
+            "series_id": "validation-pixel-f1.channel-3.v1",
+            "value_domain": "unit_interval"
+          }
+        ]
+      },
+      "result_display_name": "Fine-tuned Leydig workflow",
+      "result_form": "complete_source_workflow",
+      "result_inference_gpu": "A100",
+      "run_id": "44444444-4444-4444-8444-444444444444",
+      "schema_version": 1,
+      "selected_model_id": "nuclei",
+      "source_module": {
+        "content_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+        "module_ref": "histoforge/leydig",
+        "recipe_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+        "resolved_commit_sha": "1111111111111111111111111111111111111111"
+      },
+      "split_plan": {
+        "assignment_source": "custom",
+        "type": "split",
+        "unit": "roi",
+        "units": [
+          {
+            "partition": "training",
+            "unit_index": 0
+          },
+          {
+            "partition": "validation",
+            "unit_index": 1
+          },
+          {
+            "partition": "validation",
+            "unit_index": 2
+          }
+        ]
+      },
+      "starting_weight_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "state": "QUEUED",
+      "task": {
+        "capability_id": "managed-semantic-dense-v1",
+        "input_kind": "field",
+        "model_microns_per_pixel": 0.5,
+        "model_output": {
+          "classChannels": [
+            {
+              "channel": 0,
+              "role": "background"
+            },
+            {
+              "channel": 1,
+              "pathClass": "Leydig cell",
+              "role": "emitted"
+            },
+            {
+              "channel": 2,
+              "pathClass": "Other",
+              "role": "training_only"
+            },
+            {
+              "channel": 3,
+              "pathClass": "Sertoli cell",
+              "role": "emitted"
+            }
+          ],
+          "type": "dense_classification"
+        },
+        "supports_negative_rois": true,
+        "annotation_class_map": {
+          "Leydig cell": "Leydig cell",
+          "Other": "Other",
+          "Sertoli cell": "Sertoli cell"
+        }
+      },
+      "total_epochs": 2,
+      "trainer_build": {
+        "artifact_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "manifest_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "version": "phase8-test"
+      },
+      "trainer_configuration": {
+        "augmentation": {
+          "parameters": {
+            "appearance_numeric_policy": {
+              "artificial_pixels": "preserve-input-values-v1",
+              "clipping": "after-each-appearance-operator-v1",
+              "output_dtype": "float32",
+              "real_pixel_range": [
+                0,
+                255
+              ]
+            },
+            "base_profile_display_name": "H&E",
+            "base_profile_id": "he-morphology-v1",
+            "default_enabled_operator_ids": [
+              "rotate90-v1",
+              "flip-horizontal-v1",
+              "flip-vertical-v1",
+              "hed-v1",
+              "brightness-contrast-v1",
+              "blur-v1",
+              "noise-v1"
+            ],
+            "enabled_operators": [],
+            "input_numeric_domain": "raw-srgb-hwc-finite-0-255-v1",
+            "operator_parameters": {},
+            "seed_derivation": "sha256-canonical-json-pcg64-sample-operator-v1"
+          },
+          "profile_id": "managed-field-augmentation-v1"
+        },
+        "objective": {
+          "parameters": {
+            "class_count": 4,
+            "class_weighting": {
+              "channel_identity": "explicit-model-output-channel",
+              "channels": [
+                {
+                  "channel": 0,
+                  "raw_count": 300,
+                  "role": "background",
+                  "weight": 0.40824830532073975
+                },
+                {
+                  "channel": 1,
+                  "path_class": "Leydig cell",
+                  "raw_count": 64,
+                  "role": "emitted",
+                  "weight": 0.8838834762573242
+                },
+                {
+                  "channel": 2,
+                  "path_class": "Other",
+                  "raw_count": 36,
+                  "role": "training_only",
+                  "weight": 1.1785112619400024
+                },
+                {
+                  "channel": 3,
+                  "path_class": "Sertoli cell",
+                  "raw_count": 0,
+                  "role": "emitted",
+                  "weight": 7.071067810058594
+                }
+              ],
+              "count_floor": 1,
+              "dtype": "float32",
+              "formula": "sqrt(median(max(raw_count,1))/max(raw_count,1))",
+              "overlapping_rois": "count-independently-without-deduplication",
+              "policy": "sqrt-median-frequency-class-v1",
+              "population": "each-supervised-real-pixel-once-per-training-roi"
+            },
+            "classification_loss_weight": 1,
+            "classification_objective": "cross_entropy+tversky",
+            "cross_entropy_reduction": "sum-weighted-ce-over-sum-target-weights",
+            "effective_support": "supervision-mask-and-real-pixel-mask",
+            "field_reduction": "loss-specific-supported-reduction-then-equal-field-mean",
+            "gradient_clip_parameters": "model-only",
+            "gradient_norm_type": 2,
+            "initial_log_variance": 0,
+            "max_gradient_norm": 1,
+            "precision": "float32-no-autocast",
+            "task_combination": "sum-exp-negative-log-variance-loss-plus-log-variance",
+            "tversky_alpha": 0.3,
+            "tversky_gamma": 1.33,
+            "tversky_reduction": "mean-over-all-class-channels-including-background",
+            "use_uncertainty_weighting": true,
+            "weight_tversky_by_class": true
+          },
+          "profile_id": "managed-dense-objective-v1"
+        },
+        "optimizer": {
+          "parameters": {
+            "adapter_learning_rate": 0.001,
+            "amsgrad": false,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "capturable": false,
+            "decoupled_weight_decay": true,
+            "differentiable": false,
+            "eps": 1e-08,
+            "foreach": null,
+            "fused": null,
+            "head_learning_rate": 0.001,
+            "learning_rate": 5e-05,
+            "llrd_factor": 0.8,
+            "maximize": false,
+            "neck_learning_rate": 0.001,
+            "no_decay_rule": "ndim-lt2-or-name-contains-cls-token-or-reg-token",
+            "parameter_group_rule": "dinov3-source-build-param-groups-v1",
+            "patch_embed_learning_rate": 0.0003,
+            "task_learning_rate": 5e-06,
+            "task_weight_decay": 0.1,
+            "trainable_parameters_only": true,
+            "weight_decay": 0.1
+          },
+          "profile_id": "managed-adamw-llrd-v1"
+        },
+        "preprocessing": {
+          "parameters": {
+            "artificial_pixel_value": 0,
+            "channels": "RGB",
+            "clip": false,
+            "dtype": "float32",
+            "minimum_percentile_range": 0.001,
+            "operation_order": [
+              "read-field-and-apply-fixed-planner-padding",
+              "augment",
+              "normalize-real-pixels",
+              "apply-model-minimum-alignment-padding",
+              "bottom-right-batch-padding"
+            ],
+            "percentile_method": "linear",
+            "percentiles": [
+              1,
+              99
+            ],
+            "population": "real-pixels-per-image-including-context",
+            "small_range_output": 0
+          },
+          "profile_id": "normalize99-real-image-v1"
+        },
+        "sampler": {
+          "parameters": {
+            "seed_derivation": "sha256-canonical-json-pcg64-epoch-v1"
+          },
+          "profile_id": "managed-full-roi-coverage-v1"
+        },
+        "scheduler": {
+          "parameters": {
+            "cosine_denominator": 2,
+            "cosine_epochs": 2,
+            "epoch_indexing": "zero-based-before-epoch",
+            "group_scale_rule": "multiply-initial-learning-rate",
+            "total_epochs": 2,
+            "warmup_end_scale": 1,
+            "warmup_endpoint": true,
+            "warmup_epochs": 0,
+            "warmup_start_scale": 0,
+            "zero_rate_behavior": "adamw-step-updates-moments"
+          },
+          "profile_id": "managed-warmup-cosine-v2"
+        }
+      },
+      "trainer_settings": {
+        "data_loading_workers": 0,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 2,
+        "training_batch_size": 1,
+        "training_gpu_id": "l40s",
+        "warmup_epochs": 0,
+        "warmup_mode": "custom"
+      },
+      "training_counts": {
+        "image_count": 1,
+        "negative_roi_count": 0,
+        "roi_count": 1,
+        "target_object_counts": {
+          "Leydig cell": 1,
+          "Other": 1,
+          "Sertoli cell": 0
+        }
+      },
+      "training_seed": 1234,
+      "unavailable_metrics": [],
+      "validation_counts": {
+        "image_count": 1,
+        "negative_roi_count": 0,
+        "roi_count": 2,
+        "target_object_counts": {
+          "Leydig cell": 2,
+          "Other": 2,
+          "Sertoli cell": 0
+        }
+      },
+      "class_initialization": "use",
+      "source_model_output": {
+        "classChannels": [
+          {
+            "channel": 0,
+            "role": "background"
+          },
+          {
+            "channel": 1,
+            "pathClass": "Leydig cell",
+            "role": "emitted"
+          },
+          {
+            "channel": 2,
+            "pathClass": "Other",
+            "role": "training_only"
+          },
+          {
+            "channel": 3,
+            "pathClass": "Sertoli cell",
+            "role": "emitted"
+          }
+        ],
+        "type": "dense_classification"
+      },
+      "source_model_microns_per_pixel": 0.5
+    }
+  },
+  "report_response": {
+    "sha256": "9fae2bf66a4e84fb9a282fabdfe8454747f47eacc9e1aba6a1bb7482fbe3a8ca",
+    "value": {
+      "report": {
+        "augmentation": {
+          "enabled_operator_ids": [],
+          "profile_id": "he-morphology-v1"
+        },
+        "dataset_digest": "cb04b5f4fbf4b1a91a6fee8af229fd4bef96b338f8a4e2c75ca3b6f9b45f7f85",
+        "dataset_image_count": 1,
+        "epochs": [],
+        "field_profile": {
+          "aggregation": "cellpose-tapered-mean-v1",
+          "alignmentModelPx": 16,
+          "maxSideModelPx": 64,
+          "minSideModelPx": 16,
+          "outerArtificialPaddingModelPx": 8,
+          "planner": "variable-field-v2",
+          "preferredTileSideModelPx": 32,
+          "preprocessing": "normalize99-real-image-v1",
+          "smallRoiContext": false,
+          "tileOverlap": 0.25
+        },
+        "messages": [],
+        "metric_policy": {
+          "primary_selection_direction": "maximize",
+          "primary_validation_series_id": "validation-pixel-macro-f1.pooled.v1",
+          "series": [
+            {
+              "definition": "Mean resolved training objective over all actual model fields in this epoch, evaluated during optimization with the current model and learned task weights.",
+              "display_name": "Training loss",
+              "partition": "training",
+              "series_id": "training-loss.v1",
+              "value_domain": "real"
+            },
+            {
+              "definition": "Run ordinary full-head argmax on every validation ROI. Pool supervised real-pixel TP,FP,FN across all ROIs for each emitted channel. Average defined class F1 values 2TP/(2TP+FP+FN). Undefined only if all emitted denominators are zero. Background and training-only winners remain in the confusion counts; no connected-component matching or size filter.",
+              "display_name": "Validation pixel macro F1",
+              "partition": "validation",
+              "series_id": "validation-pixel-macro-f1.pooled.v1",
+              "value_domain": "unit_interval"
+            },
+            {
+              "definition": "Pixel F1 for emitted channel 1 (Leydig cell). Pool TP,FP,FN over the complete validation set's supervised real pixels, then compute 2TP/(2TP+FP+FN). Undefined only for a zero denominator; target-only or prediction-only support yields zero.",
+              "display_name": "Validation pixel F1: Leydig cell",
+              "partition": "validation",
+              "series_id": "validation-pixel-f1.channel-1.v1",
+              "value_domain": "unit_interval"
+            },
+            {
+              "definition": "Pixel F1 for emitted channel 3 (Sertoli cell). Pool TP,FP,FN over the complete validation set's supervised real pixels, then compute 2TP/(2TP+FP+FN). Undefined only for a zero denominator; target-only or prediction-only support yields zero.",
+              "display_name": "Validation pixel F1: Sertoli cell",
+              "partition": "validation",
+              "series_id": "validation-pixel-f1.channel-3.v1",
+              "value_domain": "unit_interval"
+            }
+          ]
+        },
+        "result_display_name": "Fine-tuned Leydig workflow",
+        "result_form": "complete_source_workflow",
+        "result_inference_gpu": "A100",
+        "run_id": "44444444-4444-4444-8444-444444444444",
+        "schema_version": 1,
+        "selected_model_id": "nuclei",
+        "source_module": {
+          "content_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+          "module_ref": "histoforge/leydig",
+          "recipe_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+          "resolved_commit_sha": "1111111111111111111111111111111111111111"
+        },
+        "split_plan": {
+          "assignment_source": "custom",
+          "type": "split",
+          "unit": "roi",
+          "units": [
+            {
+              "partition": "training",
+              "unit_index": 0
+            },
+            {
+              "partition": "validation",
+              "unit_index": 1
+            },
+            {
+              "partition": "validation",
+              "unit_index": 2
+            }
+          ]
+        },
+        "starting_weight_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "state": "QUEUED",
+        "task": {
+          "capability_id": "managed-semantic-dense-v1",
+          "input_kind": "field",
+          "model_microns_per_pixel": 0.5,
+          "model_output": {
+            "classChannels": [
+              {
+                "channel": 0,
+                "role": "background"
+              },
+              {
+                "channel": 1,
+                "pathClass": "Leydig cell",
+                "role": "emitted"
+              },
+              {
+                "channel": 2,
+                "pathClass": "Other",
+                "role": "training_only"
+              },
+              {
+                "channel": 3,
+                "pathClass": "Sertoli cell",
+                "role": "emitted"
+              }
+            ],
+            "type": "dense_classification"
+          },
+          "supports_negative_rois": true,
+          "annotation_class_map": {
+            "Leydig cell": "Leydig cell",
+            "Other": "Other",
+            "Sertoli cell": "Sertoli cell"
+          }
+        },
+        "total_epochs": 2,
+        "trainer_build": {
+          "artifact_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "manifest_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "version": "phase8-test"
+        },
+        "trainer_configuration": {
+          "augmentation": {
+            "parameters": {
+              "appearance_numeric_policy": {
+                "artificial_pixels": "preserve-input-values-v1",
+                "clipping": "after-each-appearance-operator-v1",
+                "output_dtype": "float32",
+                "real_pixel_range": [
+                  0,
+                  255
+                ]
+              },
+              "base_profile_display_name": "H&E",
+              "base_profile_id": "he-morphology-v1",
+              "default_enabled_operator_ids": [
+                "rotate90-v1",
+                "flip-horizontal-v1",
+                "flip-vertical-v1",
+                "hed-v1",
+                "brightness-contrast-v1",
+                "blur-v1",
+                "noise-v1"
+              ],
+              "enabled_operators": [],
+              "input_numeric_domain": "raw-srgb-hwc-finite-0-255-v1",
+              "operator_parameters": {},
+              "seed_derivation": "sha256-canonical-json-pcg64-sample-operator-v1"
+            },
+            "profile_id": "managed-field-augmentation-v1"
+          },
+          "objective": {
+            "parameters": {
+              "class_count": 4,
+              "class_weighting": {
+                "channel_identity": "explicit-model-output-channel",
+                "channels": [
+                  {
+                    "channel": 0,
+                    "raw_count": 300,
+                    "role": "background",
+                    "weight": 0.40824830532073975
+                  },
+                  {
+                    "channel": 1,
+                    "path_class": "Leydig cell",
+                    "raw_count": 64,
+                    "role": "emitted",
+                    "weight": 0.8838834762573242
+                  },
+                  {
+                    "channel": 2,
+                    "path_class": "Other",
+                    "raw_count": 36,
+                    "role": "training_only",
+                    "weight": 1.1785112619400024
+                  },
+                  {
+                    "channel": 3,
+                    "path_class": "Sertoli cell",
+                    "raw_count": 0,
+                    "role": "emitted",
+                    "weight": 7.071067810058594
+                  }
+                ],
+                "count_floor": 1,
+                "dtype": "float32",
+                "formula": "sqrt(median(max(raw_count,1))/max(raw_count,1))",
+                "overlapping_rois": "count-independently-without-deduplication",
+                "policy": "sqrt-median-frequency-class-v1",
+                "population": "each-supervised-real-pixel-once-per-training-roi"
+              },
+              "classification_loss_weight": 1,
+              "classification_objective": "cross_entropy+tversky",
+              "cross_entropy_reduction": "sum-weighted-ce-over-sum-target-weights",
+              "effective_support": "supervision-mask-and-real-pixel-mask",
+              "field_reduction": "loss-specific-supported-reduction-then-equal-field-mean",
+              "gradient_clip_parameters": "model-only",
+              "gradient_norm_type": 2,
+              "initial_log_variance": 0,
+              "max_gradient_norm": 1,
+              "precision": "float32-no-autocast",
+              "task_combination": "sum-exp-negative-log-variance-loss-plus-log-variance",
+              "tversky_alpha": 0.3,
+              "tversky_gamma": 1.33,
+              "tversky_reduction": "mean-over-all-class-channels-including-background",
+              "use_uncertainty_weighting": true,
+              "weight_tversky_by_class": true
+            },
+            "profile_id": "managed-dense-objective-v1"
+          },
+          "optimizer": {
+            "parameters": {
+              "adapter_learning_rate": 0.001,
+              "amsgrad": false,
+              "betas": [
+                0.9,
+                0.999
+              ],
+              "capturable": false,
+              "decoupled_weight_decay": true,
+              "differentiable": false,
+              "eps": 1e-08,
+              "foreach": null,
+              "fused": null,
+              "head_learning_rate": 0.001,
+              "learning_rate": 5e-05,
+              "llrd_factor": 0.8,
+              "maximize": false,
+              "neck_learning_rate": 0.001,
+              "no_decay_rule": "ndim-lt2-or-name-contains-cls-token-or-reg-token",
+              "parameter_group_rule": "dinov3-source-build-param-groups-v1",
+              "patch_embed_learning_rate": 0.0003,
+              "task_learning_rate": 5e-06,
+              "task_weight_decay": 0.1,
+              "trainable_parameters_only": true,
+              "weight_decay": 0.1
+            },
+            "profile_id": "managed-adamw-llrd-v1"
+          },
+          "preprocessing": {
+            "parameters": {
+              "artificial_pixel_value": 0,
+              "channels": "RGB",
+              "clip": false,
+              "dtype": "float32",
+              "minimum_percentile_range": 0.001,
+              "operation_order": [
+                "read-field-and-apply-fixed-planner-padding",
+                "augment",
+                "normalize-real-pixels",
+                "apply-model-minimum-alignment-padding",
+                "bottom-right-batch-padding"
+              ],
+              "percentile_method": "linear",
+              "percentiles": [
+                1,
+                99
+              ],
+              "population": "real-pixels-per-image-including-context",
+              "small_range_output": 0
+            },
+            "profile_id": "normalize99-real-image-v1"
+          },
+          "sampler": {
+            "parameters": {
+              "seed_derivation": "sha256-canonical-json-pcg64-epoch-v1"
+            },
+            "profile_id": "managed-full-roi-coverage-v1"
+          },
+          "scheduler": {
+            "parameters": {
+              "cosine_denominator": 2,
+              "cosine_epochs": 2,
+              "epoch_indexing": "zero-based-before-epoch",
+              "group_scale_rule": "multiply-initial-learning-rate",
+              "total_epochs": 2,
+              "warmup_end_scale": 1,
+              "warmup_endpoint": true,
+              "warmup_epochs": 0,
+              "warmup_start_scale": 0,
+              "zero_rate_behavior": "adamw-step-updates-moments"
+            },
+            "profile_id": "managed-warmup-cosine-v2"
+          }
+        },
+        "trainer_settings": {
+          "data_loading_workers": 0,
+          "gradient_accumulation_steps": 1,
+          "total_epochs": 2,
+          "training_batch_size": 1,
+          "training_gpu_id": "l40s",
+          "warmup_epochs": 0,
+          "warmup_mode": "custom"
+        },
+        "training_counts": {
+          "image_count": 1,
+          "negative_roi_count": 0,
+          "roi_count": 1,
+          "target_object_counts": {
+            "Leydig cell": 1,
+            "Other": 1,
+            "Sertoli cell": 0
+          }
+        },
+        "training_seed": 1234,
+        "unavailable_metrics": [],
+        "validation_counts": {
+          "image_count": 1,
+          "negative_roi_count": 0,
+          "roi_count": 2,
+          "target_object_counts": {
+            "Leydig cell": 2,
+            "Other": 2,
+            "Sertoli cell": 0
+          }
+        },
+        "class_initialization": "use",
+        "source_model_output": {
+          "classChannels": [
+            {
+              "channel": 0,
+              "role": "background"
+            },
+            {
+              "channel": 1,
+              "pathClass": "Leydig cell",
+              "role": "emitted"
+            },
+            {
+              "channel": 2,
+              "pathClass": "Other",
+              "role": "training_only"
+            },
+            {
+              "channel": 3,
+              "pathClass": "Sertoli cell",
+              "role": "emitted"
+            }
+          ],
+          "type": "dense_classification"
+        },
+        "source_model_microns_per_pixel": 0.5
+      },
+      "report_digest": "64b3d49f8dde8ac5791a45a54b78d871855f91121a79f4251c85c2e888aaa864",
+      "report_revision": 1
+    }
+  },
+  "request": {
+    "sha256": "733e2c2fdef299b551cb8f18bcab074d6e3cded13dd7f48f231627cc5e3738e4",
+    "value": {
+      "augmentation": {
+        "enabled_operator_ids": [],
+        "profile_id": "he-morphology-v1"
+      },
+      "dataset_digest": "cb04b5f4fbf4b1a91a6fee8af229fd4bef96b338f8a4e2c75ca3b6f9b45f7f85",
+      "dataset_id": "33333333-3333-4333-8333-333333333333",
+      "field_profile": {
+        "aggregation": "cellpose-tapered-mean-v1",
+        "alignmentModelPx": 16,
+        "maxSideModelPx": 64,
+        "minSideModelPx": 16,
+        "outerArtificialPaddingModelPx": 8,
+        "planner": "variable-field-v2",
+        "preferredTileSideModelPx": 32,
+        "preprocessing": "normalize99-real-image-v1",
+        "smallRoiContext": false,
+        "tileOverlap": 0.25
+      },
+      "result_display_name": "Fine-tuned Leydig workflow",
+      "result_form": "complete_source_workflow",
+      "result_inference_gpu": "A100",
+      "schema_version": 1,
+      "selected_model_id": "nuclei",
+      "source_module": {
+        "content_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+        "module_ref": "histoforge/leydig",
+        "recipe_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+        "resolved_commit_sha": "1111111111111111111111111111111111111111"
+      },
+      "split_plan": {
+        "assignment_source": "custom",
+        "type": "split",
+        "unit": "roi",
+        "units": [
+          {
+            "partition": "training",
+            "unit_index": 0
+          },
+          {
+            "partition": "validation",
+            "unit_index": 1
+          },
+          {
+            "partition": "validation",
+            "unit_index": 2
+          }
+        ]
+      },
+      "trainer_settings": {
+        "data_loading_workers": 0,
+        "gradient_accumulation_steps": 1,
+        "total_epochs": 2,
+        "training_batch_size": 1,
+        "training_gpu_id": "l40s",
+        "warmup_epochs": 0,
+        "warmup_mode": "custom"
+      },
+      "training_seed": 1234,
+      "class_initialization": "use"
+    }
+  },
+  "run": {
+    "sha256": "0b0b934c9f3c79cbe822b8b9e43e58a75f257133a7ada7603425c22b57256bfa",
+    "value": {
+      "created_at": "2026-09-04T12:00:00.000Z",
+      "progress": {
+        "completed_epochs": 0,
+        "total_epochs": 2
+      },
+      "report_revision": 1,
+      "request": {
+        "augmentation": {
+          "enabled_operator_ids": [],
+          "profile_id": "he-morphology-v1"
+        },
+        "dataset_digest": "cb04b5f4fbf4b1a91a6fee8af229fd4bef96b338f8a4e2c75ca3b6f9b45f7f85",
+        "dataset_id": "33333333-3333-4333-8333-333333333333",
+        "field_profile": {
+          "aggregation": "cellpose-tapered-mean-v1",
+          "alignmentModelPx": 16,
+          "maxSideModelPx": 64,
+          "minSideModelPx": 16,
+          "outerArtificialPaddingModelPx": 8,
+          "planner": "variable-field-v2",
+          "preferredTileSideModelPx": 32,
+          "preprocessing": "normalize99-real-image-v1",
+          "smallRoiContext": false,
+          "tileOverlap": 0.25
+        },
+        "result_display_name": "Fine-tuned Leydig workflow",
+        "result_form": "complete_source_workflow",
+        "result_inference_gpu": "A100",
+        "schema_version": 1,
+        "selected_model_id": "nuclei",
+        "source_module": {
+          "content_digest": "3333333333333333333333333333333333333333333333333333333333333333",
+          "module_ref": "histoforge/leydig",
+          "recipe_digest": "2222222222222222222222222222222222222222222222222222222222222222",
+          "resolved_commit_sha": "1111111111111111111111111111111111111111"
+        },
+        "split_plan": {
+          "assignment_source": "custom",
+          "type": "split",
+          "unit": "roi",
+          "units": [
+            {
+              "partition": "training",
+              "unit_index": 0
+            },
+            {
+              "partition": "validation",
+              "unit_index": 1
+            },
+            {
+              "partition": "validation",
+              "unit_index": 2
+            }
+          ]
+        },
+        "trainer_settings": {
+          "data_loading_workers": 0,
+          "gradient_accumulation_steps": 1,
+          "total_epochs": 2,
+          "training_batch_size": 1,
+          "training_gpu_id": "l40s",
+          "warmup_epochs": 0,
+          "warmup_mode": "custom"
+        },
+        "training_seed": 1234,
+        "class_initialization": "use"
+      },
+      "request_digest": "733e2c2fdef299b551cb8f18bcab074d6e3cded13dd7f48f231627cc5e3738e4",
+      "run_id": "44444444-4444-4444-8444-444444444444",
+      "state": "QUEUED",
+      "trainer_build": {
+        "artifact_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "manifest_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "version": "phase8-test"
+      },
+      "updated_at": "2026-09-04T12:00:00.000Z"
+    }
+  },
+  "trainingApiLimits": {
+    "dataset": {
+      "max_archive_bytes": 8589934592,
+      "max_extracted_bytes": 9663676416,
+      "max_json_member_bytes": 8388608,
+      "max_objects_per_roi": 1000,
+      "max_rois": 20,
+      "max_total_objects": 5000,
+      "max_total_vertices": 100000,
+      "max_vertices_per_geometry": 10000
+    },
+    "max_page_encoded_bytes": 1048576,
+    "max_page_size": 100,
+    "report": {
+      "max_component_collection_entries": 1024,
+      "max_component_parameter_depth": 16,
+      "max_component_parameters_bytes": 65536,
+      "max_epochs": 1000,
+      "max_messages": 1000,
+      "max_metric_series": 100,
+      "max_report_bytes": 8388608,
+      "max_text_bytes": 4096
+    },
+    "transfer": {
+      "max_chunk_bytes": 8388608,
+      "max_chunks_per_upload": 1024
+    }
+  }
+}

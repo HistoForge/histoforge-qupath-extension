@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "backendCallQueryParameter": "backend_call_id",
+  "backendCallIdCases": [
+    {
+      "name": "ascii-at-limit",
+      "unit": "a",
+      "repetitions": 128,
+      "utf8Bytes": 128,
+      "valid": true
+    },
+    {
+      "name": "ascii-over-limit",
+      "unit": "a",
+      "repetitions": 129,
+      "utf8Bytes": 129,
+      "valid": false
+    },
+    {
+      "name": "multibyte-at-limit",
+      "unit": "é",
+      "repetitions": 64,
+      "utf8Bytes": 128,
+      "valid": true
+    },
+    {
+      "name": "multibyte-over-limit",
+      "unit": "é",
+      "repetitions": 65,
+      "utf8Bytes": 130,
+      "valid": false
+    },
+    {
+      "name": "escaped-control-at-limit",
+      "unit": "\u0001",
+      "repetitions": 128,
+      "utf8Bytes": 128,
+      "canonicalStringBytes": 770,
+      "valid": true
+    },
+    {
+      "name": "unicode-blank",
+      "unit": "　",
+      "repetitions": 1,
+      "utf8Bytes": 3,
+      "valid": false
+    },
+    {
+      "name": "empty",
+      "unit": "a",
+      "repetitions": 0,
+      "utf8Bytes": 0,
+      "valid": false
+    }
+  ],
+  "backendCallAddressCases": [
+    {
+      "name": "slash-and-dot-segments",
+      "unit": "../a/b",
+      "repetitions": 1,
+      "encodedUnit": "..%2Fa%2Fb"
+    },
+    {
+      "name": "query-delimiters",
+      "unit": "?&#=%+",
+      "repetitions": 1,
+      "encodedUnit": "%3F%26%23%3D%25%2B"
+    },
+    {
+      "name": "spaces",
+      "unit": "a b",
+      "repetitions": 1,
+      "encodedUnit": "a%20b"
+    },
+    {
+      "name": "multibyte",
+      "unit": "é",
+      "repetitions": 1,
+      "encodedUnit": "%C3%A9"
+    },
+    {
+      "name": "control-at-byte-limit",
+      "unit": "\u0001",
+      "repetitions": 128,
+      "encodedUnit": "%01"
+    }
+  ],
+  "cases": [
+    {
+      "name": "roi-nonempty",
+      "route": {
+        "moduleRef": "histoforge/tubule",
+        "modelId": "tubule_semantic"
+      },
+      "declaredClasses": [
+        "Tubule",
+        "Tubule (Not Intact)"
+      ],
+      "expectedDigests": {
+        "imageSourceDigest": "6ee17274256a653ca467185052a8725cef41d4ce69b88cdf4e05dc2557ba1d24",
+        "sourceViewDigest": "3dd2cc395aed820494e3086d2d0174920faefb546e519abfad181378f979b26c",
+        "inclusionMaskDigest": "4fb617c9709f7002e4b2f7bb1e54b668e642e6b000e7c413b46d726d1612e558",
+        "frameDigest": "e14116fda5fac2d630d287d96ac64ec19df3db0d362f5fb5ea06426f40b1c05a",
+        "modelRasterInputDigest": "9c8aba34f65c3b7cc04baff2fe53103bde550ba3dd4ae6dd6a1e65ec04e2e169",
+        "backendModelIdentityDigest": "431e33ce93a0c86a10d7d4d2081bb928051f9c43fdf07bc73f7a2d3566ab857d"
+      },
+      "requestCanonical": "{\"action_id\":\"44444444-4444-4444-8444-444444444444\",\"expected_backend\":{\"architecture\":\"dinov3-adapter-hovernet\",\"artifact_digests\":{\"weights\":\"3333333333333333333333333333333333333333333333333333333333333333\"},\"gpu\":\"A10G\",\"model_config_digest\":\"175f1eaf6fbef614db161597f2cc972c0ccbf0b5ff00cf219238cd00eda6190d\",\"model_id\":\"tubule_semantic\",\"module\":{\"content_digest\":\"2222222222222222222222222222222222222222222222222222222222222222\",\"module_ref\":\"histoforge/tubule\",\"recipe_digest\":\"1e2bf44bfe6b5c976e22b3996c5205c70b31861396ec140c7f5e48aaca7e2d99\",\"resolved_commit_sha\":\"abcdef0123456789abcdef0123456789abcdef01\"},\"preprocessing_contract_digest\":\"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\",\"rasterizer\":{\"build\":{\"artifact_digest\":\"8888888888888888888888888888888888888888888888888888888888888888\",\"manifest_digest\":\"9999999999999999999999999999999999999999999999999999999999999999\",\"version\":\"0.2.0+raster-fixture\"},\"rasterization_contract_digest\":\"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\"},\"runner_build\":{\"artifact_digest\":\"6666666666666666666666666666666666666666666666666666666666666666\",\"manifest_digest\":\"7777777777777777777777777777777777777777777777777777777777777777\",\"version\":\"0.2.0+runner-fixture\"}},\"input_id\":3,\"output_generation_id\":\"55555555-5555-4555-8555-555555555555\",\"producer\":{\"module_ref\":\"histoforge/tubule\",\"step_id\":\"tubule_semantic\"},\"raster_input\":{\"frame\":{\"frame_digest\":\"e14116fda5fac2d630d287d96ac64ec19df3db0d362f5fb5ea06426f40b1c05a\",\"inclusion_mask_digest\":\"4fb617c9709f7002e4b2f7bb1e54b668e642e6b000e7c413b46d726d1612e558\",\"inclusion_mask_raster\":{\"coordinates\":[[[8,8],[500,8],[500,370],[8,370],[8,8]]],\"type\":\"Polygon\"},\"region\":{\"roi_id\":\"33333333-3333-4333-8333-333333333333\",\"type\":\"roi\"},\"source_revision\":{\"image_data_revision\":{\"image_data_content_digest\":\"4444444444444444444444444444444444444444444444444444444444444444\",\"image_id\":\"project-entry:roi-nonempty\",\"image_source_digest\":\"6ee17274256a653ca467185052a8725cef41d4ce69b88cdf4e05dc2557ba1d24\"},\"pixel_source\":{\"calibration\":{\"mpp_x\":0.2495,\"mpp_y\":0.2505},\"content_version\":{\"file_key\":\"(dev=1000004,ino=12345)\",\"last_modified_epoch_millis\":1723466096789,\"size_bytes\":10485761,\"type\":\"local-file\"},\"credential_free_descriptor_digest\":\"1111111111111111111111111111111111111111111111111111111111111111\",\"height\":6000,\"source_adapter_id\":\"qupath.bioformats.local\",\"timepoints\":1,\"width\":10000,\"z_slices\":1}},\"transform\":{\"raster\":{\"height\":384,\"pixel_format\":\"SRGB_UINT8\",\"plane\":{\"t\":0,\"z\":0},\"resampling\":\"BILINEAR\",\"target_mpp\":0.22,\"width\":512},\"raster_to_slide\":{\"scale_x\":0.8817635270541082,\"scale_y\":0.8782435129740519,\"translate_x\":210,\"translate_y\":420}}},\"input_digest\":\"9c8aba34f65c3b7cc04baff2fe53103bde550ba3dd4ae6dd6a1e65ec04e2e169\",\"rasterizer\":{\"build\":{\"artifact_digest\":\"8888888888888888888888888888888888888888888888888888888888888888\",\"manifest_digest\":\"9999999999999999999999999999999999999999999999999999999999999999\",\"version\":\"0.2.0+raster-fixture\"},\"rasterization_contract_digest\":\"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\"},\"source_view\":{\"artifact\":{\"artifact_id\":\"22222222-2222-4222-8222-222222222222\",\"bytes_digest\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"container\":\"TIFF_FAMILY\",\"creation_action_id\":\"11111111-1111-4111-8111-111111111111\",\"manifest_digest\":\"ae2c99d122fa1246ae7a060b43fbeaedea6a100036133873ca88d66140c998e8\",\"start_request_digest\":\"50bd1595af7f44cf1ae76816eaf7e197c0afa2da818a355d230e54a675a44f4a\"},\"pixel_rect\":{\"height\":170,\"width\":228,\"x\":110,\"y\":208},\"plane\":{\"t\":0,\"z\":0},\"resolution_level\":1,\"series_index\":2,\"view_digest\":\"3dd2cc395aed820494e3086d2d0174920faefb546e519abfad181378f979b26c\",\"view_pixels_to_slide\":{\"scale_x\":2,\"scale_y\":2,\"translate_x\":207.5,\"translate_y\":419.25}}},\"result_budget\":{\"max_decoded_bytes\":2000000,\"max_features\":1234,\"max_record_bytes\":100000,\"max_transferred_bytes\":1500000,\"max_vertices\":5678},\"schema_version\":3}",
+      "requestSha256": "15fc9c26ca721e233932f6248df6d877c0e757c8af8921fa9f81726e5a3d1b6f",
+      "acceptedCanonical": "{\"action_id\":\"44444444-4444-4444-8444-444444444444\",\"backend_call_id\":\"fc_fixture_roi_01\",\"output_generation_id\":\"55555555-5555-4555-8555-555555555555\",\"schema_version\":3}",
+      "acceptedSha256": "1b29e55c3ff2b556db8da52a68ef0ac1a925bb3b1cd08bb15cc2156140a7ee02",
+      "pendingCanonical": "{\"backend_call_id\":\"fc_fixture_roi_01\",\"schema_version\":3}",
+      "pendingSha256": "8f2f83161b6afb009859f8a77206c11b9a30f0f1ce1a2bef42c1491ed8749ea1",
+      "cancellationCanonical": "{\"backend_call_id\":\"fc_fixture_roi_01\",\"schema_version\":3}",
+      "cancellationSha256": "8f2f83161b6afb009859f8a77206c11b9a30f0f1ce1a2bef42c1491ed8749ea1",
+      "resultCanonical": "{\"geojson\":{\"features\":[{\"geometry\":{\"coordinates\":[[[50,60],[150,60],[150,170],[50,170],[50,60]]],\"type\":\"Polygon\"},\"id\":\"6b76775b3e08f17c088606ff7f9dece9982401141a236beb8f9517639dc8f959\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Tubule\"},\"type\":\"Feature\"},{\"geometry\":{\"coordinates\":[[[260,210],[340,210],[340,300],[260,300],[260,210]]],\"type\":\"Polygon\"},\"id\":\"dd114889db22f78f201183555d98196765fc304da04d83cefa5c203290b37a4a\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Tubule (Not Intact)\"},\"type\":\"Feature\"}],\"type\":\"FeatureCollection\"},\"meta\":{\"action_id\":\"44444444-4444-4444-8444-444444444444\",\"backend\":{\"architecture\":\"dinov3-adapter-hovernet\",\"artifact_digests\":{\"weights\":\"3333333333333333333333333333333333333333333333333333333333333333\"},\"gpu\":\"A10G\",\"model_config_digest\":\"175f1eaf6fbef614db161597f2cc972c0ccbf0b5ff00cf219238cd00eda6190d\",\"model_id\":\"tubule_semantic\",\"module\":{\"content_digest\":\"2222222222222222222222222222222222222222222222222222222222222222\",\"module_ref\":\"histoforge/tubule\",\"recipe_digest\":\"1e2bf44bfe6b5c976e22b3996c5205c70b31861396ec140c7f5e48aaca7e2d99\",\"resolved_commit_sha\":\"abcdef0123456789abcdef0123456789abcdef01\"},\"preprocessing_contract_digest\":\"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\",\"rasterizer\":{\"build\":{\"artifact_digest\":\"8888888888888888888888888888888888888888888888888888888888888888\",\"manifest_digest\":\"9999999999999999999999999999999999999999999999999999999999999999\",\"version\":\"0.2.0+raster-fixture\"},\"rasterization_contract_digest\":\"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\"},\"runner_build\":{\"artifact_digest\":\"6666666666666666666666666666666666666666666666666666666666666666\",\"manifest_digest\":\"7777777777777777777777777777777777777777777777777777777777777777\",\"version\":\"0.2.0+runner-fixture\"}},\"backend_call_id\":\"fc_fixture_roi_01\",\"coordinate_space\":\"RASTER_LOCAL\",\"input_id\":3,\"input_identity\":{\"model_raster_input_digest\":\"9c8aba34f65c3b7cc04baff2fe53103bde550ba3dd4ae6dd6a1e65ec04e2e169\",\"source_artifact_id\":\"22222222-2222-4222-8222-222222222222\",\"source_manifest_digest\":\"ae2c99d122fa1246ae7a060b43fbeaedea6a100036133873ca88d66140c998e8\",\"source_view_digest\":\"3dd2cc395aed820494e3086d2d0174920faefb546e519abfad181378f979b26c\"},\"output_generation_id\":\"55555555-5555-4555-8555-555555555555\",\"producer\":{\"module_ref\":\"histoforge/tubule\",\"step_id\":\"tubule_semantic\"},\"schema_version\":3}}",
+      "resultSha256": "216ab68d7db9cedfbb741485cffb1bf33e15a7781ab432de6d9b67cba6c85d33",
+      "outOfBoundsGeojsonCanonical": "{\"features\":[{\"geometry\":{\"coordinates\":[[[-1,20],[30,20],[30,40],[-1,40],[-1,20]]],\"type\":\"Polygon\"},\"id\":\"c191c7f1368393584cb0f3d17736e7acd089466c127f6b1b67f73cd879783029\",\"properties\":{\"object_type\":\"DETECTION\",\"path_class\":\"Tubule\"},\"type\":\"Feature\"}],\"type\":\"FeatureCollection\"}",
+      "outOfBoundsGeojsonSha256": "79d6f85602c58231f9e3309127619c8f5c7dac3ac1d1ea7dc1d1a86c6b174971"
+    },
+    {
+      "name": "roi-valid-empty",
+      "route": {
+        "moduleRef": "histoforge/tubule",
+        "modelId": "tubule_semantic"
+      },
+      "declaredClasses": [
+        "Tubule",
+        "Tubule (Not Intact)"
+      ],
+      "expectedDigests": {
+        "imageSourceDigest": "6ee17274256a653ca467185052a8725cef41d4ce69b88cdf4e05dc2557ba1d24",
+        "sourceViewDigest": "38e668b387d24ea0295b147b844a6b4db1a42efb2e49f7f07ef9736f07369bbd",
+        "inclusionMaskDigest": "30a5a4d37ff120530f25b8bf0d53fe713db43172c68eb9835b5dcf55c42ad949",
+        "frameDigest": "a895d8c25582e7ea89a446e5ec5bd01d4eb1db0dae18f6f837ee822a172ab61f",
+        "modelRasterInputDigest": "75ea51c29a8b7c56e493577b2b7ad1398e97eea11bd471505b8f92044615c5d4",
+        "backendModelIdentityDigest": "431e33ce93a0c86a10d7d4d2081bb928051f9c43fdf07bc73f7a2d3566ab857d"
+      },
+      "requestCanonical": "{\"action_id\":\"66666666-6666-4666-8666-666666666666\",\"expected_backend\":{\"architecture\":\"dinov3-adapter-hovernet\",\"artifact_digests\":{\"weights\":\"3333333333333333333333333333333333333333333333333333333333333333\"},\"gpu\":\"A10G\",\"model_config_digest\":\"175f1eaf6fbef614db161597f2cc972c0ccbf0b5ff00cf219238cd00eda6190d\",\"model_id\":\"tubule_semantic\",\"module\":{\"content_digest\":\"2222222222222222222222222222222222222222222222222222222222222222\",\"module_ref\":\"histoforge/tubule\",\"recipe_digest\":\"1e2bf44bfe6b5c976e22b3996c5205c70b31861396ec140c7f5e48aaca7e2d99\",\"resolved_commit_sha\":\"abcdef0123456789abcdef0123456789abcdef01\"},\"preprocessing_contract_digest\":\"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\",\"rasterizer\":{\"build\":{\"artifact_digest\":\"8888888888888888888888888888888888888888888888888888888888888888\",\"manifest_digest\":\"9999999999999999999999999999999999999999999999999999999999999999\",\"version\":\"0.2.0+raster-fixture\"},\"rasterization_contract_digest\":\"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\"},\"runner_build\":{\"artifact_digest\":\"6666666666666666666666666666666666666666666666666666666666666666\",\"manifest_digest\":\"7777777777777777777777777777777777777777777777777777777777777777\",\"version\":\"0.2.0+runner-fixture\"}},\"input_id\":11,\"output_generation_id\":\"77777777-7777-4777-8777-777777777777\",\"producer\":{\"module_ref\":\"histoforge/tubule\",\"step_id\":\"tubule_semantic\"},\"raster_input\":{\"frame\":{\"frame_digest\":\"a895d8c25582e7ea89a446e5ec5bd01d4eb1db0dae18f6f837ee822a172ab61f\",\"inclusion_mask_digest\":\"30a5a4d37ff120530f25b8bf0d53fe713db43172c68eb9835b5dcf55c42ad949\",\"inclusion_mask_raster\":{\"coordinates\":[[[0,0],[1024,0],[1024,768],[0,768],[0,0]]],\"type\":\"Polygon\"},\"region\":{\"roi_id\":\"88888888-8888-4888-8888-888888888888\",\"type\":\"roi\"},\"source_revision\":{\"image_data_revision\":{\"image_data_content_digest\":\"5555555555555555555555555555555555555555555555555555555555555555\",\"image_id\":\"project-entry:roi-valid-empty\",\"image_source_digest\":\"6ee17274256a653ca467185052a8725cef41d4ce69b88cdf4e05dc2557ba1d24\"},\"pixel_source\":{\"calibration\":{\"mpp_x\":0.2495,\"mpp_y\":0.2505},\"content_version\":{\"file_key\":\"(dev=1000004,ino=12345)\",\"last_modified_epoch_millis\":1723466096789,\"size_bytes\":10485761,\"type\":\"local-file\"},\"credential_free_descriptor_digest\":\"1111111111111111111111111111111111111111111111111111111111111111\",\"height\":6000,\"source_adapter_id\":\"qupath.bioformats.local\",\"timepoints\":1,\"width\":10000,\"z_slices\":1}},\"transform\":{\"raster\":{\"height\":768,\"pixel_format\":\"SRGB_UINT8\",\"plane\":{\"t\":0,\"z\":0},\"resampling\":\"BILINEAR\",\"target_mpp\":0.5,\"width\":1024},\"raster_to_slide\":{\"scale_x\":2.004008016032064,\"scale_y\":1.996007984031936,\"translate_x\":1000,\"translate_y\":800}}},\"input_digest\":\"75ea51c29a8b7c56e493577b2b7ad1398e97eea11bd471505b8f92044615c5d4\",\"rasterizer\":{\"build\":{\"artifact_digest\":\"8888888888888888888888888888888888888888888888888888888888888888\",\"manifest_digest\":\"9999999999999999999999999999999999999999999999999999999999999999\",\"version\":\"0.2.0+raster-fixture\"},\"rasterization_contract_digest\":\"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\"},\"source_view\":{\"artifact\":{\"artifact_id\":\"22222222-2222-4222-8222-222222222222\",\"bytes_digest\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"container\":\"TIFF_FAMILY\",\"creation_action_id\":\"11111111-1111-4111-8111-111111111111\",\"manifest_digest\":\"ae2c99d122fa1246ae7a060b43fbeaedea6a100036133873ca88d66140c998e8\",\"start_request_digest\":\"50bd1595af7f44cf1ae76816eaf7e197c0afa2da818a355d230e54a675a44f4a\"},\"pixel_rect\":{\"height\":1533,\"width\":2052,\"x\":1013,\"y\":797},\"plane\":{\"t\":0,\"z\":0},\"resolution_level\":0,\"series_index\":2,\"view_digest\":\"38e668b387d24ea0295b147b844a6b4db1a42efb2e49f7f07ef9736f07369bbd\",\"view_pixels_to_slide\":{\"scale_x\":1,\"scale_y\":1,\"translate_x\":1000.5,\"translate_y\":800.25}}},\"result_budget\":{\"max_decoded_bytes\":2000000,\"max_features\":1234,\"max_record_bytes\":100000,\"max_transferred_bytes\":1500000,\"max_vertices\":5678},\"schema_version\":3}",
+      "requestSha256": "4a4b28ec4bfcd85de3c9e803d02ae55543eed6f02fc7c07c6e3a1ca00217ee62",
+      "acceptedCanonical": "{\"action_id\":\"66666666-6666-4666-8666-666666666666\",\"backend_call_id\":\"fc_fixture_roi_02\",\"output_generation_id\":\"77777777-7777-4777-8777-777777777777\",\"schema_version\":3}",
+      "acceptedSha256": "4581fe9d2cea9c1a3ae2492dfee3a587277f3b8c98e13693b1bf8ac99042a3c5",
+      "pendingCanonical": "{\"backend_call_id\":\"fc_fixture_roi_02\",\"schema_version\":3}",
+      "pendingSha256": "1f14d8a49b66841c720ec8955509de2f2b380e87b9b4b516ee7697f6c36c67fa",
+      "cancellationCanonical": "{\"backend_call_id\":\"fc_fixture_roi_02\",\"schema_version\":3}",
+      "cancellationSha256": "1f14d8a49b66841c720ec8955509de2f2b380e87b9b4b516ee7697f6c36c67fa",
+      "resultCanonical": "{\"geojson\":{\"features\":[],\"type\":\"FeatureCollection\"},\"meta\":{\"action_id\":\"66666666-6666-4666-8666-666666666666\",\"backend\":{\"architecture\":\"dinov3-adapter-hovernet\",\"artifact_digests\":{\"weights\":\"3333333333333333333333333333333333333333333333333333333333333333\"},\"gpu\":\"A10G\",\"model_config_digest\":\"175f1eaf6fbef614db161597f2cc972c0ccbf0b5ff00cf219238cd00eda6190d\",\"model_id\":\"tubule_semantic\",\"module\":{\"content_digest\":\"2222222222222222222222222222222222222222222222222222222222222222\",\"module_ref\":\"histoforge/tubule\",\"recipe_digest\":\"1e2bf44bfe6b5c976e22b3996c5205c70b31861396ec140c7f5e48aaca7e2d99\",\"resolved_commit_sha\":\"abcdef0123456789abcdef0123456789abcdef01\"},\"preprocessing_contract_digest\":\"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\",\"rasterizer\":{\"build\":{\"artifact_digest\":\"8888888888888888888888888888888888888888888888888888888888888888\",\"manifest_digest\":\"9999999999999999999999999999999999999999999999999999999999999999\",\"version\":\"0.2.0+raster-fixture\"},\"rasterization_contract_digest\":\"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\"},\"runner_build\":{\"artifact_digest\":\"6666666666666666666666666666666666666666666666666666666666666666\",\"manifest_digest\":\"7777777777777777777777777777777777777777777777777777777777777777\",\"version\":\"0.2.0+runner-fixture\"}},\"backend_call_id\":\"fc_fixture_roi_02\",\"coordinate_space\":\"RASTER_LOCAL\",\"input_id\":11,\"input_identity\":{\"model_raster_input_digest\":\"75ea51c29a8b7c56e493577b2b7ad1398e97eea11bd471505b8f92044615c5d4\",\"source_artifact_id\":\"22222222-2222-4222-8222-222222222222\",\"source_manifest_digest\":\"ae2c99d122fa1246ae7a060b43fbeaedea6a100036133873ca88d66140c998e8\",\"source_view_digest\":\"38e668b387d24ea0295b147b844a6b4db1a42efb2e49f7f07ef9736f07369bbd\"},\"output_generation_id\":\"77777777-7777-4777-8777-777777777777\",\"producer\":{\"module_ref\":\"histoforge/tubule\",\"step_id\":\"tubule_semantic\"},\"schema_version\":3}}",
+      "resultSha256": "d3b7117c8f384172f2fd979fab9a68fcb7b8e906c1d67cd3faf8014afbec6600"
+    }
+  ]
+}

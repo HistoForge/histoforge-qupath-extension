@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "squareMppRelativeTolerance": 0.0,
+  "firstPartyScripts": [
+    {
+      "resource": "modules/leydig/metrics.groovy",
+      "sha256": "829620e68604dd38fe40798ed1184ed577357fc7bf43ab9bbe92d574f174b9ff"
+    },
+    {
+      "resource": "modules/tubule/cross_section.groovy",
+      "sha256": "40b50432ed11b1a8f1fb482573f6e5bcb361ffc8890ab745785dd33df06971c0"
+    },
+    {
+      "resource": "modules/tubule/metrics.groovy",
+      "sha256": "082d0bf2b91e785ad73ef6fd1dff525b4978303447607a45b77aea7a34604d2b"
+    },
+    {
+      "resource": "modules/spermatogenesis/cross_section.groovy",
+      "sha256": "40b50432ed11b1a8f1fb482573f6e5bcb361ffc8890ab745785dd33df06971c0"
+    },
+    {
+      "resource": "modules/spermatogenesis/metrics.groovy",
+      "sha256": "2f1d0f557ac8402c794aea1a9dcf908f88efa6063da5d930a91ffbb0bab22449"
+    }
+  ],
+  "cases": [
+    {
+      "name": "observed-square-micron-calibration",
+      "mppX": 0.22220247089147632,
+      "mppY": 0.22220247089147632,
+      "relativeDifference": 0.0,
+      "accepted": true
+    },
+    {
+      "name": "other-exact-square-calibration",
+      "mppX": 0.25,
+      "mppY": 0.25,
+      "relativeDifference": 0.0,
+      "accepted": true
+    },
+    {
+      "name": "one-ulp-higher-y-is-not-square",
+      "mppX": 0.22220247089147632,
+      "mppY": 0.22220247089147635,
+      "relativeDifference": 1.2491119250057634e-16,
+      "accepted": false
+    },
+    {
+      "name": "one-ulp-lower-y-is-not-square",
+      "mppX": 0.22220247089147632,
+      "mppY": 0.2222024708914763,
+      "relativeDifference": 1.2491119250057636e-16,
+      "accepted": false
+    },
+    {
+      "name": "anisotropic-calibration-is-rejected",
+      "mppX": 0.2495,
+      "mppY": 0.2505,
+      "relativeDifference": 0.003992015968063875,
+      "accepted": false
+    }
+  ]
+}

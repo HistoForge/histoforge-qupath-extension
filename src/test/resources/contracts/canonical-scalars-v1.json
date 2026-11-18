@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "scalarCases": [
+    {
+      "name": "image-id",
+      "kind": "nonblank-string",
+      "input": "entry-01",
+      "canonicalJson": "\"entry-01\"",
+      "mapKey": "entry-01",
+      "sha256": "9c82b2c537ba30a778cb3a6ef4aed9ad5c707eeacce69662b2088b761b1e9434"
+    },
+    {
+      "name": "step-id",
+      "kind": "nonblank-string",
+      "input": "germ_cell",
+      "canonicalJson": "\"germ_cell\"",
+      "mapKey": "germ_cell",
+      "sha256": "872b66ecd830d1e0fcbcf3e80adb105cf4f16678afdd3ea2fc72b9792d217149"
+    },
+    {
+      "name": "sha256",
+      "kind": "sha256",
+      "input": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "canonicalJson": "\"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef\"",
+      "mapKey": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "sha256": "aef87b74c1f07a1fc0319ab846bef70dbee8f4f58bb4bd232e5130a6b5eae514"
+    },
+    {
+      "name": "path-class-name",
+      "kind": "path-class-name",
+      "input": "Tumor: Positive",
+      "canonicalJson": "\"Tumor: Positive\"",
+      "mapKey": "Tumor: Positive",
+      "sha256": "4ba6be34f8302200114f94ba0c67074ad46658bd7eaba0c9f92cfaa105b0eda6"
+    },
+    {
+      "name": "module-ref",
+      "kind": "module-ref",
+      "input": "histoforge/spermatogenesis",
+      "canonicalJson": "\"histoforge/spermatogenesis\"",
+      "mapKey": "histoforge/spermatogenesis",
+      "sha256": "dd0b6f7f26156b8cfb5654ce011919b830b93517b72d70fc4f4331535638e1b8"
+    },
+    {
+      "name": "model-input-id",
+      "kind": "nonnegative-int32",
+      "input": 0,
+      "canonicalJson": "0",
+      "mapKey": "0",
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    {
+      "name": "source-byte-chunk-id",
+      "kind": "nonnegative-int32",
+      "input": 2147483647,
+      "canonicalJson": "2147483647",
+      "mapKey": "2147483647",
+      "sha256": "972dcafa6fb4c2c88bce752fca4ab18c6bd88599330a4ad9813915b05bfbe76d"
+    },
+    {
+      "name": "processing-unit-id",
+      "kind": "nonnegative-int32",
+      "input": 17,
+      "canonicalJson": "17",
+      "mapKey": "17",
+      "sha256": "4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3"
+    },
+    {
+      "name": "artifact-id",
+      "kind": "canonical-uuid",
+      "input": "99999999-9999-4999-8999-999999999999",
+      "canonicalJson": "\"99999999-9999-4999-8999-999999999999\"",
+      "mapKey": "99999999-9999-4999-8999-999999999999",
+      "sha256": "7f154ef0d50f0498a19014e351e77d782d729463d3d32843d4639d15f548a98e"
+    },
+    {
+      "name": "source-artifact-id",
+      "kind": "canonical-uuid",
+      "input": "00e6d34c-8ab0-4a91-9d43-521d0014f76b",
+      "canonicalJson": "\"00e6d34c-8ab0-4a91-9d43-521d0014f76b\"",
+      "mapKey": "00e6d34c-8ab0-4a91-9d43-521d0014f76b",
+      "sha256": "0fbdb0d3699c9d7ed4d5e979192fd2381b91b62e615d4c34aa433896f0aaceed"
+    },
+    {
+      "name": "model-run-id",
+      "kind": "canonical-uuid",
+      "input": "b5a8f252-9659-5f0a-866b-d127de8fad9b",
+      "canonicalJson": "\"b5a8f252-9659-5f0a-866b-d127de8fad9b\"",
+      "mapKey": "b5a8f252-9659-5f0a-866b-d127de8fad9b",
+      "sha256": "3573e404d62dc171f316291faf0ced21ea7ddca9836b090f836c1ab32bcd8e47"
+    },
+    {
+      "name": "uuid-field",
+      "kind": "canonical-uuid",
+      "input": "39714dd1-8092-4fbc-be23-2ca0a5065a24",
+      "canonicalJson": "\"39714dd1-8092-4fbc-be23-2ca0a5065a24\"",
+      "mapKey": "39714dd1-8092-4fbc-be23-2ca0a5065a24",
+      "sha256": "102c37c870cb06919fae72d170df692526c405c2afb10823524f8f347c414e7d"
+    }
+  ],
+  "invalidScalarCases": [
+    {"name": "empty-image-id", "kind": "nonblank-string", "input": ""},
+    {"name": "unicode-blank-step-id", "kind": "nonblank-string", "input": " "},
+    {"name": "short-sha256", "kind": "sha256", "input": "0123"},
+    {"name": "uppercase-sha256", "kind": "sha256", "input": "ABCDEF0123456789abcdef0123456789abcdef0123456789abcdef0123456789"},
+    {"name": "noncanonical-path-class-spacing", "kind": "path-class-name", "input": "Tumor:Positive"},
+    {"name": "blank-path-class-component", "kind": "path-class-name", "input": "Tumor: : Positive"},
+    {"name": "leading-path-class-space", "kind": "path-class-name", "input": " Tumor"},
+    {"name": "module-ref-revision", "kind": "module-ref", "input": "histoforge/leydig@main"},
+    {"name": "module-ref-dot-segment", "kind": "module-ref", "input": "../leydig"},
+    {"name": "negative-model-input-id", "kind": "nonnegative-int32", "input": -1},
+    {"name": "overflow-processing-unit-id", "kind": "nonnegative-int32", "input": 2147483648},
+    {"name": "boolean-chunk-id", "kind": "nonnegative-int32", "input": true},
+    {"name": "uppercase-uuid", "kind": "canonical-uuid", "input": "00E6D34C-8AB0-4A91-9D43-521D0014F76B"},
+    {"name": "braced-uuid", "kind": "canonical-uuid", "input": "{00e6d34c-8ab0-4a91-9d43-521d0014f76b}"}
+  ],
+  "moduleRefRouteCases": [
+    {"name": "canonical", "owner": "histoforge", "module": "leydig", "canonical": "histoforge/leydig"},
+    {"name": "encoded-unreserved", "owner": "%68istoforge", "module": "leydig"},
+    {"name": "encoded-dot-segment", "owner": "%2E%2E", "module": "leydig"},
+    {"name": "encoded-slash", "owner": "histoforge", "module": "leydig%2Fextra"},
+    {"name": "encoded-backslash", "owner": "histoforge", "module": "leydig%5Cextra"},
+    {"name": "encoded-nul", "owner": "histoforge", "module": "leydig%00"},
+    {"name": "double-encoded-dot", "owner": "%252e%252e", "module": "leydig"},
+    {"name": "malformed-percent", "owner": "%ZZ", "module": "leydig"}
+  ],
+  "compoundMap": {
+    "entries": [
+      {"key": {"type": "slide"}, "value": {"rank": 2}},
+      {"key": {"type": "roi", "roi_id": "b5a8f252-9659-5f0a-866b-d127de8fad9b"}, "value": {"rank": 1}}
+    ],
+    "canonicalJson": "[{\"key\":{\"roi_id\":\"b5a8f252-9659-5f0a-866b-d127de8fad9b\",\"type\":\"roi\"},\"value\":{\"rank\":1}},{\"key\":{\"type\":\"slide\"},\"value\":{\"rank\":2}}]",
+    "sha256": "449363a46157a389fef5e9bdb019c4e7538f001b8a458378a2c54f75f18a5255"
+  },
+  "unordered": {
+    "values": ["😀", "", "z", "a"],
+    "canonicalJson": "[\"a\",\"z\",\"\",\"😀\"]",
+    "sha256": "f96d3170173d2e1c6076d3fd578904782664c933199fb13e6e206bb23a23e32e"
+  }
+}

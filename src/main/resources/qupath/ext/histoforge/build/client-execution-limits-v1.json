@@ -1,0 +1,10 @@
+{
+  "max_generation_store_utf8_bytes": 33554432,
+  "max_hierarchy_geometry_vertices": 65000000,
+  "max_hierarchy_measurements": 2100000,
+  "max_hierarchy_objects": 512000,
+  "max_hierarchy_text_utf8_bytes": 134217728,
+  "max_local_source_artifact_bytes": 17179869184,
+  "max_metric_values_per_image": 8388608,
+  "max_metric_values_per_region": 4194304
+}
